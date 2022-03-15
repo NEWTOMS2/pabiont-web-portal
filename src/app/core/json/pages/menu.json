@@ -1,0 +1,45 @@
+{
+    "card": [
+        {
+            "title": "Órdenes de Despacho",
+            "subtitle": "Ver Órdenes de Despacho",
+            "description": "Contiene la lista de las órdenes por despachar con información que describe su estatus actual y fecha.",
+            "icon": "fas fa-newspaper me-2",
+            "url": ""
+        },
+        {
+            "title": "Perfil",
+            "subtitle": "Ajustes de Perfil",
+            "description": "Gestiona y edita la información personal de la cuenta.",
+            "icon": "fas fa-user me-2",
+            "url": ""
+        },
+        {
+            "title": "Órdenes de Despacho",
+            "subtitle": "Ver Órdenes de Despacho",
+            "description": "Contiene la lista de las órdenes por despachar con información que describe su estatus actual y fecha.",
+            "icon": "fas fa-newspaper me-2",
+            "url": ""
+        },
+        {
+            "title": "Perfil",
+            "subtitle": "Ajustes de Perfil",
+            "description": "Gestiona y edita la información personal de la cuenta.",
+            "icon": "fas fa-user me-2",
+            "url": ""
+        },{
+            "title": "Órdenes de Despacho",
+            "subtitle": "Ver Órdenes de Despacho",
+            "description": "Contiene la lista de las órdenes por despachar con información que describe su estatus actual y fecha.",
+            "icon": "fas fa-newspaper me-2",
+            "url": ""
+        },
+        {
+            "title": "Perfil",
+            "subtitle": "Ajustes de Perfil",
+            "description": "Gestiona y edita la información personal de la cuenta.",
+            "icon": "fas fa-user me-2",
+            "url": ""
+        }
+    ]
+}
