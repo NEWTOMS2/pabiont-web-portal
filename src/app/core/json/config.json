@@ -1,0 +1,8 @@
+{
+    "devMode": true,
+    "apiBaseURL": "http://pabiont-system-api.us-e1.cloudhub.io/api/",
+    "url": {
+        "rate": "rate?company="
+    }
+
+}

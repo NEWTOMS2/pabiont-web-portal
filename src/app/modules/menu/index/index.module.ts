@@ -6,7 +6,8 @@ import { IndexComponent } from './pages/index.component';
 import {InputTextModule} from 'primeng/inputtext';
 import {ButtonModule} from 'primeng/button';
 import {RippleModule} from 'primeng/ripple';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {InputNumberModule} from 'primeng/inputnumber';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,9 @@ import { FormsModule } from '@angular/forms';
     InputTextModule,
     ButtonModule,
     RippleModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    InputNumberModule
   ]
 })
 export class IndexModule { }

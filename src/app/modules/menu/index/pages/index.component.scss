@@ -1,3 +1,13 @@
+.navbar{
+    background: transparent;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    font-size: 20px;
+    .navSection{
+        margin-left: auto;
+    }
+}
 .headerSection{   
     text-align: center;
     color: white;
@@ -37,6 +47,37 @@
     
 }
 
+.quotesSection{
+    height: auto;
+    .image{
+        width: 100%;
+    }
+    .inputSection{
+        background-color: #efefef;
+        .title{
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 16px;
+        }
+        .label{
+            font-size: 20px;
+        }
+    }
+    .backgroundQuote{
+        background-color: white;
+        height: 170px;
+        margin-top: 24px;
+        .titleQuote{
+            font-size: 32px;
+        }
+        .number{
+            font-size: 60px;
+            font-weight: bold;
+        }
+        
+        
+    }
+}
 
 .footerSection{
     background-color: white;
@@ -65,16 +106,7 @@
 .footerBackground{
     background-image: url('./../../../../../assets/img/footerimagen.jpg');
 }
-.navbar{
-    background: transparent;
-    position: absolute;
-    top: 0;
-    width: 100%;
-    font-size: 20px;
-    .navSection{
-        margin-left: auto;
-    }
-}
+
 
 
 input::-webkit-input-placeholder{
