@@ -8,6 +8,8 @@ import {ButtonModule} from 'primeng/button';
 import {RippleModule} from 'primeng/ripple';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {InputNumberModule} from 'primeng/inputnumber';
+import { ConsultModule } from 'src/app/shared/components/tables/consult.module';
+import { ToastModule } from 'primeng/toast';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import {InputNumberModule} from 'primeng/inputnumber';
     RippleModule,
     FormsModule,
     ReactiveFormsModule,
-    InputNumberModule
+    InputNumberModule,
+    ToastModule,
+    ConsultModule,
   ]
 })
 export class IndexModule { }

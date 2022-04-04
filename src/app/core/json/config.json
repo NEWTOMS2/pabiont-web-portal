@@ -1,8 +1,10 @@
 {
     "devMode": true,
-    "apiBaseURL": "http://pabiont-system-api.us-e1.cloudhub.io/api/",
+    "apiBaseURL": "https://pabiont-system-api.us-e1.cloudhub.io/api/",
     "url": {
-        "rate": "rate?company="
+        "rate": "rate?company=",
+        "trackingByCode": "tracking?code=",
+        "trackingByEmail": "tracking?email="
     }
 
 }
