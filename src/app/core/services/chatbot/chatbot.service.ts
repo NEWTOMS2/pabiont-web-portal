@@ -8,7 +8,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class ChatbotService {
 
-  httpOptions:any = new Headers({'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'http://localhost:4200', 'Access-Control-Allow-Headers': '*'})
+  httpOptions:any = new Headers({'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'})
 
   constructor(protected http: HttpClient) {}
 
