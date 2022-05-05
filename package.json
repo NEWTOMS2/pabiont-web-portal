@@ -6,7 +6,7 @@
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
-    "deploy": "ng build --prod --base-href=/pabiont-web-portal/"
+    "deploy": "ng build --base-href=/pabiont-web-portal/"
   },
   "private": true,
   "dependencies": {
