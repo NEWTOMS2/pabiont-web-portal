@@ -1,7 +1,7 @@
 {
-    "/api/*": {
-        "target": "https://localhost:3000",
-        "secure": false,
+    "/webchat/*": {
+        "target": "https://pabiont-lex.us-e1.cloudhub.io",
+        "secure": true,
         "logLevel": "debug"
     }
 }

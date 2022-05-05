@@ -10,6 +10,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {InputNumberModule} from 'primeng/inputnumber';
 import { ConsultModule } from 'src/app/shared/components/tables/consult.module';
 import { ToastModule } from 'primeng/toast';
+import { NbChatModule } from '@nebular/theme';
+import { ChatbotModule } from 'src/app/shared/components/chatbot/chatbot.module';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,8 @@ import { ToastModule } from 'primeng/toast';
     InputNumberModule,
     ToastModule,
     ConsultModule,
+    ChatbotModule,
+    NbChatModule
   ]
 })
 export class IndexModule { }

@@ -178,8 +178,19 @@
         </div>
         <div class="col-3 d-none d-lg-block mt-4">
             <p class="footerSecundaryTitle">Dirección Postal<br></p>  
-            <span class="footerSecundarySubtitle">Calle Faisanes 123, Durango, Dgo.12600 Deerfield Parkway #100
+            <span class="footerSecundarySubtitle"> Dgo.12600 Deerfield Parkway #100
                 Alpharetta, Georgia 30004</span>
         </div>
     </div>
 </div>
+
+<button style="background: url(./../../../../../assets/img/webchat-icon.png)" class="open-button ring-effect-ph-circle-fill" (click)="openForm()"></button>
+
+<div class="chat-popup"  [ngClass]="{'d-block': showWebChat, 'd-none': !showWebChat}"> 
+  
+    <button style="background: url(./../../../../../assets/img/close-icon.png)" class="close-button" (click)="closeForm()"></button>
+    <div class="form-container">
+      <app-chatbot></app-chatbot>
+      <!--<button type="button" class="btn cancel" (click)="closeForm()">Close</button>-->
+    </div>
+  </div>

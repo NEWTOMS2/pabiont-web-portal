@@ -1,3 +1,4 @@
+
 .navbar{
     background: transparent;
     position: absolute;
@@ -138,7 +139,7 @@ br{
             position: relative;
             overflow: hidden;
             
-            z-index: -1;
+           // z-index: -1;
             .imgWrap{
                 position: absolute;
                 left: 0;
@@ -165,6 +166,91 @@ br{
     }
 
 }
+
+
+/* Button used to open the chat form - fixed at the bottom of the page */
+.open-button {
+    padding: 32px 32px;
+    border: none;
+    cursor: pointer;
+    position: fixed;
+    bottom: 25px;
+    right: 60px;
+    z-index: 99998;
+  }
+  
+  .close-button {
+    padding: 12px 12px;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 0.5rem;
+  }
+  
+  /* The popup chat - hidden by default */
+  .chat-popup {
+    display: none;
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    //border: 1px solid #f1f1f1;
+    z-index: 99999;
+  }
+  
+  /* Add styles to the form container */
+  .form-container {
+    max-width: 420px;
+    //padding: 10px;
+    //background-color: white;
+  }
+  
+  .ring-effect-ph-circle-fill {
+    width: 72px;
+    height: 72px;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    border-radius: 100%;
+    -ms-animation: ring-effect-circle-fill-anim 2.3s infinite ease-in-out;
+    -o-animation: ring-effect-circle-fill-anim 2.3s infinite ease-in-out;
+    animation: ring-effect-circle-fill-anim 2.3s infinite ease-in-out;
+  }
+  
+  @keyframes ring-effect-circle-fill-anim {
+    0% {
+        transform: rotate(0) scale(.8) skew(1deg);
+        //opacity: .2
+    }
+    50% {
+        transform: rotate(0) scale(1) skew(1deg);
+        //opacity: .2
+    }
+    100% {
+        transform: rotate(0) scale(.8) skew(1deg);
+        //opacity: .2
+    }
+  }
+  
+  .ring-effect-ph-circle {
+    width: 85px;
+    height: 85px;
+    border-radius: 100%;
+    border: 2px solid rgba(154, 0, 0, 0.4);
+    animation: ring-effect-circle-anim 2s infinite ease-in-out;
+  }
+  
+  @keyframes ring-effect-circle-anim {
+    0% {
+        transform: rotate(0) scale(.5) skew(1deg);
+        //opacity: .1
+    }
+    30% {
+        transform: rotate(0) scale(.7) skew(1deg);
+        //opacity: .5
+    }
+    100% {
+        transform: rotate(0) scale(1) skew(1deg);
+        //opacity: .1
+    }
+  }
 
 @media (max-width: 768px) {
 
@@ -196,6 +282,20 @@ br{
             }
         }
         
+    }
+    .quotesSection{
+        .backgroundQuote{
+            height: 120px;
+            .titleQuote{
+                font-size: 20px;
+            }
+            .number{
+                font-size: 30px;
+                font-weight: bold;
+            }
+            
+            
+        }
     }
 
 }

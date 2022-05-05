@@ -28,6 +28,7 @@ export class IndexComponent implements OnInit {
   searchField: any[];
   //ocultar section
   isSubmit: boolean = false;
+  showWebChat: boolean = false;
 
   constructor( 
     private formBuilder: FormBuilder,
@@ -58,9 +59,9 @@ export class IndexComponent implements OnInit {
   resetForm() {
     this.quotesForm = this.formBuilder.group({
       weight: [1,[Validators.required]],
-      high: [1,[Validators.required]],
-      width: [1,[Validators.required]],
-      long: [1,[Validators.required]],
+      high: [14,[Validators.required]],
+      width: [14,[Validators.required]],
+      long: [12,[Validators.required]],
       
     });
 
@@ -127,6 +128,14 @@ export class IndexComponent implements OnInit {
     }
     
     
+  }
+
+  public openForm() {
+    this.showWebChat = true;
+  }
+  
+  public closeForm() {
+    this.showWebChat = false;
   }
 
 
