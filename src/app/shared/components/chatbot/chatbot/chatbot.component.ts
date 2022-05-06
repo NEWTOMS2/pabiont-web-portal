@@ -27,8 +27,8 @@ export class ChatbotComponent implements OnInit {
       date: new Date(),
       reply: false,
       user: {
-        name: 'Jean Carlos Labrador',
-        avatar: '../../../assets/images/avatar-bot-1.png',
+        name: 'Pabiont Virtual assistent',
+        avatar: './../../../../../assets/img/avatar-bot-1.jpg',
       },
     },
     {
@@ -36,8 +36,8 @@ export class ChatbotComponent implements OnInit {
       date: null,
       reply: false,
       user: {
-        name: 'Jean Carlos Labrador',
-        avatar: '../../../assets/images/avatar-bot-1.png',
+        name: 'Pabiont Virtual assistent',
+        avatar: './../../../../../assets/img/avatar-bot-1.jpg',
       },
     },
   ];
@@ -63,8 +63,8 @@ export class ChatbotComponent implements OnInit {
             type: "text",
             reply: false,
             user: {
-              name: 'Jean Carlos Labrador',
-              avatar: '../../../assets/images/avatar-bot-1.png',
+              name: 'Pabiont Virtual assistent',
+              avatar: './../../../../../assets/img/avatar-bot-1.jpg',
             },
           });  
         

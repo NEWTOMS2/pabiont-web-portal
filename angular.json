@@ -32,7 +32,7 @@
             ],
             "styles": [
               "src/styles.scss",
-              "src/app/shared/components/chatbot/chatbot/chatbot.component.scss",
+              "src/styles/webchat.scss",
               "node_modules/bootstrap/dist/css/bootstrap.css",
               "src/app/shared/components/tables/basic-table/basic-table.component.scss",
               "src/app/modules/menu/index/pages/index.component.scss",

@@ -72,10 +72,11 @@
         margin-top: 24px;
         z-index: 1;
         .titleQuote{
-            font-size: 32px;
+            font-size: 30px;
+            margin-top: 18px;
         }
         .number{
-            font-size: 45px;
+            font-size: 42px;
             font-weight: bold;
         }
         
@@ -99,7 +100,8 @@
     align-items: center;
     .footerTitle{
         color: #4b39b5;
-        font-size: 50px;
+        font-size: 50px;      
+        margin-top: 18px;
     }
     .footerSubtitle{
         color: black;
