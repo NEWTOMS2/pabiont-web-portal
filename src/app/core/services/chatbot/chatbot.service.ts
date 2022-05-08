@@ -26,13 +26,8 @@ export class ChatbotService {
 
 
   public requestAPI(message: string, session: number){
-    console.log(this.http.post('https://pabiont-lex.us-e1.cloudhub.io/webchat',
-    {
-      message: message,
-      session: session
-    },
-    this.httpOptions));
-    return this.http.post('https://pabiont-lex.us-e1.cloudhub.io/webchat/',
+  
+    return this.http.post('https://pabiont-lex.us-e1.cloudhub.io/api/webchat',
       {
         message: message,
         session: session
