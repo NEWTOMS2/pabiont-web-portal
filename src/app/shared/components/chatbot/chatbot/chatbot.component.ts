@@ -28,7 +28,7 @@ export class ChatbotComponent implements OnInit {
       reply: false,
       user: {
         name: 'Pabiont Virtual assistent',
-        avatar: './../../../../../assets/img/avatar-bot-1.jpg',
+        avatar: '/assets/img/avatar-bot-1.jpg',
       },
     },
     {
@@ -37,7 +37,7 @@ export class ChatbotComponent implements OnInit {
       reply: false,
       user: {
         name: 'Pabiont Virtual assistent',
-        avatar: './../../../../../assets/img/avatar-bot-1.jpg',
+        avatar: '/assets/img/avatar-bot-1.jpg',
       },
     },
   ];
@@ -64,7 +64,7 @@ export class ChatbotComponent implements OnInit {
             reply: false,
             user: {
               name: 'Pabiont Virtual assistent',
-              avatar: './../../../../../assets/img/avatar-bot-1.jpg',
+              avatar: '/assets/img/avatar-bot-1.jpg',
             },
           });  
         
