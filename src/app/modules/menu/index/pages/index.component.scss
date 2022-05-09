@@ -13,7 +13,7 @@
     text-align: center;
     color: white;
     display: flex;
-    background-image: url('./../../../../../assets/img/portada.jpg');
+    background-image: url('/assets/img/portada.jpg');
     height: 100vh;
     background-position: center;
     background-repeat: no-repeat;
@@ -85,7 +85,7 @@
 }
 
 .trackingSection{
-    background-image: url('./../../../../../assets/img/tracking.png');
+    background-image: url('/assets/img/tracking.png');
     height: 100vh;
     background-position: center;
     background-repeat: no-repeat;
@@ -100,7 +100,7 @@
     align-items: center;
     .footerTitle{
         color: #4b39b5;
-        font-size: 50px;      
+        font-size: 40px;      
         margin-top: 18px;
     }
     .footerSubtitle{
@@ -120,7 +120,7 @@
     }
 }
 .footerBackground{
-    background-image: url('./../../../../../assets/img/footerimagen.jpg');
+    background-image: url('/assets/img/footerimagen.jpg');
 }
 
 
@@ -277,7 +277,7 @@ br{
     
         .formSection{
             .title{
-                font-size: 45px;
+                font-size: 35px;
             }
             .subtitle{
                 font-size: 22px;

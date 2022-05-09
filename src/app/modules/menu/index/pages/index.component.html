@@ -1,11 +1,11 @@
 
 <!--HEADER-->
 <p-toast position="top-center" key="tc"></p-toast>
-<div class="headerSection">
+<div class="headerSection" (click)="closeForm()">
     <!--NAVBAR-->
     <div>
         <nav class="navbar navbar-expand-lg navbar-dark">
-            <img src="./../../../../../assets/img/logo.png" height="80" class="logo mr-2">
+            <img src="assets/img/logo.png" height="80" class="logo mr-2">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
@@ -47,7 +47,7 @@
     
 </div>
 
-<div *ngIf="isSubmit">
+<div *ngIf="isSubmit" (click)="closeForm()">
     <div class="row trackingSection m-0">
         
             <app-basic-table   
@@ -62,10 +62,10 @@
     </div>
 </div>
 
-<div>
+<div (click)="closeForm()">
     <div class="quotesSection row p-0 m-0">
         <div class="col-6 d-none d-lg-block p-0">
-            <img class="image img-fluid" src="./../../../../../assets/img/Cotizacion-back.jpg">
+            <img class="image img-fluid" src="assets/img/Cotizacion-back.jpg">
         </div>
         
         <div class="inputSection col-12 col-lg-6 p-0 m-0">
@@ -156,8 +156,8 @@
     </div>
 </div>
 <!--FOOTER-->
-<div>
-    <img class="img-fluid" src="./../../../../../assets/img/footerimagen.jpg">
+<div (click)="closeForm()">
+    <img class="img-fluid" src="assets/img/footerimagen.jpg">
     <div class="footerSection row p-0 m-0 align-items-start">
         <div class="col-12 col-sm-6 col-lg-5">
             <p class="footerTitle">Datos de contacto <br></p>
@@ -184,11 +184,11 @@
     </div>
 </div>
 
-<button style="background: url(./../../../../../assets/img/webchat-icon.png)" class="open-button ring-effect-ph-circle-fill" (click)="openForm()"></button>
+<button style="background: url(assets/img/webchat-icon.png)" class="open-button ring-effect-ph-circle-fill" (click)="openForm()"></button>
 
 <div class="chat-popup"  [ngClass]="{'d-block': showWebChat, 'd-none': !showWebChat}"> 
   
-    <button style="background: url(./../../../../../assets/img/close-icon.png)" class="close-button" (click)="closeForm()"></button>
+    <button style="background: url(assets/img/close-icon.png)" class="close-button" (click)="closeForm()"></button>
     <div class="form-container">
       <app-chatbot></app-chatbot>
       <!--<button type="button" class="btn cancel" (click)="closeForm()">Close</button>-->
