@@ -13,7 +13,7 @@
     text-align: center;
     color: white;
     display: flex;
-    background-image: url('/assets/img/portada.jpg');
+    background-image: url('./../../../../../assets/img/portada.jpg');
     height: 100vh;
     background-position: center;
     background-repeat: no-repeat;
@@ -85,7 +85,7 @@
 }
 
 .trackingSection{
-    background-image: url('/assets/img/tracking.png');
+    background-image: url('./../../../../../assets/img/tracking.png');
     height: 100vh;
     background-position: center;
     background-repeat: no-repeat;
@@ -120,7 +120,7 @@
     }
 }
 .footerBackground{
-    background-image: url('/assets/img/footerimagen.jpg');
+    background-image: url('./../../../../../assets/img/footerimagen.jpg');
 }
 
 
