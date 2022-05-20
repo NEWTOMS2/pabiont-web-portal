@@ -170,6 +170,34 @@ br{
 
 }
 
+@media (max-width: 1324px) {
+    .quotesSection{
+        .backgroundQuote{
+            .titleQuote{
+                font-size: 28px;
+            }
+            .number{
+                font-size: 38px;
+                font-weight: bold;
+            }    
+        }
+    }          
+}
+
+@media (max-width: 1120px) {
+    .quotesSection{
+        .backgroundQuote{
+            .titleQuote{
+                font-size: 24px;
+            }
+            .number{
+                font-size: 34px;
+                font-weight: bold;
+            }    
+        }
+    }          
+}
+
 
 /* Button used to open the chat form - fixed at the bottom of the page */
 .open-button {
@@ -290,10 +318,10 @@ br{
         .backgroundQuote{
             height: 120px;
             .titleQuote{
-                font-size: 20px;
+                font-size: 16px;
             }
             .number{
-                font-size: 30px;
+                font-size: 24px;
                 font-weight: bold;
             }
             

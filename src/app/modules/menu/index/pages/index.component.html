@@ -11,14 +11,14 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav navSection">
-                <a class="nav-item nav-link active" href="#">Home</a>
-                <a class="nav-item nav-link" href="#">Cotizaciones</a>
-                <a class="nav-item nav-link" href="#">Contactanos</a>
+                <a class="nav-item nav-link active" href="#Home">Home</a>
+                <a class="nav-item nav-link" href="#Cotizaciones">Cotizaciones</a>
+                <a class="nav-item nav-link" href="#Contactanos">Contactanos</a>
             </div> 
             </div>
         </nav>
     </div>
-    <div class="formSection">
+    <div class="formSection" id="Home">
         <div class="title">Envíos de paquetes rápidos y económicos</div>
         <div class="subtitle">Verifica el estatus de tu envio desde tu computador o celular</div>
         <div class="searchInput row justify-content-center">
@@ -48,7 +48,7 @@
 </div>
 <!--TRACKING-->
 <div *ngIf="isSubmit" (click)="closeForm()">
-    <div class="row trackingSection m-0">
+    <div class="row trackingSection m-0" >
         
             <app-basic-table   
                                 [headerList]=headerList
@@ -62,7 +62,7 @@
     </div>
 </div>
 <!--QUOTE-->
-<div (click)="closeForm()">
+<div (click)="closeForm()" id="Cotizaciones">
     <div class="quotesSection row p-0 m-0">
         <div class="col-6 d-none d-lg-block p-0">
             <img class="image img-fluid" src="assets/img/Cotizacion-back.jpg">
@@ -141,12 +141,12 @@
                     <div class="col-5 backgroundQuote">
                         <p class="titleQuote">Envio Marítimo</p>
                         <span class="number" [innerHTML]="calculateRateMaritime().toFixed(2)"></span>
-                        <span class="number">/$</span>
+                        <span class="number"> USD</span>
                     </div>
                     <div class="col-5 backgroundQuote">
                         <p class="titleQuote">Envio Aéreo</p>
                         <span class="number" [innerHTML]="calculateRateAerial().toFixed(2)"></span>
-                        <span class="number">/$</span>
+                        <span class="number"> USD</span>
                     </div>
                 </div>
                 
@@ -156,7 +156,7 @@
     </div>
 </div>
 <!--FOOTER-->
-<div (click)="closeForm()">
+<div (click)="closeForm()" id="Contactanos">
     <img class="img-fluid" src="assets/img/footerimagen.jpg">
     <div class="footerSection row p-0 m-0 align-items-start">
         <div class="col-12 col-sm-6 col-lg-5">
