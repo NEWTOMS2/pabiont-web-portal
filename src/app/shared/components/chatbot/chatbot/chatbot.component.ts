@@ -32,7 +32,7 @@ export class ChatbotComponent implements OnInit {
       },
     },
     {
-      text: '1. Requisitos de envio \n2. Cotizar mi envio \n3. Localizar mi paquete \n4. Informacion de contacto',
+      text: '1. Artículos prohibídos \n2. Cotizar mi envío \n3. Localizar mi paquete \n4. Información de contacto',
       date: null,
       reply: false,
       user: {
