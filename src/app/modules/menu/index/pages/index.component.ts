@@ -40,7 +40,6 @@ export class IndexComponent implements OnInit {
       this.page = this.page.default;
       this.bodyList = this.page.testData
       this.headerList = [
-        { field: 'index', header: 'Paquete' },
         { field: 'Code', header: 'Código Tracking' },
         { field: 'description', header: 'Descripción' },
         { field: 'status', header: 'Estatus' }
