@@ -29,13 +29,13 @@
                             type="text" 
                             pInputText
                             formControlName = "searchInput"
-                            (keyup.enter)="searchPackage(searchForm.controls['searchInput'].value)"> 
+                            (keyup.enter)="searchPackage(searchForm.controls['searchInput'].value, Tracking)"> 
                     <button pButton 
                             pRipple 
                             type="button" 
                             icon="pi pi-search" 
                             class="p-button-rounded p-button-success group"
-                            (click)="searchPackage(searchForm.controls['searchInput'].value)">
+                            (click)="searchPackage(searchForm.controls['searchInput'].value, Tracking)">
                     </button>   
                 </form>
             </div>
@@ -47,8 +47,8 @@
     
 </div>
 <!--TRACKING-->
-<div *ngIf="isSubmit" (click)="closeForm()">
-    <div class="row trackingSection m-0" >
+<div (click)="closeForm()" #Tracking>
+    <div *ngIf="isSubmit" class="row trackingSection m-0" >
         
             <app-basic-table   
                                 [headerList]=headerList

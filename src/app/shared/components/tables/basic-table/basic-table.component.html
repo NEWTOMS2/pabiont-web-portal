@@ -1,6 +1,6 @@
 <div class="card" [ngClass]="{'mx-5': innerWidth >= 576}">
 
-    <p-table #dt [columns]="headerList" [value]="dataList" [rows]="2" [paginator]="true" [globalFilterFields]="searchField" 
+    <p-table #dt [columns]="headerList" [value]="dataList" [rows]="10" [paginator]="true" [globalFilterFields]="searchField" 
                 responsiveLayout="stack" [rowHover]="true" dataKey="id" styleClass="tableBackground"
         currentPageReportTemplate="Mostrando del {first} al {last} de {totalRecords} resultados" [showCurrentPageReport]="true">
         <ng-template pTemplate="caption">

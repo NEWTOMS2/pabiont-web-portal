@@ -1,5 +1,6 @@
-import { Component, HostListener, Input, OnInit, SimpleChange } from '@angular/core';
+import { Component, ElementRef, HostListener, Input, OnInit, SimpleChange, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { Observable, Observer } from 'rxjs';
 import { TrackingResponse } from 'src/app/core/http/models/response/tracking-response';
@@ -29,12 +30,15 @@ export class IndexComponent implements OnInit {
   //ocultar section
   isSubmit: boolean = false;
   showWebChat: boolean = false;
+  
+  @ViewChild('Tracking',{static: true}) public Tracking: ElementRef;
 
   constructor( 
     private formBuilder: FormBuilder,
     private indexService: IndexService,
     private appConfig: AppConfigService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private router: Router,
     ) {
       this.page = this.appConfig.index;
       this.page = this.page.default;
@@ -102,7 +106,7 @@ export class IndexComponent implements OnInit {
                             this.quotesForm.controls['long'].value)/166
   }
 
-  async searchPackage(text: string){
+  async searchPackage(text: string, vawer: any){
     if (text.match(this.emailPattern)) {
       this.tracking = await this.indexService.getTrackingByEmail(text).toPromise().then(response => {return response?.data});
       if (this.tracking.length == 0){
@@ -111,6 +115,8 @@ export class IndexComponent implements OnInit {
       }
       else
         this.isSubmit=true;
+        vawer.scrollIntoView({behavior: 'smooth'});
+        
     }
     else if(text.match("^[A-Za-z0-9-]*$") ){
       this.tracking = await this.indexService.getTrackingByCode(text).toPromise().then(response => {return response?.data});
@@ -120,6 +126,7 @@ export class IndexComponent implements OnInit {
       }
       else
         this.isSubmit=true;
+        vawer.scrollIntoView({behavior: 'smooth'});
     }
     else{
       this.messageService.add({key: 'tc', severity:'error', summary: 'Formato Incorrecto', detail: 'Codigo de tracking o correo invalido'});
