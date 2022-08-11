@@ -1,0 +1,26 @@
+<div class="row p-5 m-0">
+    <span class="title">Gestion de Clientes</span>
+    <div class="pabiont-card ">
+        <app-basic-table    [headerList]="page.tableConfiguration.headerList"
+                            [headerCustomButtons]="page.tableConfiguration.headerCustomButtons"
+                            [customButtons]="page.tableConfiguration.customButtons"
+                            [dataList]="userList"
+                            [searchField]="page.tableConfiguration.searchField"
+                            [canCreate]="true">
+        </app-basic-table>
+    </div>
+</div>
+
+<p-dialog [(visible)]="visibleDialog" (onHide)="child.resetForm()" [style]="{width: '450px'}" header="Agregar Clientes" [modal]="true" styleClass="p-fluid" >
+    
+    <app-create-form    (buttonEnabled)="buttonEnabled($event)"
+                        (updateList)="getUserList()"
+                        #child>
+    </app-create-form>
+
+    <ng-template class="m-0" pTemplate="footer">
+        <button pButton pRipple label="Cancelar" icon="pi pi-times" class="p-button-text p-button-danger" (click)="hideDialog()"></button>
+        <button pButton pRipple label="Guardar" icon="pi pi-check" class="p-button-text" [disabled]="!buttonIsEnabled" (click)="hideDialog();child.submit()"></button>
+    </ng-template>
+</p-dialog>
+    

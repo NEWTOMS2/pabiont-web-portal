@@ -1,21 +1,20 @@
-<div class="card" [ngClass]="{'mx-5': innerWidth >= 576}">
-
+<div class="m-0">
     <p-table #dt [columns]="headerList" [value]="dataList" [rows]="10" [paginator]="true" [globalFilterFields]="searchField" 
-                responsiveLayout="stack" [rowHover]="true" dataKey="id" styleClass="tableBackground"
+                responsiveLayout="stack" [rowHover]="true" dataKey="id"
         currentPageReportTemplate="Mostrando del {first} al {last} de {totalRecords} resultados" [showCurrentPageReport]="true">
         <ng-template pTemplate="caption">
             <div class="d-flex align-items-center justify-content-between">
                 <div class="row">
-                    <div class="col-12 tableHeader d-flex align-items-center" [ngClass]="{'justify-content-between': innerWidth < 720}">
-                        <span class="m-0 mr-3 tableTitle">{{titleLabel |titlecase}}</span>
-                        <button pButton 
-                                pRipple
-                                *ngIf="canCreate"
-                                label="Nuevo" 
-                                icon="pi pi-plus" 
-                                class="p-button-success mr-2" 
-                                (click)="openNew()">
-                        </button>
+                    <div class="px-4 tableHeader d-flex align-items-center" [ngClass]="{'justify-content-between': innerWidth < 720}">
+                        <div *ngIf="canCreate">
+                            <button pButton pRipple  
+                                    *ngFor="let customButton of headerCustomButtons" 
+                                    icon="{{customButton.icon}}" 
+                                    label="{{customButton.tooltipTitle}}"
+                                    (click)="selectCustomButton(customButton.buttonId)"
+                                    class="{{customButton.iconClass}}">
+                            </button>
+                        </div>   
                     </div>
                     
                     <div class="col-12 d-flex mt-4 justify-content-end grid p-fluid" *ngIf="innerWidth < 720">
@@ -28,7 +27,7 @@
                 </div>
                 <span class="p-input-icon-left" *ngIf="innerWidth >= 720">
                     <i class="pi pi-search"></i>
-                    <input pInputText type="text" (input)="dt.filterGlobal($any($event.target).value , 'contains')" placeholder="Buscar..." />
+                    <input pInputText type="text" (input)="dt.filterGlobal($any($event.target).value, 'contains')" placeholder="Buscar..." />
                 </span>
             </div>
         </ng-template>
@@ -38,7 +37,7 @@
                     {{col.header}}
                     <p-sortIcon field="{{col.field}}"></p-sortIcon>
                 </th>
-                <th class="text-center" *ngIf="canEdit">
+                <th class="text-center" *ngIf="customButtons.length > 0">
                     Acciones
                 </th>
             </tr>
@@ -51,31 +50,20 @@
                         {{rowData[col.field]}}
                     </span>
                 </td>
-                <td *ngIf="canEdit" class="text-center" [ngClass]="{'justify-content-end': innerWidth < 960}">
-                    <button pButton pRipple 
-                            icon="pi pi-pencil" 
-                            pTooltip="Editar {{titleLabel |titlecase}}" 
-                            tooltipPosition="top"
-                            (click)="openEdit(rowData)"
-                            class="p-button-rounded p-button-success mr-2 "></button>
+                <td class="text-center" [ngClass]="{'justify-content-end': innerWidth < 960}" *ngIf="customButtons.length > 0">
+                    <div>
+                        <button pButton pRipple  
+                                *ngFor="let customButton of customButtons" 
+                                icon="{{customButton.icon}}" 
+                                pTooltip="{{customButton.tooltipTitle}}" 
+                                tooltipPosition="top"
+                                (click)="selectCustomButton(customButton.buttonId, rowData)"
+                                class="p-button-rounded p-button-text mr-2 {{customButton.iconClass}}">
+                        </button>
+                    </div> 
                     <!--<button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning"></button>-->
                 </td>
             </tr>
         </ng-template>
     </p-table>
 </div>
-
-<p-dialog [(visible)]="productDialog" [style]="{width: '450px'}" header="{{textLabel}} {{headerLabel}}" [modal]="true" styleClass="p-fluid">
-    
-    <!--Se inserta el contenido dinamico-->
-    <!--FORMULARIO DE ACTUALIZAR/CREAR-->
-    <ng-template pTemplate="content" *ngTemplateOutlet="containerViewTemplateRef">
-        
-        
-    </ng-template>
-
-    <ng-template pTemplate="footer">
-        <button pButton pRipple label="Cancelar" icon="pi pi-times" class="p-button-text p-button-danger" (click)="hideDialog()"></button>
-        <button pButton pRipple label="Guardar" icon="pi pi-check" class="p-button-text" [disabled]="!isValid" (click)="submitDialog()"></button>
-    </ng-template>
-</p-dialog>

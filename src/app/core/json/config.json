@@ -4,7 +4,17 @@
     "url": {
         "rate": "rate?company=",
         "trackingByCode": "tracking?code=",
-        "trackingByEmail": "tracking?email="
+        "trackingByEmail": "tracking?email=",
+        "saveWarehouse": "destination",
+        "getWarehouse": "destination?company=1",
+        "getUser": "clients?company=1",
+        "saveUser": "clients",
+        "getInvoice": "invoice?company=1",
+        "changeInvoice": "invoice",
+        "getPackageByInvoice": "package?invoice=",
+        "changeStatusPackage": "package",
+        "checkCredential": "validate-credential?email=",
+        "sendEmail": "send-email"
     }
 
 }

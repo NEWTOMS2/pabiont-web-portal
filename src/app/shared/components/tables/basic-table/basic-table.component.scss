@@ -50,6 +50,36 @@
             text-transform: uppercase;
         }
     }
+
+    .speeddial-tooltip {
+        .p-speeddial-direction-up {
+            &.speeddial-left {
+                left: 0;
+                bottom: 0;
+            }
+  
+            &.speeddial-right {
+                right: 0;
+                bottom: 0;
+            }
+        }
+    }
+
+    .p-speeddial-action {
+        background: #689F38;
+        color: #fff;
+        width: 100%;
+    }
+
+    .p-speeddial-button.p-button.p-button-icon-only {
+        width: 44px;
+        height: 44px;
+        margin-top: -3px;
+    }
+
+    .p-speeddial-button.p-button.p-button-icon-only .p-button-icon {
+        font-size: 20px;
+    }
     
     /* Responsive */
     .p-datatable-customers .p-datatable-tbody > tr > td .p-column-title {
@@ -118,11 +148,5 @@
         }
     }
 }
-
-}
-
-.tableBackground .ui-widget-content{
-
-    background-color: transparent;
 
 }

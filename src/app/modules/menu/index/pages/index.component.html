@@ -49,14 +49,11 @@
 <!--TRACKING-->
 <div (click)="closeForm()" #Tracking>
     <div *ngIf="isSubmit" class="row trackingSection m-0" >
-        
             <app-basic-table   
                                 [headerList]=headerList
                                 [dataList]=tracking
                                 [canCreate]="false"
-                                [canEdit]="false"
-                                [searchField]="searchField"
-                                [titleLabel]="'Informacion de sus paquetes'">
+                                [searchField]="searchField">
             </app-basic-table>
         
     </div>

@@ -1,4 +1,4 @@
-import { TrackingInformation } from "../../../../shared/models/trackingInformation";
+import { TrackingInformation } from "../trackingInformation";
 
 export class TrackingResponse {
 

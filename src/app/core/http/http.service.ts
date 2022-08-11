@@ -1,12 +1,16 @@
 import { Injectable } from '@angular/core';
 import { catchError, Observable, throwError } from 'rxjs';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { AppConfigService } from '../services/app-config/app-config.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HttpService {
+
+  private httpOptions = {
+    headers: new HttpHeaders({'Content-Type': 'application/json'})
+  }
 
   constructor(
     private http: HttpClient,
@@ -22,17 +26,19 @@ export class HttpService {
       .pipe(catchError(this.formatErrors));
   }
 
-  put(path: string, body: Object = {}): Observable<any> {
-      return this.http.put(
-        `${this.appConfig.config.apiBaseURL}${path}`,
-      JSON.stringify(body)
-      ).pipe(catchError(this.formatErrors));
+  patch(path: string, body: Object = {}): Observable<any> {
+    return this.http.patch<any>(
+          `${this.appConfig.config.apiBaseURL}${path}`,
+          JSON.stringify(body),
+          this.httpOptions
+          ).pipe(catchError(this.formatErrors));
   }
 
   post(path: string, body: Object = {}): Observable<any> {
       return this.http.post(
         `${this.appConfig.config.apiBaseURL}${path}`,
-      JSON.stringify(body)
+      JSON.stringify(body),
+      this.httpOptions
       ).pipe(catchError(this.formatErrors));
   }
 

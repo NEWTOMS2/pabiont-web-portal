@@ -1,4 +1,5 @@
 import { Component, HostListener, Input, OnInit, TemplateRef } from '@angular/core';
+import { TableManagmentService } from 'src/app/core/services/consult/table-managment.service';
 
 @Component({
   selector: 'app-basic-table',
@@ -19,49 +20,31 @@ export class BasicTableComponent implements OnInit {
  isValid: boolean;
 
  //Inputs
- @Input() headerList: any[];
- @Input() dataList: any[] = [];
- @Input() searchField: any[];
- @Input() containerViewTemplateRef: TemplateRef<any>;
- @Input() titleLabel: string;
- @Input() headerLabel: string;
- @Input() canEdit:boolean;
- @Input() canCreate:boolean;
+   //Inputs
+   @Input() headerList: any[];
+   @Input() dataList: any[] = [];
+   @Input() customButtons: any = [];
+   @Input() headerCustomButtons: any = [];
+   @Input() searchField: any[];
+   @Input() canCreate: boolean = true;
 
  constructor( 
-  
+    public tableManagmentService: TableManagmentService,
  ) { 
   
  } 
 
- ngOnInit(): void {
-   this.innerWidth = window.innerWidth;
- }
+  ngOnInit(): void {
+    this.innerWidth = window.innerWidth;
+  }
 
- openNew() {
-   
-   this.productDialog = true;
-   this.textLabel = "Agregar "
- }
-
- openEdit(data: any){
-   
-   this.productDialog = true;
-   this.textLabel = "Editar "
- }
-
- hideDialog() {
-   this.productDialog = false;
- }
-
- submitDialog() {
-   
-   this.productDialog = false;
- }
+  selectCustomButton(id: number, rowData?: any){
+    this.tableManagmentService.selectedButton(id, rowData)
+  }
 
  titleCaseWord(word: string) {
-   if (!word) return word;
-   return word[0].toUpperCase() + word.substr(1).toLowerCase();
+    if (!word) return word;
+    return word[0].toUpperCase() + word.substr(1).toLowerCase();
  }
 
  @HostListener('window:resize', ['$event'])

@@ -34,3 +34,39 @@
     }
 
 }
+
+.name{
+    font-size: 24px;
+    color: var(--bs-indigo);
+}
+.lastVisit{
+    font-size: 12px;
+    color: rgb(127,131,136);
+}
+.menu{
+    padding-right: 18px;
+    padding-left: 18px;
+    margin-top: 24px;
+    .cardBody{
+        margin-bottom: 32px;
+        background: linear-gradient(-111deg, rgb(40,170,224) 0%, rgb(138,191,213) 50%, white 99%), #28aae0;
+        border-radius: 18px;
+        border-width: 0px;
+        box-shadow: 6px 4px 5px rgb(158,168,179);
+        cursor: pointer;
+        -webkit-transition: all ease .4s;
+        -moz-transition: all ease .4s;
+        -o-transition: all ease .4s;
+        transition: all ease .4s;
+        .title{
+            font-size: 24px;
+        }
+        .description{
+            font-size: 14px;
+            margin-top: 12px;
+        }
+    }
+    .cardBody:hover{
+        transform: scale(1.03);
+    }
+}

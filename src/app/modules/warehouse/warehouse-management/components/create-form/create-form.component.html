@@ -1,0 +1,38 @@
+<form [formGroup]="formGroup" >
+    <div class="row p-formgrid p-grid mt-3">
+        <div class="p-field col-6">
+            <label for="Code">Codigo</label>
+            <input  type="text" 
+                    id="Code" 
+                    [ngClass]="{'ng-dirty ng-invalid': formGroup.controls['code'].touched && formGroup.controls['code'].errors?.required}"
+                    pInputText 
+                    class="uppercase"
+                    formControlName="code" 
+                    required autofocus />
+            <small class="p-error" *ngIf="formGroup.controls['code'].touched && formGroup.controls['code'].errors?.required">El código es obligatorio.</small>
+            <small class="p-error" *ngIf="this.formGroup.controls['code'].errors?.maxlength">El código no puede ser mayor a 3 caracteres.</small>
+        </div>
+        <div class="p-field col-6">
+            <label for="Type">Tipo</label>
+            <p-dropdown [options]="typeList" 
+                        optionLabel="label"
+                        styleClass="w-100"
+                        placeholder="Selecciona el Tipo"
+                        [ngClass]="{'ng-dirty ng-invalid': formGroup.controls['type'].touched && formGroup.controls['type'].errors?.required}"
+                        formControlName="type">
+            </p-dropdown>
+            <small class="p-error" *ngIf="formGroup.controls['type'].touched && formGroup.controls['type'].errors?.required">El Tipo es obligatorio.</small>
+        </div>
+    </div>
+    <div class="p-field mt-3">
+        <label for="Description">Descripción</label>
+        <input  type="text" 
+                    id="Description" 
+                    [ngClass]="{'ng-dirty ng-invalid': formGroup.controls['description'].touched && formGroup.controls['description'].errors?.required}"
+                    pInputText 
+                    formControlName="description" 
+                    required />
+        <small class="p-error" *ngIf="formGroup.controls['description'].touched && formGroup.controls['description'].errors?.required">La descripción es Obligatoria.</small>
+    </div>
+    
+</form>

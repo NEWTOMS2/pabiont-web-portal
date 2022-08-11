@@ -1,0 +1,58 @@
+<form [formGroup]="formGroup" >
+    <div class="row p-formgrid p-grid mt-3">
+        <div class="p-field col-6">
+            <label for="First_name">Nombre</label>
+            <input  type="text" 
+                    id="First_name" 
+                    [ngClass]="{'ng-dirty ng-invalid': formGroup.controls['first_name'].touched && formGroup.controls['first_name'].errors?.required}"
+                    pInputText 
+                    formControlName="first_name" 
+                    required autofocus />
+            <small class="p-error" *ngIf="formGroup.controls['first_name'].touched && formGroup.controls['first_name'].errors?.required">El nombre es obligatorio.</small>
+        </div>
+        <div class="p-field col-6">
+            <label for="Last_name">Apellido</label>
+            <input  type="text" 
+                    id="Last_name" 
+                    [ngClass]="{'ng-dirty ng-invalid': formGroup.controls['last_name'].touched && formGroup.controls['last_name'].errors?.required}"
+                    pInputText 
+                    formControlName="last_name" 
+                    required autofocus />
+            <small class="p-error" *ngIf="formGroup.controls['last_name'].touched && formGroup.controls['last_name'].errors?.required">El apellido es obligatorio.</small>
+        </div>
+    </div>
+    <div class="row p-formgrid p-grid mt-3">    
+        <div class="p-field col-6">
+            <label for="Phone">Teléfono</label>
+            <input  type="text" 
+                        id="Teléfono" 
+                        [ngClass]="{'ng-dirty ng-invalid': formGroup.controls['phone'].touched && formGroup.controls['phone'].errors?.required}"
+                        pInputText 
+                        formControlName="phone" 
+                        required />
+            <small class="p-error" *ngIf="formGroup.controls['phone'].touched && formGroup.controls['phone'].errors?.required">El Teléfono es Obligatorio.</small>
+        </div>
+        <div class="p-field col-6">
+            <label for="Rol">Rol</label>
+            <p-dropdown [options]="rolList" 
+                        optionLabel="label"
+                        styleClass="w-100"
+                        placeholder="Selecciona el rol"
+                        [ngClass]="{'ng-dirty ng-invalid': formGroup.controls['rol'].touched && formGroup.controls['rol'].errors?.required}"
+                        formControlName="rol">
+            </p-dropdown>
+            <small class="p-error" *ngIf="formGroup.controls['rol'].touched && formGroup.controls['rol'].errors?.required">El Rol es obligatorio.</small>
+        </div>
+    </div>
+    <div class="p-field mt-3">
+        <label for="Email">Email</label>
+        <input  type="text" 
+                id="Email" 
+                [ngClass]="{'ng-dirty ng-invalid': formGroup.controls['email'].touched && formGroup.controls['email'].errors?.required}"
+                pInputText 
+                formControlName="email" 
+                required autofocus />
+        <small class="p-error" *ngIf="formGroup.controls['email'].touched && formGroup.controls['email'].errors?.required">El email es obligatorio.</small>
+    </div>
+    
+</form>

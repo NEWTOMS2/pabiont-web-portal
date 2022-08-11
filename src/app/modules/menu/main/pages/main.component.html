@@ -1,23 +1,14 @@
-<div class="container ">
-    <div class="row justify-content-center mt-5" >
-      <div class="col-11 col-md-6 col-xl-4 mb-5" *ngFor="let label of page">
-        <!--CUERPO DE LA CARTA-->
-        <div class="cardBody">
-          <i class="{{label.icon}} optionIcon cardIcon d-none d-sm-block"></i>
-          <div class="mx-4 text-center">
-            <div class="cardTitle">
-              <i class="{{label.icon}} d-sm-none mr-2"></i>
-              {{label.title}}
-            </div>
-            <p class="cardText text-justify">{{label.description}}<br /></p>
-            <div class="cardButon">
-              <a href="{{label.url}}" class="btn btn-outline-dark btn-lg" role="button">
-                {{label.subtitle}}
-              </a>
-            </div>
-          </div>
-        </div>
+<div class="container text-center mt-3 ">
+  <span class="name">¡Hola Jhon Doe!</span>
+  <p class="lastVisit">Tu última visita fue el 11/11/2021 a las 23:15:48<br></p>
+
+  <div class="row justify-content-center menu">
+    <div class="col-11 col-md-6 col-xl-4 mb-3" *ngFor="let label of page">
+        <div class="mt-2 cardBody p-3" (click)="gotoPage(label.urlID)">
+          <!--<i class="{{label.icon}} optionIcon cardIcon d-none d-sm-block"></i>      icono lateral--> 
+          <span class="title">{{label.title}}</span>
+          <p class="text-start description px-2">{{label.subtitle}}&nbsp;<br></p>
       </div>
     </div>
   </div>
-
+</div>

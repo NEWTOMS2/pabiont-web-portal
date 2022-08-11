@@ -1,0 +1,15 @@
+<nav class="row m-0">
+    <div class="col-6 d-flex align-items-center">
+        <button pButton pRipple type="button" icon="pi pi-bars"
+                class="p-button-rounded p-button-text p-button-plain mr-3">
+        </button>
+        <img (click)="gotoPage(0)" width="120px" height="auto" src="./../../../../../assets/img/logo.png" class="img-fluid m-2 logo-img">
+    </div>
+    <div class="col-6 d-flex justify-content-end userName">
+        
+        <button pButton pRipple type="button" icon="pi pi-sign-out"
+                class="p-button-rounded p-button-text p-button-plain mr-3"
+                (click)="logOut()">
+        </button>
+    </div>
+</nav>

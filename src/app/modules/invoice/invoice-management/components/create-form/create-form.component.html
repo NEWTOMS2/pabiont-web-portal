@@ -1,0 +1,42 @@
+<form [formGroup]="formGroup" >
+    <div class="row p-formgrid p-grid mt-3">    
+        <div class="p-field col-6">
+            <label for="Invoice_number">Numero de factura</label>
+            <input  type="text" 
+                    id="Invoice_number" 
+                    pInputText 
+                    formControlName="invoice_number" 
+                     />
+         </div>
+        <div class="p-field col-6">
+            <label for="Status">Estatus</label>
+            <p-dropdown [options]="statusList" 
+                        optionLabel="label"
+                        styleClass="w-100"
+                        appendTo="body"
+                        placeholder="Selecciona el estatus"
+                        [ngClass]="{'ng-dirty ng-invalid': formGroup.controls['status'].touched && formGroup.controls['status'].errors?.required}"
+                        formControlName="status">
+            </p-dropdown>
+            <small class="p-error" *ngIf="formGroup.controls['status'].touched && formGroup.controls['status'].errors?.required">El estatus es obligatorio.</small>
+        </div>
+    </div>  
+    <div class="row p-formgrid p-grid mt-3">    
+        <div class="p-field col-6">
+            <label for="Date">Fecha</label>
+            <input  type="text" 
+                        id="Fecha" 
+                        pInputText 
+                        formControlName="date" 
+                         />
+         </div>
+        <div class="p-field col-6">
+            <label for="Name">Remitente</label>
+            <input  type="text" 
+                        id="Name" 
+                        pInputText 
+                        formControlName="name" 
+                         />
+        </div>
+    </div>
+</form>

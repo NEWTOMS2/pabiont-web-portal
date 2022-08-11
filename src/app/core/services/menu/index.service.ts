@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { catchError, EMPTY, map, Observable } from 'rxjs';
 import { HttpService } from '../../http/http.service';
-import { RateResponse } from '../../http/models/response/rate-response';
-import { TrackingResponse } from '../../http/models/response/tracking-response';
+import { RateResponse } from '../../../shared/models/response/rate-response';
+import { TrackingResponse } from '../../../shared/models/response/tracking-response';
 import { AppConfigService } from '../app-config/app-config.service';
 
 @Injectable({

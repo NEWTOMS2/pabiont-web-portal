@@ -1,0 +1,77 @@
+<div>
+    <p-table [value]="packageList" dataKey="code" editMode="row">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Tamaño</th>
+                <th>Peso</th>
+                <th>Volumen</th>
+                <th>Tipo de Envio</th>
+                <th>estatus</th>
+                <th style="width:8rem"></th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-package let-editing="editing" let-ri="rowIndex">
+            <tr [pEditableRow]="package">
+                <td pEditableColumn>
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            {{package.size}}
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{package.size}}
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
+                <td pEditableColumn>
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            {{package.weight}}
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{package.weight}}
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
+                <td pEditableColumn>
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            {{package.volume}}
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{package.volume}}
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
+                <td pEditableColumn>
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            {{package.type}}
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{package.type}}
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
+                <td pEditableColumn>
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            <p-dropdown [options]="statusList" 
+                                        styleClass="w-100"
+                                        appendTo="body"
+                                        [(ngModel)]="package.status">
+                            </p-dropdown>
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{package.status}}
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
+                <td style="text-align:center">
+                    <button *ngIf="!editing" pButton pRipple type="button" pInitEditableRow icon="pi pi-pencil" (click)="onRowEditInit(package)" class="p-button-rounded p-button-text"></button>
+                    <button *ngIf="editing" pButton pRipple type="button" pSaveEditableRow icon="pi pi-check" (click)="onRowEditSave(package)" class="p-button-rounded p-button-text p-button-success p-mr-2"></button>
+                    <button *ngIf="editing" pButton pRipple type="button" pCancelEditableRow icon="pi pi-times" (click)="onRowEditCancel(package, ri)" class="p-button-rounded p-button-text p-button-danger"></button>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>

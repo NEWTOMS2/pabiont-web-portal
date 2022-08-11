@@ -1,0 +1,19 @@
+{
+    "tableConfiguration": {
+        "headerList": [
+            { "field": "invoice_number", "header": "N° de factura" },
+            { "field": "package_count", "header": "Cant. de paquetes" },
+            { "field": "date", "header": "Fecha de emisión" },
+            { "field": "status", "header": "Estatus" },
+            { "field": "name", "header": "Remitente" }
+          ],
+        "headerCustomButtons": [
+        ],
+        "customButtons": [
+            { "buttonId": 1, "icon": "pi pi-pencil", "tooltipTitle": "Editar Factura", "iconClass": "mr-2 p-button-rounded p-button-info"},
+            { "buttonId": 2, "icon": "pi pi-eye", "tooltipTitle": "Gestionar Paquetes", "iconClass": "mr-2 p-button-rounded p-button-info"}
+        ],
+        "searchField": ["invoice_number", "status", "name"]
+    },
+    "exampleData": []
+}

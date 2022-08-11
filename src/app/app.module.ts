@@ -7,10 +7,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NbThemeModule, NbLayoutModule } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
+import { NavbarComponent } from './shared/components/navbar/navbar.component';
+import { ButtonModule } from 'primeng/button';
+import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NavbarComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
@@ -20,6 +25,7 @@ import { NbEvaIconsModule } from '@nebular/eva-icons';
     ReactiveFormsModule,
     NbLayoutModule,
     NbEvaIconsModule,
+    ButtonModule,
     NbThemeModule.forRoot({ name: 'default' })
   ],
   providers: [],

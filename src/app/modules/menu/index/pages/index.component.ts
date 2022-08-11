@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { Observable, Observer } from 'rxjs';
-import { TrackingResponse } from 'src/app/core/http/models/response/tracking-response';
+import { TrackingResponse } from 'src/app/shared/models/response/tracking-response';
 import { AppConfigService } from 'src/app/core/services/app-config/app-config.service';
 import { IndexService } from 'src/app/core/services/menu/index.service';
 

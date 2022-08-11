@@ -1,0 +1,74 @@
+<p-toast></p-toast>
+<div class="row area m-0" >
+    <ul class="circles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+    </ul>
+    <div class="loginContainer">
+        <div class="col-12 p-0">
+            <div class="row m-0">
+                <div class="col-12 p-0 d-flex align-items-start">
+                    <img src="./../../../assets/img/logo.png" class="logoImg img-fluid" alt="logo">
+                </div>
+            </div>
+            <div class="row m-0 form justify-content-center">
+                <div class="col-12 col-md-8 col-lg-5">
+                    <div class="header">
+                        <span class="title">WELCOME</span>
+                        <span class="subtitle">Please enter your email and password</span>
+                    </div>
+                    <form [formGroup]="formGroup" class="body p-0">
+                        <div class="row m-0 justify-content-center p-formgrid p-grid">
+                            <div class="col-12 p-0 mb-3 pos_email">
+                                <div class="email">
+                                    <input  type="text" 
+                                            placeholder="Email"
+                                            pInputText
+                                            style
+                                            [ngClass]="{'ng-dirty ng-invalid': formGroup.controls['email'].touched && formGroup.controls['email'].errors?.['required'] || !emailClass}"
+                                            formControlName="email" 
+                                            required> 
+                                    <small class="p-error" *ngIf="formGroup.controls['email'].touched && formGroup.controls['email'].errors?.['required']">Email is required.</small>
+                                </div>
+                            </div>
+                            <div class="field-checkbox p-field mt-3 p-0">
+                                <p-password formControlName="password" 
+                                            placeholder="Password"
+                                            [toggleMask]="true" 
+                                            [feedback]="false" 
+                                            inputStyleClass="{{passwordClass}}"
+                                            styleClass="p-password p-component p-inputwrapper p-input-icon-right ng-dirty wid100"
+                                            required>
+                                </p-password>
+                                <small class="p-error" *ngIf="formGroup.controls['password'].touched && formGroup.controls['password'].errors?.['required']">
+                                    Password is required.
+                                </small>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="col-12 p-0">
+                        <p-button label="Login" (click)="gotoDashboard()"></p-button>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div >
+
+
+
+
+<!--<iframe
+    width="960"
+    height="720"
+    src="https://us-east-1.quicksight.aws.amazon.com/sn/embed/share/accounts/544022947556/dashboards/e4b9bc0e-2713-429b-8aa0-52a136549686?directory_alias=newtoms-bi">
+</iframe>-->

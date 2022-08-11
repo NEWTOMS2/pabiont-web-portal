@@ -1,0 +1,29 @@
+nav{
+    background-color: #28AAE0;
+    height: 64px;
+    align-items: center;
+    .userName{
+        text-align: center;
+        letter-spacing: 0.04em;
+        color: #000000;
+    }
+    .logo-img:hover{
+        cursor: pointer;
+    }
+}
+
+::ng-deep {
+    .p-button.p-button-text.p-button-plain {
+        color: white;
+        font-size: 40px;
+    }
+    .p-button.p-button-text.p-button-plain:enabled:active, .p-buttonset.p-button-text.p-button-plain > .p-button:enabled:active, .p-splitbutton.p-button-text.p-button-plain > .p-button:enabled:active {
+        background: white;
+    }
+    .p-button.p-button-text.p-button-plain:enabled:focus, .p-buttonset.p-button-text.p-button-plain > .p-button:enabled:focus, .p-splitbutton.p-button-text.p-button-plain > .p-button:enabled:focus {
+        background: white;
+    }
+    .p-button.p-button-text.p-button-plain:enabled:hover, .p-buttonset.p-button-text.p-button-plain > .p-button:enabled:hover, .p-splitbutton.p-button-text.p-button-plain > .p-button:enabled:hover{
+        background: white;
+    }
+}

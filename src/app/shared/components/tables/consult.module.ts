@@ -33,22 +33,8 @@ import { FormsModule } from '@angular/forms';
     TableModule,
     ButtonModule,
     FormsModule,
-    DialogModule,
-    ToastModule,
-    ConfirmDialogModule,
-    CalendarModule,
-		SliderModule,
-		MultiSelectModule,
 		ContextMenuModule,
-		DropdownModule,
-    InputTextModule,
-    ProgressBarModule,
-    FileUploadModule,
-    ToolbarModule,
-    RatingModule,
-    RadioButtonModule,
-    InputNumberModule,
-    InputTextareaModule,
+    InputTextModule
   ],
   exports:[
     BasicTableComponent
