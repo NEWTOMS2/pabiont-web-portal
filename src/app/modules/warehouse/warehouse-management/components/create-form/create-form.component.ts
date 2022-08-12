@@ -80,6 +80,7 @@ export class CreateFormComponent implements OnInit {
     this.formGroup.controls.code.setValue(rowData.code);
     this.formGroup.controls.type.setValue(this.typeList.find(type => rowData.type == type.value));
     this.formGroup.controls.description.setValue(rowData.description);
+    this.formGroup.controls['code'].disable();
     this.isUpdate=true;
   }
 
