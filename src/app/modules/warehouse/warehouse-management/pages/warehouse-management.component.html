@@ -23,4 +23,11 @@
         <button pButton pRipple label="Guardar" icon="pi pi-check" class="p-button-text" [disabled]="!buttonIsEnabled" (click)="hideDialog();child.submit()"></button>
     </ng-template>
 </p-dialog>
-    
+
+<div class="d-flex justify-content-start px-5 mb-3">
+    <button pButton pRipple  
+            class="p-button-outlined"
+            (click)="redirect()"
+            label="Volver">
+    </button>
+</div>

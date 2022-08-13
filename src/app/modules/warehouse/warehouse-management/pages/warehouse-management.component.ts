@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AppConfigService } from 'src/app/core/services/app-config/app-config.service';
 import { TableManagmentService } from 'src/app/core/services/consult/table-managment.service';
 import { WarehouseManagementService } from 'src/app/core/services/warehouse/warehouse-management.service';
@@ -25,7 +26,8 @@ export class WarehouseManagementComponent implements OnInit {
   constructor(
     private appConfig: AppConfigService,
     private tableManagmentService: TableManagmentService,
-    private warehouseManagementService: WarehouseManagementService
+    private warehouseManagementService: WarehouseManagementService,
+    private router:Router
     ) { 
       this.page = this.appConfig.warehouseManagement;
       this.page = this.page.default;
@@ -63,6 +65,10 @@ export class WarehouseManagementComponent implements OnInit {
 
   hideDialog() {
     this.visibleDialog = false;
+  }
+
+  redirect(){
+    this.router.navigate([`main`]);
   }
 
 }

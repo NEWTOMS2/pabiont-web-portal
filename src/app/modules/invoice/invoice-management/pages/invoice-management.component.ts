@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { AppConfigService } from 'src/app/core/services/app-config/app-config.service';
 import { TableManagmentService } from 'src/app/core/services/consult/table-managment.service';
 import { InvoiceManagementService } from 'src/app/core/services/invoice/invoice-management.service';
@@ -27,7 +28,8 @@ export class InvoiceManagementComponent implements OnInit {
   constructor(
     private appConfig: AppConfigService,
     private tableManagmentService: TableManagmentService,
-    private invoiceManagementService: InvoiceManagementService
+    private invoiceManagementService: InvoiceManagementService,
+    private router: Router
   ) {
     this.page = this.appConfig.invoiceManagement;
     this.page = this.page.default;
@@ -79,5 +81,8 @@ export class InvoiceManagementComponent implements OnInit {
     this.visibleDialog = false;
   }
 
+  redirect(){
+    this.router.navigate([`main`]);
+  }
 
 }
