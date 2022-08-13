@@ -1,0 +1,54 @@
+name: S3 Deploy
+on:
+    push:
+        branches:
+            - main
+    pull_request:
+        branches:
+            - main
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+              with:
+                  persist-credentials: false
+            - name: Usa Node.js '14.x'
+              uses: actions/setup-node@v1
+              with:
+                  node-version: "14.x"
+            - name: Install
+              run: npm ci
+            - name: install angular cli
+              run: npm link @angular/cli
+            - name: Build
+              run: ng build
+            - name: Copy and rename index to 404
+              run: cp dist/index.html dist/404.html
+            - name: Commit
+              run: |
+                  git config --local user.name "bot-actions"
+                  git config --local user.email "jhonairemig@gmail.com"
+                  git add dist -f
+                  git commit -m 'adding dist subtree' -a
+            - name: Push changes
+              uses: s0/git-publish-subdir-action@develop
+              env:
+                  REPO: self
+                  BRANCH: pabiont-pages
+                  FOLDER: dist
+                  MESSAGE: "Deploy to pabiont-pages"
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            - name: Deploy
+              uses: actions/checkout@v3
+              with:
+                  persist-credentials: false
+                  ref: pabiont-pages
+            - uses: aws-actions/configure-aws-credentials@v1
+              with:
+                  aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+                  aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+                  aws-region: us-east-1
+            - name: Sync with S3
+              run: aws s3 sync ./ s3://${{ secrets.S3_BUCKET }}
