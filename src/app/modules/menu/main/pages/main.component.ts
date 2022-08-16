@@ -35,7 +35,7 @@ export class MainComponent implements OnInit {
         this.router.navigate([`/warehouse-management`]);
         break;
       case 3: 
-        this.router.navigate([`/main`]);
+        this.router.navigate([`/quotes-management`]);
         break;
       case 4: 
         this.router.navigate([`/invoice-management`]);

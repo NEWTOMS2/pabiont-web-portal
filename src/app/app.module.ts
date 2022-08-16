@@ -10,6 +10,7 @@ import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { ButtonModule } from 'primeng/button';
 import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
+import { QuotesComponent } from './shared/components/quotes/quotes.component';
 
 @NgModule({
   declarations: [

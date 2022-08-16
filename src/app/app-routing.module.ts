@@ -38,7 +38,13 @@ const routes: Routes = [
       .then(m => m.InvoiceManagementModule),
       canActivate:[CheckLoginGuard]
   },
-  { path: '**', redirectTo: `/` }
+  {
+    path: "quotes-management",
+    loadChildren: () => import('./modules/quotes-management/quotes-management.module')
+      .then(m => m.QuotesManagementModule),
+      canActivate:[CheckLoginGuard]
+  },
+  { path: '**', redirectTo: `/` },
 ];
 
 @NgModule({
