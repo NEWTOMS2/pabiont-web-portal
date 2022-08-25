@@ -71,31 +71,31 @@ export class PackageManagementComponent implements OnInit {
 
   setStatusValue(status: string){
     switch(status) { 
-      case "En la tienda":{
+      case "En Tienda":{
         return 1
       }
-      case "En el almacen":{
+      case "En Almacén":{
         return 2
       }
-      case "En el camión":{
+      case "En Camión":{
         return 3
       }
-      case "En el avión":{
+      case "En Avión":{
         return 4
       }
-      case "En la embarcación":{
+      case "En Embarcación":{
         return 5
       }
-      case "En el puerto de Venezuela":{
+      case "En el Puerto en Venezuela":{
         return 6
       }
-      case "En aduanas en Venezuela":{
+      case "En Aduana en Venezuela":{
         return 7
       }
-      case "En camino al almacen en Venezuela":{
+      case "En Ruta al Almacén en Venezuela":{
         return 8
       }
-      case "Entregado a tienda en Venezuela":{
+      case "Entregado a Tienda en Venezuela":{
         return 9
       }
       case "Entregado":{
