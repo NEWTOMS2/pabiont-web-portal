@@ -11,7 +11,7 @@
 </div>
 
 <div *ngIf="currentStep != 2">
-    <p-dialog [(visible)]="visibleDialog" (onHide)="child.resetForm()" [style]="{width: '450px'}" header="Modificar estatus de Factura" [modal]="true" styleClass="p-fluid" >
+    <p-dialog [(visible)]="visibleDialog" (onHide)="child.resetForm()" [style]="{width: '450px'}" header="Modificar Estatus de Factura" [modal]="true" styleClass="p-fluid" >
     
         <app-create-form    (buttonEnabled)="buttonEnabled($event)"
                             (updateList)="getInvoiceList()"
@@ -27,10 +27,12 @@
 </div>
 
 <div *ngIf="currentStep == 2">
-    <p-dialog [(visible)]="visibleDialog" (onHide)="hideDialog()" [style]="{width: '950px'}" header="Modificar estatus de Paquetes" [modal]="true" styleClass="p-fluid" >
+    <p-dialog [(visible)]="visibleDialog" (onHide)="hideDialog()" [style]="{width: '950px'}" header="Modificar Estatus de Paquetes" [modal]="true" styleClass="p-fluid" >
     
         <app-package-management [packageList]="packageList"
-                                (updateList)="getPackagesList(invoiceCode)">
+                                [invoice]="invoiceCode"
+                                (updateList)="getPackagesList(invoiceCode)
+                                ">
         </app-package-management>
     
         <ng-template class="m-0" pTemplate="footer">

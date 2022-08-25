@@ -10,6 +10,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { DialogModule } from 'primeng/dialog';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DropdownModule } from 'primeng/dropdown';
+import { InputMaskModule } from 'primeng/inputmask';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { DropdownModule } from 'primeng/dropdown';
     InputTextModule,
     DialogModule,
     ReactiveFormsModule,
-    DropdownModule
+    DropdownModule,
+    InputMaskModule,
   ]
 })
 export class UsersManagementModule { }

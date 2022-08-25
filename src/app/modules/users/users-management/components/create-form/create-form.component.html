@@ -3,7 +3,8 @@
         <div class="p-field col-6">
             <label for="First_name">Nombre</label>
             <input  type="text" 
-                    id="First_name" 
+                    id="First_name"
+                    pattern="[a-zA-Z ]*" 
                     [ngClass]="{'ng-dirty ng-invalid': formGroup.controls['first_name'].touched && formGroup.controls['first_name'].errors?.required}"
                     pInputText 
                     formControlName="first_name" 
@@ -14,6 +15,7 @@
             <label for="Last_name">Apellido</label>
             <input  type="text" 
                     id="Last_name" 
+                    pattern="[a-zA-Z ]*" 
                     [ngClass]="{'ng-dirty ng-invalid': formGroup.controls['last_name'].touched && formGroup.controls['last_name'].errors?.required}"
                     pInputText 
                     formControlName="last_name" 
@@ -24,12 +26,12 @@
     <div class="row p-formgrid p-grid mt-3">    
         <div class="p-field col-6">
             <label for="Phone">Teléfono</label>
-            <input  type="text" 
+            <p-inputMask   formControlName="phone" 
                         id="Teléfono" 
+                        mask="+99 (999) 999-9999" 
+                        placeholder="+99 (999) 999-9999" 
                         [ngClass]="{'ng-dirty ng-invalid': formGroup.controls['phone'].touched && formGroup.controls['phone'].errors?.required}"
-                        pInputText 
-                        formControlName="phone" 
-                        required />
+                        ></p-inputMask>
             <small class="p-error" *ngIf="formGroup.controls['phone'].touched && formGroup.controls['phone'].errors?.required">El Teléfono es Obligatorio.</small>
         </div>
         <div class="p-field col-6">
@@ -48,6 +50,7 @@
         <label for="Email">Email</label>
         <input  type="text" 
                 id="Email" 
+                placeholder="abcd@abcd.abcd"
                 [ngClass]="{'ng-dirty ng-invalid': formGroup.controls['email'].touched && formGroup.controls['email'].errors?.required}"
                 pInputText 
                 formControlName="email" 

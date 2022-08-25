@@ -2,16 +2,27 @@
     <p-table [value]="packageList" dataKey="code" editMode="row">
         <ng-template pTemplate="header">
             <tr>
+                <th>Factura</th>
                 <th>Tamaño</th>
                 <th>Peso</th>
                 <th>Volumen</th>
-                <th>Tipo de Envio</th>
-                <th>estatus</th>
+                <th>Tipo de Envío</th>
+                <th>Estatus</th>
                 <th style="width:8rem"></th>
             </tr>
         </ng-template>
         <ng-template pTemplate="body" let-package let-editing="editing" let-ri="rowIndex">
             <tr [pEditableRow]="package">
+                <td pEditableColumn>
+                    <p-cellEditor>
+                        <ng-template pTemplate="input">
+                            {{invoice}}
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{invoice}}
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
                 <td pEditableColumn>
                     <p-cellEditor>
                         <ng-template pTemplate="input">

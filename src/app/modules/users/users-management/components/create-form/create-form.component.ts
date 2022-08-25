@@ -20,6 +20,7 @@ export class CreateFormComponent implements OnInit {
     { label: "Administrador", value: "Administrador" }
   ];
   idEmpresa: number = 1;
+  code: number;
   userRow: UserInformation;
   sendEmailCredentialRow: SendEmailCredential
   isUpdate = false; 
@@ -46,16 +47,17 @@ export class CreateFormComponent implements OnInit {
 
   resetForm(){
     this.formGroup = this.formBuilder.group({
-      first_name: ["", Validators.required],
-      last_name: ["", Validators.required],
-      email: ["", Validators.required],
+      first_name: ["", [Validators.required,Validators.pattern('[a-zA-Z ]*')]],
+      last_name: ["", [Validators.required,Validators.pattern('[a-zA-Z ]*')]],
+      email: ["", [Validators.required,Validators.pattern(/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/)]],
       rol: ["", Validators.required],
       phone: ["", Validators.required]
     });
-
     this.formGroup.statusChanges.subscribe(status => {
       this.buttonEnabled.emit(status == "VALID" ? true : false);
     });
+    
+   
   }
 
   submit() {
@@ -66,7 +68,9 @@ export class CreateFormComponent implements OnInit {
         this.formGroup.controls['email'].value,       
         this.formGroup.controls['rol'].value.value,
         this.formGroup.controls['phone'].value,
-        this.formGroup.controls['code'].value,
+        1,
+        "",
+        this.code,
         ) 
     }else{
       if(this.formGroup.controls['rol'].value.value == "Administrador"){
@@ -92,8 +96,6 @@ export class CreateFormComponent implements OnInit {
         )
       }
     }
-    
-    console.log(this.userRow)
     this.usersManagementService.saveUser(this.userRow, this.isUpdate).subscribe(
       response => {
         //cambios de post
@@ -123,14 +125,19 @@ export class CreateFormComponent implements OnInit {
     );  
   }
 
+  enable(){
+    this.formGroup.controls['email'].enable();
+    this.formGroup.controls['rol'].enable();
+  }
+
   updateForm(rowData: any){
-    console.log(this.generateP())
     this.formGroup.controls.rol.setValue(this.rolList.find(rol => rowData.rol == rol.value));
     this.formGroup.controls.first_name.setValue(rowData.first_name);
     this.formGroup.controls.last_name.setValue(rowData.last_name);
     this.formGroup.controls.email.setValue(rowData.email);
     this.formGroup.controls.phone.setValue(rowData.phone);
     this.idEmpresa = rowData.idEmpresa;
+    this.code = rowData.code;
     this.formGroup.controls['email'].disable();
     this.formGroup.controls['rol'].disable();
     this.isUpdate=true;

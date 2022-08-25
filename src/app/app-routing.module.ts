@@ -44,6 +44,12 @@ const routes: Routes = [
       .then(m => m.QuotesManagementModule),
       canActivate:[CheckLoginGuard]
   },
+  {
+    path: "invoice-creation",
+    loadChildren: () => import('./modules/invoice/billing/billing.module')
+      .then(m => m.BillingModule),
+      canActivate:[CheckLoginGuard]
+  },
   { path: '**', redirectTo: `/` },
 ];
 

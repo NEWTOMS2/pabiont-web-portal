@@ -75,6 +75,10 @@ export class CreateFormComponent implements OnInit {
     
   }
 
+  enable(){
+    this.formGroup.controls['code'].enable();
+  }
+
   updateForm(rowData: any){
     console.log(rowData)
     this.formGroup.controls.code.setValue(rowData.code);

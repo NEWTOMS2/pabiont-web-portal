@@ -55,6 +55,10 @@ export class WarehouseManagementComponent implements OnInit {
   selectedButton(data: any){ 
     this.visibleDialog = true;
     switch(data.buttonId) { 
+      case 0:{
+        this.child.enable()
+        break;
+      }
       case 1:{
         this.child.updateForm(data.rowData)
         break;

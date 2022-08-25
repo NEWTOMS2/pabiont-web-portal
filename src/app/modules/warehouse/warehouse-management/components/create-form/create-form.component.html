@@ -31,6 +31,7 @@
                     [ngClass]="{'ng-dirty ng-invalid': formGroup.controls['description'].touched && formGroup.controls['description'].errors?.required}"
                     pInputText 
                     formControlName="description" 
+                    placeholder="Coloque la Ciudad y el Estado"
                     required />
         <small class="p-error" *ngIf="formGroup.controls['description'].touched && formGroup.controls['description'].errors?.required">La descripción es Obligatoria.</small>
     </div>

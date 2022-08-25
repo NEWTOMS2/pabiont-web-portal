@@ -1,9 +1,9 @@
 {
     "tableConfiguration": {
         "headerList": [
-            { "field": "invoice_number", "header": "N° de factura" },
-            { "field": "package_count", "header": "Cant. de paquetes" },
-            { "field": "date", "header": "Fecha de emisión" },
+            { "field": "invoice_number", "header": "N° de Factura" },
+            { "field": "package_count", "header": "Cant. de Paquetes" },
+            { "field": "date", "header": "Fecha de Emisión" },
             { "field": "status", "header": "Estatus" },
             { "field": "name", "header": "Remitente" }
           ],

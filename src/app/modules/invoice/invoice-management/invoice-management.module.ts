@@ -12,6 +12,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { CreateFormComponent } from './components/create-form/create-form.component';
 import { PackageManagementComponent } from './components/package-management/package-management.component';
 import { TableModule } from 'primeng/table';
+import { QuotesModule } from 'src/app/shared/components/quotes/quotes.module';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { TableModule } from 'primeng/table';
     ReactiveFormsModule,
     DropdownModule,
     TableModule,
-    FormsModule
+    FormsModule,
+    QuotesModule
   ]
 })
 export class InvoiceManagementModule { }

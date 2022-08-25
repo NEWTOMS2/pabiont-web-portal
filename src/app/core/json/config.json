@@ -14,7 +14,9 @@
         "getPackageByInvoice": "package?invoice=",
         "changeStatusPackage": "package",
         "checkCredential": "validate-credential?email=",
-        "sendEmail": "send-email"
+        "sendEmail": "send-email",
+        "postInvoice": "invoice",
+        "getLastInvoice": "invoice/last_invoice"
     }
 
 }

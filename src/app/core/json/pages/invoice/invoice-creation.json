@@ -1,0 +1,21 @@
+{
+    "tableConfiguration": {
+        "headerList": [
+            { "field": "size", "header": "Tamaño" },
+            { "field": "weight", "header": "Peso" },
+            { "field": "volume", "header": "Volumen" }, 
+            { "field": "description", "header": "Descripción" },
+            { "field": "type", "header": "Tipo de Envio" },
+            { "field": "price", "header": "Costo (USD)" }
+          ],
+        "headerCustomButtons": [
+            { "buttonId": 0, "icon": "pi pi-plus", "tooltipTitle": "Agregar Otro Paquete", "iconClass": "p-speeddial-action"}
+        ],
+        "customButtons": [
+            { "buttonId": 1, "icon": "pi pi-pencil", "tooltipTitle": "Editar paquete", "iconClass": "mr-2 p-button-rounded p-button-info"},
+            { "buttonId": 2, "icon": "pi pi-trash", "tooltipTitle": "Eliminar", "iconClass": "mr-2 p-button-rounded p-button-info"}
+        ]
+        
+    },
+    "exampleData": []
+}

@@ -36,7 +36,6 @@ export class AppComponent implements OnInit{
     document.body.scrollTop = 0; // For Safari
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
     if(Object.keys(this.usersService.getData('user')).length > 0){
-      console.log(window.location.pathname == "/")
       this.isLogged = window.location.pathname == "/" ? false : true
     }else{
       this.isLogged = false

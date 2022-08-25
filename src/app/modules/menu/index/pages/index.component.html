@@ -20,13 +20,13 @@
         </nav>
     </div>
     <div class="formSection" id="Home">
-        <div class="title">Envíos de paquetes rápidos y económicos</div>
+        <div class="title">Envíos de Paquetes Rápidos y Económicos</div>
         <div class="subtitle">Verifica el estatus de tu envío desde tu computador o celular</div>
         <div class="searchInput row justify-content-center">
             <div class="col-12 col-md-10 col-lg-9">
                 <form [formGroup]="searchForm">
                     <input  class="formSection m-0" 
-                            placeholder="Ingresa el código de Tracking o Email..."
+                            placeholder="Ingresa el código de Tracking..."
                             type="text" 
                             pInputText
                             formControlName = "searchInput"
@@ -68,7 +68,7 @@
         
         <div class="inputSection col-12 col-lg-6 p-0 m-0">
             <form [formGroup]="quotesForm">
-                <div class="text-center title">Ingresa los datos de tu paquete</div>
+                <div class="text-center title">Ingresa los Datos de tu Paquete</div>
                 <div class="row p-formgrid p-grid m-3">
                     <div class="col-12 col-sm-6 col- p-0 p-field text-center">
                         <label class="d-block my-3 label" for="weightId">Peso(Libras)</label>
@@ -83,7 +83,7 @@
                         </p-inputNumber>
                         <small class="p-error d-block" *ngIf="(quotesForm.controls['weight'].touched && quotesForm.controls['weight'].errors?.required) 
                                                         || (quotesForm.controls['weight'].value <= 0 && quotesForm.controls['weight'].value != null)">
-                            El campo no puede ser cero o estar vacio.
+                            El campo no puede ser cero o estar vacío.
                         </small>
                     </div>
                     <div class="col-12 col-sm-6 p-0 p-field text-center">
@@ -99,7 +99,7 @@
                         </p-inputNumber>                  
                         <small class="p-error d-block" *ngIf="(quotesForm.controls['high'].touched && quotesForm.controls['high'].errors?.required) 
                                                         || (quotesForm.controls['high'].value <= 0 && quotesForm.controls['width'].value != null)">
-                            El campo no puede ser cero o estar vacio.
+                            El campo no puede ser cero o estar vacío.
                         </small>
                     </div>
                     <div class="col-12 col-sm-6 p-0 p-field text-center mt-3">
@@ -115,7 +115,7 @@
                     </p-inputNumber>                  
                     <small class="p-error d-block" *ngIf="(quotesForm.controls['width'].touched && quotesForm.controls['width'].errors?.required) 
                                                     || (quotesForm.controls['width'].value <= 0 && quotesForm.controls['width'].value != null)">
-                        El campo no puede ser cero o estar vacio.
+                        El campo no puede ser cero o estar vacío.
                     </small>
                     </div>
                     <div class="col-12 col-sm-6 p-0 p-field text-center mt-3">
@@ -131,7 +131,7 @@
                         </p-inputNumber>                  
                         <small class="p-error d-block" *ngIf="(quotesForm.controls['long'].touched && quotesForm.controls['long'].errors?.required) 
                                                         || (quotesForm.controls['long'].value <= 0 && quotesForm.controls['width'].value != null)">
-                            El campo no puede ser cero o estar vacio.
+                            El campo no puede ser cero o estar vacío.
                         </small>
                     </div>
                 <div class="text-center title mt-5">Costos Estimados</div>
@@ -158,8 +158,8 @@
     <img class="img-fluid" src="assets/img/footerimagen.jpg">
     <div class="footerSection row p-0 m-0 align-items-start">
         <div class="col-12 col-sm-6 col-lg-5">
-            <p class="footerTitle">Datos de contacto <br></p>
-            <span class="footerSubtitle">Comunícaticate con nosotros</span>     
+            <p class="footerSecundaryTitle">Datos de contacto <br></p>
+            <span class="footerSecundarySubtitle">Comunícaticate con Nosotros</span>     
         </div>
         <div class="col-12 col-sm-6 d-lg-none mt-4">
             <p class="footerSecundaryTitle">Dirección Postal<br></p>  
@@ -167,9 +167,9 @@
                 Alpharetta, Georgia 30004</span>
         </div>
         <div class="col-12 col-sm-6 col-lg-2 mt-4">
-            <p class="footerSecundaryTitle">Whatsapp<br></p>
+            <p class="footerSecundaryTitle">WhatsApp<br></p>
            <i class="pi pi-whatsapp"></i>
-           <a href="https://api.whatsapp.com/send?phone=+14155238886&text=join%20my-other">+1 415 523 8886</a>
+           <a href="https://api.whatsapp.com/send?phone=+14155238886&text=join%20hall-ancient">+1 415 523 8886</a>
            
         </div>
         <div class="col-12 col-sm-6 col-lg-2 mt-4">

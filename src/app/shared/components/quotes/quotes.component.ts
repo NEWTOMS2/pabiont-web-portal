@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IndexService } from 'src/app/core/services/menu/index.service';
 
@@ -14,6 +14,10 @@ export class QuotesComponent implements OnInit {
   calculateMaritime: number;
   calculateAerial: Number;
   quotesForm: FormGroup;
+  packageInformation: any;
+
+  @Input() isSelectable: boolean;
+  @Output() isClicked = new EventEmitter();
 
   constructor(
     private indexService: IndexService,
@@ -40,9 +44,9 @@ export class QuotesComponent implements OnInit {
   }
 
   calculateRateAerial(){
-    if (this.quotesForm.controls['weight'].value > ( this.quotesForm.controls['long'].value * 
+    if (this.quotesForm.controls['weight'].value > (( this.quotesForm.controls['long'].value * 
       this.quotesForm.controls['high'].value * 
-      this.quotesForm.controls['width'].value ))
+      this.quotesForm.controls['width'].value )/166))
 
       return this.calculateAerial = ( this.rates.aerial * 
         this.quotesForm.controls['high'].value * 
@@ -72,8 +76,7 @@ export class QuotesComponent implements OnInit {
       weight: [1,[Validators.required]],
       high: [14,[Validators.required]],
       width: [14,[Validators.required]],
-      long: [12,[Validators.required]],
-      
+      long: [12,[Validators.required]],  
     });
   }
   setMedium(){
@@ -82,7 +85,6 @@ export class QuotesComponent implements OnInit {
       high: [16,[Validators.required]],
       width: [16,[Validators.required]],
       long: [17,[Validators.required]],
-      
     });
   }
   setLarge(){
@@ -91,8 +93,23 @@ export class QuotesComponent implements OnInit {
       high: [22,[Validators.required]],
       width: [18,[Validators.required]],
       long: [18,[Validators.required]],
-      
     });
   }
 
+  setPackage(type: string){
+    this.packageInformation = {
+      weight: this.quotesForm.controls['weight'].value,
+      high: this.quotesForm.controls['high'].value,
+      width: this.quotesForm.controls['width'].value,
+      long: this.quotesForm.controls['long'].value,
+      type: type, 
+      price: type == "maritimo" ? this.calculateMaritime : this.calculateAerial
+    }
+    this.isClicked.emit(this.packageInformation);
+  }
+
+  clearPackageInformation(){
+    this.packageInformation = {};
+    this.resetForm();
+  }
 }

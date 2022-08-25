@@ -4,6 +4,7 @@ import { AppConfigService } from 'src/app/core/services/app-config/app-config.se
 import { TableManagmentService } from 'src/app/core/services/consult/table-managment.service';
 import { InvoiceManagementService } from 'src/app/core/services/invoice/invoice-management.service';
 import { CreateFormComponent } from '../components/create-form/create-form.component';
+import { PackageManagementComponent } from '../components/package-management/package-management.component';
 
 @Component({
   selector: 'app-invoice-management',
@@ -79,6 +80,7 @@ export class InvoiceManagementComponent implements OnInit {
 
   hideDialog() {
     this.visibleDialog = false;
+    window.location.reload()
   }
 
   redirect(){

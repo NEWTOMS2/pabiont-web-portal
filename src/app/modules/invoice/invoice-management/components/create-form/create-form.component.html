@@ -1,7 +1,7 @@
 <form [formGroup]="formGroup" >
     <div class="row p-formgrid p-grid mt-3">    
         <div class="p-field col-6">
-            <label for="Invoice_number">Numero de factura</label>
+            <label for="Invoice_number">Número de Factura</label>
             <input  type="text" 
                     id="Invoice_number" 
                     pInputText 
@@ -14,7 +14,7 @@
                         optionLabel="label"
                         styleClass="w-100"
                         appendTo="body"
-                        placeholder="Selecciona el estatus"
+                        placeholder="Selecciona el Estatus"
                         [ngClass]="{'ng-dirty ng-invalid': formGroup.controls['status'].touched && formGroup.controls['status'].errors?.required}"
                         formControlName="status">
             </p-dropdown>

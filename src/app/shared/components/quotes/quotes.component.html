@@ -1,5 +1,4 @@
 <div class="row m-0 p-3">
-    <span class="title mt-2">Cotizaciones</span>
  <div class="col-8 p-3">
     <div class="pabiont-card text-center ">
         <div class="row justify-content-center">
@@ -46,7 +45,7 @@
                             </p-inputNumber>
                             <small class="p-error d-block" *ngIf="(quotesForm.controls['weight'].touched && quotesForm.controls['weight'].errors?.required) 
                                                             || (quotesForm.controls['weight'].value <= 0 && quotesForm.controls['weight'].value != null)">
-                                El campo no puede ser cero o estar vacio.
+                                El campo no puede ser cero o estar vacío.
                             </small>
                         </div>
                         <div class="col-12 col-xl-6 col-lg-6 p-0 p-field text-center">
@@ -62,7 +61,7 @@
                             </p-inputNumber>                  
                             <small class="p-error d-block" *ngIf="(quotesForm.controls['high'].touched && quotesForm.controls['high'].errors?.required) 
                                                             || (quotesForm.controls['high'].value <= 0 && quotesForm.controls['width'].value != null)">
-                                El campo no puede ser cero o estar vacio.
+                                El campo no puede ser cero o estar vacío.
                             </small>
                         </div>
                         <div class="col-12 col-xl-6 col-lg-6 p-0 p-field text-center mt-3">
@@ -78,7 +77,7 @@
                         </p-inputNumber>                  
                         <small class="p-error d-block" *ngIf="(quotesForm.controls['width'].touched && quotesForm.controls['width'].errors?.required) 
                                                         || (quotesForm.controls['width'].value <= 0 && quotesForm.controls['width'].value != null)">
-                            El campo no puede ser cero o estar vacio.
+                            El campo no puede ser cero o estar vacío.
                         </small>
                         </div>
                         <div class="col-12 col-xl-6 col-lg-6 p-0 p-field text-center mt-3">
@@ -94,7 +93,7 @@
                             </p-inputNumber>                  
                             <small class="p-error d-block" *ngIf="(quotesForm.controls['long'].touched && quotesForm.controls['long'].errors?.required) 
                                                             || (quotesForm.controls['long'].value <= 0 && quotesForm.controls['width'].value != null)">
-                                El campo no puede ser cero o estar vacio.
+                                El campo no puede ser cero o estar vacío.
                             </small>
                         </div>    
                     </div>
@@ -106,14 +105,31 @@
  <div class="col-4 p-3">
     <div class="pabiont-card text-center ">
         <span class="mt-2 sub-title">Costo total del envío</span>
-        <div class="row p-0 m-0 mt-4 rowBack">
-            <div class="col-12 backgroundQuote text-center"> 
+        <!--ENVIO MARITIMO-->
+        <div class="row p-0 m-0 mt-4 rowBack" *ngIf="isSelectable" (click)="setPackage('maritimo')">
+            <div class="col-12 backgroundQuote pointer text-center" > 
                 <p class="titleQuote">Envío Marítimo</p>
                 <span class="number" [innerHTML]="calculateRateMaritime().toFixed(2)"></span>
                 <span class="number"> USD</span>
             </div>
         </div>
-        <div class="row p-0 m-0 mt-4 rowBack">
+        <div class="row p-0 m-0 mt-4 rowBack" *ngIf="!isSelectable">
+            <div class="col-12 backgroundQuote text-center" > 
+                <p class="titleQuote">Envío Marítimo</p>
+                <span class="number" [innerHTML]="calculateRateMaritime().toFixed(2)"></span>
+                <span class="number"> USD</span>
+            </div>
+        </div>
+    
+        <!--ENVIO AEREO-->
+        <div class="row p-0 m-0 mt-4 rowBack" *ngIf="isSelectable" (click)="setPackage('aereo')">
+            <div class="col-12 backgroundQuote pointer">
+                <p class="titleQuote">Envío Aéreo</p>
+                <span class="number" [innerHTML]="calculateRateAerial().toFixed(2)"></span>
+                <span class="number"> USD</span>
+            </div>
+        </div>
+        <div class="row p-0 m-0 mt-4 rowBack" *ngIf="!isSelectable">
             <div class="col-12 backgroundQuote">
                 <p class="titleQuote">Envío Aéreo</p>
                 <span class="number" [innerHTML]="calculateRateAerial().toFixed(2)"></span>

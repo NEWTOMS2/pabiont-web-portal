@@ -24,7 +24,7 @@ export class NavbarComponent implements OnInit {
   gotoPage(page: number) {
     switch(page){
       case 0: 
-        this.router.navigate([`/facturacion-de-envios`]);
+        this.router.navigate([`/main`]);
         break;
       case 1: 
         this.router.navigate([`/gestion-de-usuarios`]);

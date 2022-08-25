@@ -1,9 +1,9 @@
 {
     "tableConfiguration": {
         "headerList": [
-            { "field": "code", "header": "Codigo" },
+            { "field": "code", "header": "Código" },
             { "field": "type", "header": "Tipo" },
-            { "field": "description", "header": "Descripcion" }
+            { "field": "description", "header": "Descripción" }
           ],
         "headerCustomButtons": [
             { "buttonId": 0, "icon": "pi pi-plus", "tooltipTitle": "Agregar", "iconClass": "p-speeddial-action"}

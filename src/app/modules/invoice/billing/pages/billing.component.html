@@ -1,0 +1,32 @@
+<div>
+
+    <div *ngIf="currentStep === 1">
+        <app-quote-package (FinalizeStep)="packageList = $event">
+
+        </app-quote-package>
+    </div>
+    <div *ngIf="currentStep === 2">
+        <app-billing-information></app-billing-information>
+    </div>
+    <div *ngIf="currentStep === 3">
+        <app-payment-confirmation></app-payment-confirmation>
+    </div>
+
+    <!--STEPPER BUTTONS-->
+    <div class="row m-0 justify-content-between">
+        <div class="col d-flex justify-content-start px-5 mb-3">
+            <button pButton pRipple  
+                    class="p-button-outlined"
+                    label="Volver">
+            </button>
+        </div>
+        <div class="col d-flex justify-content-end px-5 mb-3">
+            <button pButton pRipple  
+                    class="p-button-outlined"
+                    label="Confirmar"
+                    (click)="nextStep()">
+            </button>
+        </div>
+    </div>
+</div>
+

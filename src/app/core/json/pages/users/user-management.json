@@ -1,7 +1,7 @@
 {
     "tableConfiguration": {
         "headerList": [
-            { "field": "code", "header": "Codigo" },
+            { "field": "code", "header": "Código" },
             { "field": "first_name", "header": "Nombre" },
             { "field": "last_name", "header": "Apellido" },
             { "field": "email", "header": "Email" },

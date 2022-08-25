@@ -17,17 +17,19 @@ export class PackageManagementComponent implements OnInit {
    //INPUT AND OUPUTS
  @Output() updateList = new EventEmitter();
  @Input() packageList: any[];
+ @Input() invoice: any;
+
 
   statusList: any[] = [
-    { label: "En la tienda", value: "En la tienda" },
-    { label: "En el almacen", value: "En el almacen" },
-    { label: "En el camión", value: "En el camión" },
-    { label: "En el avión", value: "En el avión" },
-    { label: "En la embarcación", value: "En la embarcación" },
-    { label: "En el puerto de Venezuela", value: "En el puerto de Venezuela" },
-    { label: "En aduanas en Venezuela", value: "En aduanas en Venezuela" },
-    { label: "En camino al almacen en Venezuela", value: "En camino al almacen en Venezuela" },
-    { label: "Entregado a tienda en Venezuela", value: "Entregado a tienda en Venezuela" },
+    { label: "En Tienda", value: "En Tienda" },
+    { label: "En Almacén", value: "En Almacén" },
+    { label: "En Camión", value: "En Camión" },
+    { label: "En Avión", value: "En Avión" },
+    { label: "En Embarcación", value: "En Embarcación" },
+    { label: "En el Puerto en Venezuela", value: "En el Puerto en Venezuela" },
+    { label: "En Aduana en Venezuela", value: "En Aduana en Venezuela" },
+    { label: "En Ruta al Almacén en Venezuela", value: "En Ruta al Almacén en Venezuela" },
+    { label: "Entregado a Tienda en Venezuela", value: "Entregado a Tienda en Venezuela" },
     { label: "Entregado", value: "Entregado" }
   ];
 
@@ -64,7 +66,7 @@ export class PackageManagementComponent implements OnInit {
   }
 
   onRowEditCancel(product: any, index: number) {
-    //Se Cancela
+    window.location.reload()
   } 
 
   setStatusValue(status: string){
