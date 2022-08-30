@@ -2,9 +2,6 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UsersManagementService } from 'src/app/core/services/users/users-management.service';
 import { UserInformation } from 'src/app/shared/models/request/userInformation-request.model';
-import  * as CryptoJS from 'crypto-js'
-import { SendEmailCredential } from 'src/app/shared/models/request/sendEmailCredential-request.model';
-import { SendEmailManagementService } from 'src/app/core/services/sendEmail/send-email-management.service';
 
 @Component({
   selector: 'app-create-form',
@@ -16,13 +13,11 @@ export class CreateFormComponent implements OnInit {
   //Page Variables
   formGroup: FormGroup;//Dropdown data
   rolList: any[] = [
-    { label: "Agente", value: "Agente" },
-    { label: "Administrador", value: "Administrador" }
+    { label: "Cliente", value: "Cliente" }
   ];
   idEmpresa: number = 1;
   code: number;
   userRow: UserInformation;
-  sendEmailCredentialRow: SendEmailCredential
   isUpdate = false; 
   password: string
 
@@ -32,8 +27,7 @@ export class CreateFormComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private usersManagementService: UsersManagementService,    
-    private sendEmailManagementService: SendEmailManagementService,
+    private usersManagementService: UsersManagementService
   ) { 
     this.resetForm();
   }
@@ -50,7 +44,7 @@ export class CreateFormComponent implements OnInit {
       first_name: ["", [Validators.required,Validators.pattern('[a-zA-Z ]*')]],
       last_name: ["", [Validators.required,Validators.pattern('[a-zA-Z ]*')]],
       email: ["", [Validators.required,Validators.pattern(/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/)]],
-      rol: ["", Validators.required],
+      rol: ["",],
       phone: ["", Validators.required]
     });
     this.formGroup.statusChanges.subscribe(status => {
@@ -66,35 +60,21 @@ export class CreateFormComponent implements OnInit {
         this.formGroup.controls['first_name'].value,
         this.formGroup.controls['last_name'].value,
         this.formGroup.controls['email'].value,       
-        this.formGroup.controls['rol'].value.value,
+        "Cliente",
         this.formGroup.controls['phone'].value,
         1,
         "",
         this.code,
         ) 
     }else{
-      if(this.formGroup.controls['rol'].value.value == "Administrador"){
-        this.password = this.generateP()
-        this.userRow = new UserInformation(
-          this.formGroup.controls['first_name'].value,
-          this.formGroup.controls['last_name'].value,
-          this.formGroup.controls['email'].value,       
-          this.formGroup.controls['rol'].value.value,
-          this.formGroup.controls['phone'].value,
-          this.idEmpresa,
-          this.convertirTexto(this.password)
-          )
-      }
-      else {
       this.userRow = new UserInformation(
         this.formGroup.controls['first_name'].value,
         this.formGroup.controls['last_name'].value,
         this.formGroup.controls['email'].value,       
-        this.formGroup.controls['rol'].value.value,
+        "Cliente",
         this.formGroup.controls['phone'].value,
         this.idEmpresa
         )
-      }
     }
     this.usersManagementService.saveUser(this.userRow, this.isUpdate).subscribe(
       response => {
@@ -105,25 +85,8 @@ export class CreateFormComponent implements OnInit {
         console.log(err)
       }
     );
-    if(this.formGroup.controls['rol'].value.value == "Administrador" && this.isUpdate == false ){
-      this.sendEmailCredentialRow = new SendEmailCredential(
-        this.formGroup.controls['email'].value,
-        this.password,
-        "credential" 
-      )
-      this.sendEmail(this.sendEmailCredentialRow)
-  }
   }
 
-  async sendEmail(body: any){
-   await this.sendEmailManagementService.sendEmail(body).subscribe(
-      response => {
-      },
-      err => {
-        console.log(err)
-      }
-    );  
-  }
 
   enable(){
     this.formGroup.controls['email'].enable();
@@ -142,20 +105,6 @@ export class CreateFormComponent implements OnInit {
     this.formGroup.controls['rol'].disable();
     this.isUpdate=true;
   }
-
-  generateP() {
-    var pass = '';
-    var str = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' + 
-            'abcdefghijklmnopqrstuvwxyz0123456789@#$';
-      
-    for (let i = 1; i <= 8; i++) {
-        var char = Math.floor(Math.random()
-                    * str.length + 1);    
-        pass += str.charAt(char)
-    }
-      
-    return pass;
-}
 
 
 }

@@ -44,7 +44,7 @@ export class InvoiceManagementService {
     
   }
 
-  createInovice(packageValue: any): Observable<any> {
+  createInvoice(packageValue: any): Observable<any> {
     //  updating an existing Invoice Status
       return this.httpService.post(`${this.appConfig.config.url.postInvoice}`, packageValue)
             .pipe(map(response => response.data));
@@ -54,6 +54,12 @@ export class InvoiceManagementService {
   getLastInvoice(): Observable<any> {
     //  updating an existing Invoice Status
       return this.httpService.get(`${this.appConfig.config.url.getLastInvoice}`)
+            .pipe(map(response => response.data));
+    
+  }
+  getPrefix(): Observable<any> {
+    //  updating an existing Invoice Status
+      return this.httpService.get(`${this.appConfig.config.url.getPrefixCompany}`)
             .pipe(map(response => response.data));
     
   }

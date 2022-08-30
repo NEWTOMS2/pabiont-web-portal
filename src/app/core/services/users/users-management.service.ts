@@ -25,8 +25,13 @@ export class UsersManagementService {
     }
   }
 
-  getUser(): Observable<any> {
-    return this.httpService.get(`${this.appConfig.config.url.getUser}`)
+  getUserClient(): Observable<any> {
+    return this.httpService.get(`${this.appConfig.config.url.getUserClient}`)
+      .pipe(map(response => response.data));
+  }
+
+  getUserAdmin(): Observable<any> {
+    return this.httpService.get(`${this.appConfig.config.url.getUserAdmin}`)
       .pipe(map(response => response.data));
   }
 

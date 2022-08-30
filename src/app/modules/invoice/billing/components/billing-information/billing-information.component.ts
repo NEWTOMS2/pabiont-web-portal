@@ -1,7 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { DatePipe } from '@angular/common';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AlertService } from 'src/app/core/services/alert/alert.service';
 import { AppConfigService } from 'src/app/core/services/app-config/app-config.service';
 import { TableManagmentService } from 'src/app/core/services/consult/table-managment.service';
+import { InvoiceManagementService } from 'src/app/core/services/invoice/invoice-management.service';
+import { UsersManagementService } from 'src/app/core/services/users/users-management.service';
+import { WarehouseManagementService } from 'src/app/core/services/warehouse/warehouse-management.service';
+import { billing } from 'src/app/shared/models/request/billing-request';
+import { packages } from 'src/app/shared/models/request/package-request';
 
 @Component({
   selector: 'app-billing-information',
@@ -11,39 +19,126 @@ import { TableManagmentService } from 'src/app/core/services/consult/table-manag
 export class BillingInformationComponent implements OnInit {
 
   page: any;
-  quotesForm: FormGroup;
-  packageList: any[] = [];
+  billingsForm: FormGroup;
+  today: Date = new Date();
+  billingInformation: any;
+
+  //dropdown variables
+  clientList: any[];
+  userList: any[];
+  packageRequest: any[] = [];
+  warehouseList: any[];
+  selectedShipper: any;
+  selectedConsignee: any;
+  selectedBillTo: any;
+  selectedAgent: any;
+  selectedBranch: any;
+  selectedOrigin: any;
+  selectedDestination: any;
+  selectedLocation: any;
+
+  @Input() packageList: any[];
+  @Input() totalPayment: number;
+  @Output() finalizeStep = new EventEmitter<billing>();
+  @Output() isValid = new EventEmitter<boolean>();
 
   constructor(
     private appConfig: AppConfigService,
-    private tableManagmentService: TableManagmentService,
-    private formBuilder: FormBuilder
+    private usersManagementService: UsersManagementService,
+    private invoiceManagementService: InvoiceManagementService,
+    private warehouseManagementService: WarehouseManagementService,
+    public datepipe: DatePipe,
+    private formBuilder: FormBuilder,
+    private alertService: AlertService,
+    private router: Router
     ) {   
     this.page = this.appConfig.invoiceCreation;
     this.page = this.page.default;
-     }
+    this.resetForm();
+    this.getClientList();
+    this.getUserList();
+    this.getLastInvoice();
+    this.getWarehouseList();
+    }
 
   ngOnInit(): void {
   }
 
   resetForm() {
-    this.quotesForm = this.formBuilder.group({
-      date: ["2022/08/22",[Validators.required]],
-      invoice: ["NE-XXXXXX-XX",[Validators.required]],
-      shipper: ["Shipper Name",[Validators.required]],
-      consignee: ["Consignee Name",[Validators.required]],
-      agent: ["Agent Name",[Validators.required]],
-      bill_to: ["Bill to Name",[Validators.required]],
-      tracking: ["NE-XXXXXX-XX",[Validators.required]],
-      branch: ["Branch",[Validators.required]],
-      origin_destination: ["Origin Destination",[Validators.required]],
-      final_destination: ["Final Destination",[Validators.required]],
-      location: ["Location",[Validators.required]],
-      
-      
-      
+    this.billingsForm = this.formBuilder.group({
+      date: [this.today,[Validators.required]],
+      invoice: ["",],
+      shipper: ["",[Validators.required]],
+      consignee: ["",[Validators.required]],
+      agent: ["",[Validators.required]],
+      bill_to: ["",[Validators.required]],
+      tracking: ["",],
+      branch: ["",[Validators.required]],
+      origin_destination: ["",[Validators.required]],
+      final_destination: ["",[Validators.required]],
+      location: ["",[Validators.required]],
     });
-
+   this.billingsForm.controls['invoice'].disable();
+   this.billingsForm.statusChanges.subscribe(status => {
+    let valid = status == "VALID" ? true : false
+    this.isValid.emit(!valid)
+    });
   }
 
+  async getClientList(){
+    this.clientList = await this.usersManagementService.getUserClient().
+            toPromise().then(response => { 
+              return response
+            });
+            
+  }
+
+  async getUserList(){
+    this.userList = await this.usersManagementService.getUserAdmin().
+            toPromise().then(response => { 
+              return response
+            });
+  }
+
+  async getLastInvoice(){
+    let lastInvoice = await this.invoiceManagementService.getLastInvoice().
+            toPromise().then(response => { 
+              return response.last_invoice
+            });
+    let prefix = await this.invoiceManagementService.getPrefix().
+        toPromise().then(response => { 
+          return response.prefix
+        });    
+    lastInvoice++;
+    this.billingsForm.controls.invoice.setValue(`${prefix}-${lastInvoice}-${this.datepipe.transform(this.today, 'yy')}`);
+  }
+
+  async getWarehouseList(){
+    this.warehouseList = await this.warehouseManagementService.getWarehouses().
+            toPromise().then(response => { 
+              return response
+            });
+    this.warehouseList = this.warehouseList.filter(obj => obj.type == "Localidad");
+  }
+
+  setInvoiceInformation(description: string){
+    this.packageList.forEach(packages => {
+      this.packageRequest.push(packages.package_information)
+    });
+    this.billingInformation = new billing(description, this.billingsForm.controls['invoice'].value, this.datepipe.transform(this.today, 'yyyy-MM-dd'), this.datepipe.transform(this.today, 'yyyy-MM-dd'), this.totalPayment
+                              , this.totalPayment, this.selectedShipper.code, this.selectedConsignee.code, this.selectedAgent.code, this.selectedBillTo.code, 1, 11,this.packageRequest,"Cash",this.billingsForm.controls['origin_destination'].value.id,
+                                this.billingsForm.controls['final_destination'].value.id);
+   this.invoiceManagementService.createInvoice(this.billingInformation).subscribe(
+      response => {
+        this.alertService.showToast({severity: 'success', summary: 'Factura y Paquetes creados correctamente.', detail: ''})
+        //cambios de post
+        this.router.navigate([`main`]);
+
+      },
+      err => {
+        this.alertService.showToast({severity: 'error', summary: 'Ha ocurrido un error al generar la Factura y los Paquetes.', detail: ''})
+        console.log(err)
+      }
+    ); 
+  }
 }

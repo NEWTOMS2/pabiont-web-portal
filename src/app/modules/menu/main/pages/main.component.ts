@@ -26,10 +26,10 @@ export class MainComponent implements OnInit {
   gotoPage(page: number) {
     switch(page){
       case 0: 
-        this.router.navigate([`/main`]);
+        this.router.navigate([`/invoice-creation`]);
         break;
       case 1: 
-        this.router.navigate([`/users-management`]);
+        this.router.navigate([`/client-management`]);
         break;
       case 2: 
         this.router.navigate([`/warehouse-management`]);
@@ -42,6 +42,9 @@ export class MainComponent implements OnInit {
         break;
       case 5: 
         this.router.navigate([`/main`]);
+        break;
+      case 6: 
+        this.router.navigate([`/users-management`]);
         break;
     }
     

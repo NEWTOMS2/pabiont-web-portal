@@ -1,15 +1,23 @@
 <div>
 
     <div *ngIf="currentStep === 1">
-        <app-quote-package (FinalizeStep)="packageList = $event">
+        <app-quote-package (FinalizeStep)="packageList = $event; isValid = false"
+                            (packageRequest)="packageRequest = $event">
 
         </app-quote-package>
     </div>
     <div *ngIf="currentStep === 2">
-        <app-billing-information></app-billing-information>
+        <app-billing-information 
+                                 [packageList]="packageList"
+                                 [totalPayment]="totalPayment"
+                                 (finalizeStep)="isValid = false"
+                                 (isValid)="isValid = $event"
+                                 #child>
+        </app-billing-information>
     </div>
     <div *ngIf="currentStep === 3">
-        <app-payment-confirmation></app-payment-confirmation>
+        <app-payment-confirmation [paymentInformation]="billingInformation"> 
+        </app-payment-confirmation>
     </div>
 
     <!--STEPPER BUTTONS-->
@@ -24,9 +32,25 @@
             <button pButton pRipple  
                     class="p-button-outlined"
                     label="Confirmar"
+                    [disabled]="isValid"
                     (click)="nextStep()">
             </button>
         </div>
     </div>
 </div>
 
+<p-dialog header="Descripcion del paquete" [(visible)]="displayDescription" [style]="{width: '50vw'}">
+    <div class="row justify-content-center">
+        <textarea rows="5" cols="30" pInputTextarea [(ngModel)]="description" (ngModelChange)="modalIsValid = false" ></textarea>
+    </div>
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="Cancelar" icon="pi pi-times" class="p-button-text p-button-danger" (click)="displayDescription=false"></button>
+        <p-button icon="pi pi-check" 
+                    (click)="displayDescription=false; 
+                    nextStep(true)" 
+                    label="Aceptar" 
+                    [disabled]="modalIsValid"
+                    styleClass="p-button-text">
+        </p-button>
+    </ng-template>
+</p-dialog>

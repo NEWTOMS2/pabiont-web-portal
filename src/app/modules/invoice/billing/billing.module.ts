@@ -15,7 +15,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DropdownModule } from 'primeng/dropdown';
 import { TableModule } from 'primeng/table';
 import {InputTextareaModule} from 'primeng/inputtextarea';
-
+import {CalendarModule} from 'primeng/calendar';
 
 @NgModule({
   declarations: [
@@ -37,6 +37,7 @@ import {InputTextareaModule} from 'primeng/inputtextarea';
     TableModule,
     FormsModule,
     InputTextareaModule,
+    CalendarModule
   ]
 })
 export class BillingModule { }

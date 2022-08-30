@@ -1,6 +1,6 @@
 {
     "devMode": true,
-    "apiBaseURL": "https://pabiont-system-api.us-e1.cloudhub.io/api/",
+    "apiBaseURL": "https://pabiont-process-api.us-e1.cloudhub.io/api/",
     "url": {
         "rate": "rate?company=",
         "trackingByCode": "tracking?code=",
@@ -8,6 +8,8 @@
         "saveWarehouse": "destination",
         "getWarehouse": "destination?company=1",
         "getUser": "clients?company=1",
+        "getUserClient": "clients?code=Client",
+        "getUserAdmin": "clients?code=User",
         "saveUser": "clients",
         "getInvoice": "invoice?company=1",
         "changeInvoice": "invoice",
@@ -16,7 +18,8 @@
         "checkCredential": "validate-credential?email=",
         "sendEmail": "send-email",
         "postInvoice": "invoice",
-        "getLastInvoice": "invoice/last_invoice"
+        "getLastInvoice": "invoice/last_invoice",
+        "getPrefixCompany": "company?code=1"
     }
 
 }

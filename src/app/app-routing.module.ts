@@ -33,6 +33,12 @@ const routes: Routes = [
       canActivate:[CheckLoginGuard]
   },
   {
+    path: "client-management",
+    loadChildren: () => import('./modules/users/client-management/client-management.module')
+      .then(m => m.ClientManagementModule),
+      canActivate:[CheckLoginGuard]
+  },
+  {
     path: "invoice-management",
     loadChildren: () => import('./modules/invoice/invoice-management/invoice-management.module')
       .then(m => m.InvoiceManagementModule),

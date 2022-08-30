@@ -1,11 +1,299 @@
-<div class="row m-0 p-4">
-    <div class="col-6 pabiont-card mr-3">
-        123
+<form [formGroup]="billingsForm">
+    <div class="row m-0 p-4">
+        <div class="col-6">
+            <div class="pabiont-card row m-0 p-3">
+                <div class="col-6 px-3">
+                    <div>
+                        <p-calendar inputId="basic"
+                                    formControlName="date" 
+                                    [showIcon]="true"
+                                    dateFormat="dd/mm/yy"
+                                    appendTo="body"
+                                    styleClass="w-100"
+                                    placeholder="fecha"
+                                    [disabled]="true"
+                                    [ngClass]="{'ng-dirty ng-invalid': billingsForm.controls['date'].touched && billingsForm.controls['date'].errors?.required}"
+                        ></p-calendar>
+                    </div>
+                </div>
+                <div class="col-6 px-3">
+                    <div>
+                        <input  type="text" 
+                                [ngClass]="{'ng-dirty ng-invalid': billingsForm.controls['invoice'].touched && billingsForm.controls['invoice'].errors?.required}"
+                                pInputText 
+                                [disabled]="true"
+                                class="w-100"
+                                formControlName="invoice" 
+                                required />
+                    </div>
+                </div>
+                <div class="col-6 px-3 mt-3">
+                    <div>
+                        <p-dropdown [options]="clientList" 
+                                    [(ngModel)]="selectedShipper"
+                                    optionLabel="first_name" 
+                                    [filter]="true" 
+                                    filterBy="first_name,last_name,code" 
+                                    [showClear]="true" 
+                                    stleClass="w-100"
+                                    formControlName="shipper"
+                                    placeholder="Remitente">
+                            <ng-template pTemplate="selectedItem">
+                                <div *ngIf="selectedShipper">
+                                    <div>
+                                        {{selectedShipper.first_name}} {{selectedShipper.last_name}}
+                                    </div>
+                                </div>
+                            </ng-template>
+                            <ng-template let-shipper pTemplate="item">
+                                <div>
+                                    <div>
+                                        {{shipper.first_name}} {{shipper.last_name}}
+                                    </div>
+                                    <div class="filterSubtitle">
+                                        {{shipper.code}}
+                                    </div>
+                                </div>
+                            </ng-template>
+                        </p-dropdown>
+                    </div>
+                </div>
+                <div class="col-6 px-3 mt-3">
+                    <div>
+                        <p-dropdown [options]="clientList" 
+                                    [(ngModel)]="selectedBillTo"
+                                    optionLabel="first_name" 
+                                    [filter]="true" 
+                                    filterBy="first_name,last_name,code" 
+                                    [showClear]="true" 
+                                    stleClass="w-100"
+                                    formControlName="bill_to"
+                                    placeholder="Facturador">
+                            <ng-template pTemplate="selectedItem">
+                                <div *ngIf="selectedBillTo">
+                                    <div>
+                                        {{selectedBillTo.first_name}} {{selectedBillTo.last_name}}
+                                    </div>
+                                </div>
+                            </ng-template>
+                            <ng-template let-bill pTemplate="item">
+                                <div>
+                                    <div>
+                                        {{bill.first_name}} {{bill.last_name}}
+                                    </div>
+                                    <div class="filterSubtitle">
+                                        {{bill.code}}
+                                    </div>
+                                </div>
+                            </ng-template>
+                        </p-dropdown>
+                    </div>
+                </div>
+                <div class="col-6 px-3 mt-3">
+                    <div>
+                        <p-dropdown [options]="clientList" 
+                                    [(ngModel)]="selectedConsignee"
+                                    optionLabel="first_name" 
+                                    [filter]="true" 
+                                    filterBy="first_name,last_name,code" 
+                                    [showClear]="true" 
+                                    stleClass="w-100"
+                                    formControlName="consignee"
+                                    placeholder="Destinatario">
+                            <ng-template pTemplate="selectedItem">
+                                <div *ngIf="selectedConsignee">
+                                    <div>
+                                        {{selectedConsignee.first_name}} {{selectedConsignee.last_name}}
+                                    </div>
+                                </div>
+                            </ng-template>
+                            <ng-template let-consignee pTemplate="item">
+                                <div>
+                                    <div>
+                                        {{consignee.first_name}} {{consignee.last_name}}
+                                    </div>
+                                    <div class="filterSubtitle">
+                                        {{consignee.code}}
+                                    </div>
+                                </div>
+                            </ng-template>
+                        </p-dropdown>
+                    </div>
+                </div>
+                <div class="col-6 px-3 mt-3">
+                    <div>
+                        <p-dropdown [options]="userList" 
+                                    [(ngModel)]="selectedAgent"
+                                    optionLabel="first_name" 
+                                    [filter]="true" 
+                                    filterBy="first_name,last_name,code" 
+                                    [showClear]="true" 
+                                    stleClass="w-100"
+                                    formControlName="agent"
+                                    placeholder="Agente">
+                            <ng-template pTemplate="selectedItem">
+                                <div *ngIf="selectedAgent">
+                                    <div>
+                                        {{selectedAgent.first_name}} {{selectedAgent.last_name}}
+                                    </div>
+                                </div>
+                            </ng-template>
+                            <ng-template let-agent pTemplate="item">
+                                <div>
+                                    <div>
+                                        {{agent.first_name}} {{agent.last_name}}
+                                    </div>
+                                    <div class="filterSubtitle">
+                                        {{agent.code}}
+                                    </div>
+                                </div>
+                            </ng-template>
+                        </p-dropdown>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="pabiont-card row m-0 p-3">
+                <div class="col-6 px-3">
+                    <div>
+                        <input  type="text" 
+                                [ngClass]="{'ng-dirty ng-invalid': billingsForm.controls['invoice'].touched && billingsForm.controls['invoice'].errors?.required}"
+                                pInputText 
+                                [disabled]="true"
+                                class="w-100"
+                                formControlName="invoice" 
+                                required />
+                    </div>
+                </div>
+                <div class="col-6 px-3">
+                    <div>
+                        <p-dropdown [options]="warehouseList" 
+                                    [(ngModel)]="selectedBranch"
+                                    optionLabel="description" 
+                                    [filter]="true" 
+                                    filterBy="description,code" 
+                                    [showClear]="true" 
+                                    stleClass="w-100"
+                                    formControlName="branch"
+                                    placeholder="Sucursal">
+                            <ng-template pTemplate="selectedItem">
+                                <div *ngIf="selectedBranch">
+                                    <div>
+                                        {{selectedBranch.description}} 
+                                    </div>
+                                </div>
+                            </ng-template>
+                            <ng-template let-branch pTemplate="item">
+                                <div>
+                                    <div>
+                                        {{branch.description}} 
+                                    </div>
+                                    <div class="filterSubtitle">
+                                        {{branch.code}}
+                                    </div>
+                                </div>
+                            </ng-template>
+                        </p-dropdown>
+                    </div>
+                </div>
+                <div class="col-6 px-3 mt-3">
+                    <div>
+                        <p-dropdown [options]="warehouseList" 
+                                    [(ngModel)]="selectedOrigin"
+                                    optionLabel="description" 
+                                    [filter]="true" 
+                                    filterBy="description,code" 
+                                    [showClear]="true" 
+                                    stleClass="w-100"
+                                    formControlName="origin_destination"
+                                    placeholder="Lugar de Origen">
+                            <ng-template pTemplate="selectedItem">
+                                <div *ngIf="selectedOrigin">
+                                    <div>
+                                        {{selectedOrigin.description}}
+                                    </div>
+                                </div>
+                            </ng-template>
+                            <ng-template let-origin pTemplate="item">
+                                <div>
+                                    <div>
+                                        {{origin.description}}
+                                    </div>
+                                    <div class="filterSubtitle">
+                                        {{origin.code}}
+                                    </div>
+                                </div>
+                            </ng-template>
+                        </p-dropdown>
+                    </div>
+                </div>
+                <div class="col-6 px-3 mt-3">
+                    <div>
+                        <p-dropdown [options]="warehouseList" 
+                                    [(ngModel)]="selectedDestination"
+                                    optionLabel="description" 
+                                    [filter]="true" 
+                                    filterBy="description,code" 
+                                    [showClear]="true" 
+                                    stleClass="w-100"
+                                    formControlName="final_destination"
+                                    placeholder="Lugar de Destino">
+                            <ng-template pTemplate="selectedItem">
+                                <div *ngIf="selectedDestination">
+                                    <div>
+                                        {{selectedDestination.description}}
+                                    </div>
+                                </div>
+                            </ng-template>
+                            <ng-template let-destination pTemplate="item">
+                                <div>
+                                    <div>
+                                        {{destination.description}}
+                                    </div>
+                                    <div class="filterSubtitle">
+                                        {{destination.code}}
+                                    </div>
+                                </div>
+                            </ng-template>
+                        </p-dropdown>
+                    </div>
+                </div>
+                <div class="col-6 px-3 mt-3">
+                    <div>
+                        <p-dropdown [options]="warehouseList" 
+                                    [(ngModel)]="selectedLocation"
+                                    optionLabel="description" 
+                                    [filter]="true" 
+                                    filterBy="description,code" 
+                                    [showClear]="true" 
+                                    stleClass="w-100"
+                                    formControlName="location"
+                                    placeholder="Locación">
+                            <ng-template pTemplate="selectedItem">
+                                <div *ngIf="selectedLocation">
+                                    <div>
+                                        {{selectedLocation.description}}
+                                    </div>
+                                </div>
+                            </ng-template>
+                            <ng-template let-location pTemplate="item">
+                                <div>
+                                    <div>
+                                        {{location.description}}
+                                    </div>
+                                    <div class="filterSubtitle">
+                                        {{location.code}}
+                                    </div>
+                                </div>
+                            </ng-template>
+                        </p-dropdown>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="col-6 pabiont-card p-3">
-        123
-    </div>
-</div>
+</form>
 
 <div class="row m-0 p-4">
     <div class="pabiont-card ">

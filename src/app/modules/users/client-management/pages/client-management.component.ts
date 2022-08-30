@@ -6,11 +6,11 @@ import { UsersManagementService } from 'src/app/core/services/users/users-manage
 import { CreateFormComponent } from '../components/create-form/create-form.component';
 
 @Component({
-  selector: 'app-users-management',
-  templateUrl: './users-management.component.html',
-  styleUrls: ['./users-management.component.scss']
+  selector: 'app-client-management',
+  templateUrl: './client-management.component.html',
+  styleUrls: ['./client-management.component.scss']
 })
-export class UsersManagementComponent implements OnInit {
+export class ClientManagementComponent implements OnInit {
 
   //Page Variables
   page: any;
@@ -18,6 +18,7 @@ export class UsersManagementComponent implements OnInit {
   buttonIsEnabled: boolean = false;
   userCode: string;
   userList: any[] = [];
+  header: string;
   currentStep: number = -1;
 
   //ViewChild Data
@@ -41,7 +42,7 @@ export class UsersManagementComponent implements OnInit {
   }
 
   async getUserList(){
-    this.userList = await this.userManagementService.getUserAdmin().
+    this.userList = await this.userManagementService.getUserClient().
             toPromise().then(response => { 
               return response
             });
@@ -67,13 +68,14 @@ export class UsersManagementComponent implements OnInit {
 
   }
 
+
   hideDialog() {
     this.visibleDialog = false;
-    this.currentStep = -1
   }
 
   redirect(){
     this.router.navigate([`main`]);
   }
+
 
 }

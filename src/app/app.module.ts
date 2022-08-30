@@ -11,6 +11,9 @@ import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { ButtonModule } from 'primeng/button';
 import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
 import { QuotesComponent } from './shared/components/quotes/quotes.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { DatePipe } from '@angular/common';
+import { AlertService } from './core/services/alert/alert.service';
 
 @NgModule({
   declarations: [
@@ -27,9 +30,11 @@ import { QuotesComponent } from './shared/components/quotes/quotes.component';
     NbLayoutModule,
     NbEvaIconsModule,
     ButtonModule,
-    NbThemeModule.forRoot({ name: 'default' })
+    NbThemeModule.forRoot({ name: 'default' }),
+    NgbModule
   ],
-  providers: [],
+  providers: [DatePipe,
+    AlertService,],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

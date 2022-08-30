@@ -1,5 +1,5 @@
 <div class="row p-5 m-0">
-    <span class="title">Gestión de Usuarios</span>
+    <span class="title">Gestión de Clientes</span>
     <div class="pabiont-card ">
         <app-basic-table    [headerList]="page.tableConfiguration.headerList"
                             [headerCustomButtons]="page.tableConfiguration.headerCustomButtons"
@@ -10,8 +10,7 @@
         </app-basic-table>
     </div>
 </div>
-
-<p-dialog [(visible)]="visibleDialog" (onHide)="child.resetForm()" [style]="{width: '450px'}" header="Agregar o Modificar Usuarios" [modal]="true" styleClass="p-fluid" >
+<p-dialog [(visible)]="visibleDialog" (onHide)="child.resetForm()" [style]="{width: '450px'}" header="Agregar o Modificar Clientes" [modal]="true" styleClass="p-fluid" >
         
     <app-create-form    (buttonEnabled)="buttonEnabled($event)"
                         (updateList)="getUserList()"
@@ -23,7 +22,6 @@
         <button pButton pRipple label="Guardar" icon="pi pi-check" class="p-button-text" [disabled]="!buttonIsEnabled" (click)="hideDialog();child.submit()"></button>
     </ng-template>
 </p-dialog>
-
 <div class="d-flex justify-content-start px-5 mb-3">
     <button pButton pRipple  
             class="p-button-outlined"

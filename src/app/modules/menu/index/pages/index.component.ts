@@ -30,6 +30,7 @@ export class IndexComponent implements OnInit {
   //ocultar section
   isSubmit: boolean = false;
   showWebChat: boolean = false;
+  isMenuCollapsed: boolean = true
   
   @ViewChild('Tracking',{static: true}) public Tracking: ElementRef;
 
@@ -83,27 +84,25 @@ export class IndexComponent implements OnInit {
 
 
   calculateRateMaritime(){
-    return this.calculateMaritime = ( this.rates.maritime * 
-                            this.quotesForm.controls['high'].value * 
-                            this.quotesForm.controls['width'].value * 
-                            this.quotesForm.controls['long'].value)/166
+    if (( (this.quotesForm.controls['high'].value * 
+      this.quotesForm.controls['width'].value * 
+      this.quotesForm.controls['long'].value)/1728) > this.quotesForm.controls['weight'].value )
+      return this.calculateMaritime = (( (this.quotesForm.controls['high'].value * 
+      this.quotesForm.controls['width'].value * 
+      this.quotesForm.controls['long'].value)/1728) * this.rates.maritime)
+    else
+      return this.calculateMaritime = (this.quotesForm.controls['weight'].value * this.rates.maritime)
   }
 
   calculateRateAerial(){
-    if (this.quotesForm.controls['weight'].value > ( this.quotesForm.controls['long'].value * 
-      this.quotesForm.controls['high'].value * 
-      this.quotesForm.controls['width'].value ))
-
-      return this.calculateAerial = ( this.rates.aerial * 
-        this.quotesForm.controls['high'].value * 
-        this.quotesForm.controls['width'].value * 
-        this.quotesForm.controls['long'].value) *
-        this.quotesForm.controls['weight'].value /166
-   else   
-    return this.calculateAerial = ( this.rates.aerial * 
-                            this.quotesForm.controls['high'].value * 
-                            this.quotesForm.controls['width'].value * 
-                            this.quotesForm.controls['long'].value)/166
+    if (( (this.quotesForm.controls['high'].value * 
+    this.quotesForm.controls['width'].value * 
+    this.quotesForm.controls['long'].value)/166) > this.quotesForm.controls['weight'].value )
+    return this.calculateAerial = (( (this.quotesForm.controls['high'].value * 
+    this.quotesForm.controls['width'].value * 
+    this.quotesForm.controls['long'].value)/166) * this.rates.aerial)
+  else
+    return this.calculateAerial = (this.quotesForm.controls['weight'].value * this.rates.aerial)
   }
 
   async searchPackage(text: string, vawer: any){

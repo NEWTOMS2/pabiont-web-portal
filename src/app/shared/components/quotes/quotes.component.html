@@ -39,6 +39,7 @@
                                             formControlName="weight"
                                             [minFractionDigits]="1" 
                                             [maxFractionDigits]="2"
+                                            [disabled]="sizeValid"
                                             placeholder="0"
                                             [ngClass]="{'ng-dirty ng-invalid': (quotesForm.controls['weight'].touched && quotesForm.controls['weight'].errors?.required) 
                                                             || (quotesForm.controls['weight'].value <= 0 && quotesForm.controls['weight'].value != null)}">
@@ -55,6 +56,7 @@
                                             formControlName="high" 
                                             [minFractionDigits]="1" 
                                             [maxFractionDigits]="2"
+                                            [disabled]="sizeValid"
                                             placeholder="0"
                                             [ngClass]="{'ng-dirty ng-invalid': (quotesForm.controls['high'].touched && quotesForm.controls['high'].errors?.required) 
                                                             || (quotesForm.controls['high'].value <= 0 && quotesForm.controls['high'].value != null)}">
@@ -71,6 +73,7 @@
                                             formControlName="width"  
                                             [minFractionDigits]="1" 
                                             [maxFractionDigits]="2"
+                                            [disabled]="sizeValid"
                                             placeholder="0"
                                             [ngClass]="{'ng-dirty ng-invalid': (quotesForm.controls['width'].touched && quotesForm.controls['width'].errors?.required) 
                                                             || (quotesForm.controls['width'].value <= 0 && quotesForm.controls['width'].value != null)}">
@@ -87,6 +90,7 @@
                                             formControlName="long" 
                                             [minFractionDigits]="1" 
                                             [maxFractionDigits]="2"
+                                            [disabled]="sizeValid"
                                             placeholder="0"
                                             [ngClass]="{'ng-dirty ng-invalid': (quotesForm.controls['long'].touched && quotesForm.controls['long'].errors?.required) 
                                                             || (quotesForm.controls['long'].value <= 0 && quotesForm.controls['long'].value != null)}">
@@ -103,10 +107,10 @@
     </div>
  </div>
  <div class="col-4 p-3">
-    <div class="pabiont-card text-center ">
+    <div class="pabiont-card text-center" >
         <span class="mt-2 sub-title">Costo total del envío</span>
         <!--ENVIO MARITIMO-->
-        <div class="row p-0 m-0 mt-4 rowBack" *ngIf="isSelectable" (click)="setPackage('maritimo')">
+        <div class="row p-0 m-0 mt-4 rowBack" *ngIf="isSelectable" (click)="setPackage('Maritimo')" [ngClass]="{'isValid': !isValid}">
             <div class="col-12 backgroundQuote pointer text-center" > 
                 <p class="titleQuote">Envío Marítimo</p>
                 <span class="number" [innerHTML]="calculateRateMaritime().toFixed(2)"></span>
@@ -122,7 +126,7 @@
         </div>
     
         <!--ENVIO AEREO-->
-        <div class="row p-0 m-0 mt-4 rowBack" *ngIf="isSelectable" (click)="setPackage('aereo')">
+        <div class="row p-0 m-0 mt-4 rowBack" *ngIf="isSelectable" (click)="setPackage('Aereo')"[ngClass]="{'isValid': !isValid}">
             <div class="col-12 backgroundQuote pointer">
                 <p class="titleQuote">Envío Aéreo</p>
                 <span class="number" [innerHTML]="calculateRateAerial().toFixed(2)"></span>

@@ -42,15 +42,14 @@ export class PackageManagementComponent implements OnInit {
   }
 
 
-  onRowEditInit(var123: any) {
+  onRowEditInit() {
     this.canEdit = true
-    console.log(var123)
   }
 
   onRowEditSave(packageValue: any) {
     //Se Edita
     this.packageRow = new PackageInformation(
-      packageValue.code,
+      parseInt(packageValue.code),
       this.setStatusValue(packageValue.status),
       )
    

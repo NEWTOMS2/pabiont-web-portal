@@ -65,7 +65,6 @@ export class InvoiceManagementComponent implements OnInit {
     this.currentStep = data.buttonId
     switch(data.buttonId) { 
       case 1:{
-        console.log(data.rowData)
         this.child.updateForm(data.rowData)
         break;
       }
@@ -80,9 +79,11 @@ export class InvoiceManagementComponent implements OnInit {
 
   hideDialog() {
     this.visibleDialog = false;
+  }
+  hideDialog2() {
+    this.visibleDialog = false;
     window.location.reload()
   }
-
   redirect(){
     this.router.navigate([`main`]);
   }

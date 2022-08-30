@@ -16,10 +16,16 @@
 
 <p-dialog header="Descripcion del paquete" [(visible)]="displayDescription" [style]="{width: '50vw'}">
     <div class="row justify-content-center">
-        <textarea rows="5" cols="30" pInputTextarea [(ngModel)]="description"></textarea>
+        <textarea rows="5" cols="30" pInputTextarea [(ngModel)]="description" (ngModelChange)="modalIsValid = false" ></textarea>
     </div>
     <ng-template pTemplate="footer">
         <button pButton pRipple label="Cancelar" icon="pi pi-times" class="p-button-text p-button-danger" (click)="displayDescription=false"></button>
-        <p-button icon="pi pi-check" (click)="displayDescription=false; addToList(); child.clearPackageInformation()" label="Aceptar" styleClass="p-button-text"></p-button>
+        <p-button icon="pi pi-check" 
+                    (click)="displayDescription=false; 
+                    addToList(); 
+                    child.clearPackageInformation()" 
+                    label="Aceptar" 
+                    [disabled]="modalIsValid"
+                    styleClass="p-button-text"></p-button>
     </ng-template>
 </p-dialog>

@@ -54,7 +54,7 @@ export class CreateFormComponent implements OnInit {
         )
     }else{
       this.warehouseRow = new WarehouseInformation(
-        this.formGroup.controls['code'].value, 
+        (this.formGroup.controls['code'].value).toUpperCase(), 
         this.formGroup.controls['type'].value.value, 
         this.formGroup.controls['description'].value,
         1
