@@ -2,7 +2,7 @@
 
     <div *ngIf="currentStep === 1">
         <app-quote-package (FinalizeStep)="packageList = $event; isValid = false"
-                            (packageRequest)="packageRequest = $event">
+                            #child>
 
         </app-quote-package>
     </div>

@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import sizeof from 'object-sizeof';
 import { AppConfigService } from 'src/app/core/services/app-config/app-config.service';
 import { TableManagmentService } from 'src/app/core/services/consult/table-managment.service';
 import { packages } from 'src/app/shared/models/request/package-request';
@@ -11,6 +12,7 @@ import { packages } from 'src/app/shared/models/request/package-request';
 export class QuotePackageComponent implements OnInit {
 
   page: any;
+  id: number = 0;
   packageRequest: packages; 
   packageList: any[] = [];
   packageInformation: any;
@@ -32,6 +34,7 @@ export class QuotePackageComponent implements OnInit {
   addToList(){
     //crear el modelo de datos y su constructor del json
     //crear la descripcion del paquete
+    this.id++
     this.packageRequest = new packages(this.packageInformation.weight, this.packageInformation.high,this.packageInformation.width,this.packageInformation.long, this.description,0,1,this.packageInformation.type);    
     let volumeCalculation = Number(this.packageInformation.high * this.packageInformation.width * this.packageInformation.long).toFixed(0);
     this.packageList.push({
@@ -41,7 +44,8 @@ export class QuotePackageComponent implements OnInit {
       description: this.description,
       price: this.packageInformation.price.toFixed(2),
       type: this.packageInformation.type,
-      package_information: this.packageRequest
+      package_information: this.packageRequest,
+      id: this.id
     });
     this.description = "";
     this.modalIsValid = true;
@@ -49,9 +53,14 @@ export class QuotePackageComponent implements OnInit {
 
   }
 
-  prueba(){
-    
-    console.log(this.packageInformation)
+  deleteItem(data: any){ 
+    let indice = this.packageList.indexOf(data.id); // obtenemos el indice
+    this.packageList.splice(indice, 1); // 1 es la cantidad de elemento a eliminar
+    return sizeof(this.packageList)
+  }
+
+  packageSize(){
+    return sizeof(this.packageList)
   }
 
 }
