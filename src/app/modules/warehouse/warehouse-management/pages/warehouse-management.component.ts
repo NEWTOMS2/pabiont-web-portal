@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 import { AppConfigService } from 'src/app/core/services/app-config/app-config.service';
 import { TableManagmentService } from 'src/app/core/services/consult/table-managment.service';
 import { WarehouseManagementService } from 'src/app/core/services/warehouse/warehouse-management.service';
@@ -27,7 +28,8 @@ export class WarehouseManagementComponent implements OnInit {
     private appConfig: AppConfigService,
     private tableManagmentService: TableManagmentService,
     private warehouseManagementService: WarehouseManagementService,
-    private router:Router
+    private router:Router,
+    private messageService: MessageService,
     ) { 
       this.page = this.appConfig.warehouseManagement;
       this.page = this.page.default;

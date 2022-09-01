@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MessageService } from 'primeng/api';
 import { UsersManagementService } from 'src/app/core/services/users/users-management.service';
 import { UserInformation } from 'src/app/shared/models/request/userInformation-request.model';
 
@@ -27,7 +28,9 @@ export class CreateFormComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private usersManagementService: UsersManagementService
+    private usersManagementService: UsersManagementService,
+    private messageService: MessageService,
+    
   ) { 
     this.resetForm();
   }
@@ -79,9 +82,11 @@ export class CreateFormComponent implements OnInit {
     this.usersManagementService.saveUser(this.userRow, this.isUpdate).subscribe(
       response => {
         //cambios de post
+        this.messageService.add({severity: 'success', summary: 'Cliente creado o modificado correctamente.', detail: ''});
         this.updateList.emit();
       },
       err => {
+        this.messageService.add({severity: 'error', summary: 'Ha ocurrido un error al crear o modificar el Cliente.', detail: ''})
         console.log(err)
       }
     );

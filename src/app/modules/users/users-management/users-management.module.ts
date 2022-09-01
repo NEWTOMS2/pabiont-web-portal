@@ -11,6 +11,7 @@ import { DialogModule } from 'primeng/dialog';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DropdownModule } from 'primeng/dropdown';
 import { InputMaskModule } from 'primeng/inputmask';
+import { ToastModule } from 'primeng/toast';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { InputMaskModule } from 'primeng/inputmask';
     ReactiveFormsModule,
     DropdownModule,
     InputMaskModule,
+    ToastModule,
   ]
 })
 export class UsersManagementModule { }

@@ -16,6 +16,9 @@ import { DropdownModule } from 'primeng/dropdown';
 import { TableModule } from 'primeng/table';
 import {InputTextareaModule} from 'primeng/inputtextarea';
 import {CalendarModule} from 'primeng/calendar';
+import {ToastModule} from 'primeng/toast';
+import {ConfirmDialogModule} from 'primeng/confirmdialog';
+import {ConfirmationService} from 'primeng/api';
 
 @NgModule({
   declarations: [
@@ -37,7 +40,9 @@ import {CalendarModule} from 'primeng/calendar';
     TableModule,
     FormsModule,
     InputTextareaModule,
-    CalendarModule
+    CalendarModule,
+    ToastModule,
+    ConfirmDialogModule
   ]
 })
 export class BillingModule { }

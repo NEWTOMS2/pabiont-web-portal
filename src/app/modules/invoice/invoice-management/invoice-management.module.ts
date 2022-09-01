@@ -13,6 +13,7 @@ import { CreateFormComponent } from './components/create-form/create-form.compon
 import { PackageManagementComponent } from './components/package-management/package-management.component';
 import { TableModule } from 'primeng/table';
 import { QuotesModule } from 'src/app/shared/components/quotes/quotes.module';
+import { ToastModule } from 'primeng/toast';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { QuotesModule } from 'src/app/shared/components/quotes/quotes.module';
     DropdownModule,
     TableModule,
     FormsModule,
-    QuotesModule
+    QuotesModule,
+    ToastModule,
   ]
 })
 export class InvoiceManagementModule { }

@@ -21,6 +21,9 @@
 
 .isValid{
     opacity: 0.7;
+    .pointer{
+        cursor: default !important;
+    }
 }
 
 .rowBack{

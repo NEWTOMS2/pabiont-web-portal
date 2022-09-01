@@ -5,6 +5,7 @@ import { UserInformation } from 'src/app/shared/models/request/userInformation-r
 import  * as CryptoJS from 'crypto-js'
 import { SendEmailCredential } from 'src/app/shared/models/request/sendEmailCredential-request.model';
 import { SendEmailManagementService } from 'src/app/core/services/sendEmail/send-email-management.service';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-create-form',
@@ -34,6 +35,7 @@ export class CreateFormComponent implements OnInit {
     private formBuilder: FormBuilder,
     private usersManagementService: UsersManagementService,    
     private sendEmailManagementService: SendEmailManagementService,
+    private messageService: MessageService,
   ) { 
     this.resetForm();
   }
@@ -99,9 +101,12 @@ export class CreateFormComponent implements OnInit {
     this.usersManagementService.saveUser(this.userRow, this.isUpdate).subscribe(
       response => {
         //cambios de post
+        this.messageService.add({severity: 'success', summary: 'Usuario creado o modificado correctamente.', detail: ''});
+        
         this.updateList.emit();
       },
       err => {
+        this.messageService.add({severity: 'error', summary: 'Ha ocurrido un error al crear o modificar el Usuario.', detail: ''})
         console.log(err)
       }
     );
@@ -118,8 +123,11 @@ export class CreateFormComponent implements OnInit {
   async sendEmail(body: any){
    await this.sendEmailManagementService.sendEmail(body).subscribe(
       response => {
+        this.messageService.add({severity: 'success', summary: 'Email enviado con la contraseña al Usuario creado.', detail: ''});
+        
       },
       err => {
+        this.messageService.add({severity: 'error', summary: 'Ha ocurrido un error al enviar el email al usuario.', detail: ''})
         console.log(err)
       }
     );  

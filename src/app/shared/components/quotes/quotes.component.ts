@@ -69,9 +69,10 @@ export class QuotesComponent implements OnInit {
       
     });
     this.quotesForm.statusChanges.subscribe(status => {
-      this.isValid = status == "VALID" ? true : false;
-      
+      this.isValid = status == "VALID" ? true : false;  
       });
+      this.sizeValid = true;
+
   }
 
   setSmall(){

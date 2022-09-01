@@ -108,7 +108,12 @@
  </div>
  <div class="col-4 p-3">
     <div class="pabiont-card text-center" >
-        <span class="mt-2 sub-title">Costo total del envío</span>
+        <div *ngIf="isSelectable">
+            <span class="mt-2 sub-title">Seleccione el tipo de envío</span> 
+        </div>
+        <div *ngIf="!isSelectable">
+            <span class="mt-2 sub-title">Costo total del envío</span> 
+        </div>
         <!--ENVIO MARITIMO-->
         <div class="row p-0 m-0 mt-4 rowBack" *ngIf="isSelectable" (click)="setPackage('Maritimo')" [ngClass]="{'isValid': !isValid}">
             <div class="col-12 backgroundQuote pointer text-center" > 

@@ -14,12 +14,16 @@ import { QuotesComponent } from './shared/components/quotes/quotes.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DatePipe } from '@angular/common';
 import { AlertService } from './core/services/alert/alert.service';
+import { ConfirmationService, MessageService } from 'primeng/api';
+import { ToastModule } from 'primeng/toast';
+import { AlertComponent } from './shared/components/alert/alert.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    SidebarComponent
+    SidebarComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,
@@ -31,10 +35,13 @@ import { AlertService } from './core/services/alert/alert.service';
     NbEvaIconsModule,
     ButtonModule,
     NbThemeModule.forRoot({ name: 'default' }),
-    NgbModule
+    NgbModule,
+    ToastModule
   ],
   providers: [DatePipe,
-    AlertService,],
+    AlertService,
+    MessageService,
+    ConfirmationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

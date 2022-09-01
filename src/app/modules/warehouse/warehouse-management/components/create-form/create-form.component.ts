@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MessageService } from 'primeng/api';
 import { WarehouseManagementService } from 'src/app/core/services/warehouse/warehouse-management.service';
 import { WarehouseInformation } from 'src/app/shared/models/request/warehouseInformation-request.model';
 
@@ -25,7 +26,8 @@ export class CreateFormComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private warehouseManagementService: WarehouseManagementService
+    private warehouseManagementService: WarehouseManagementService,
+    private messageService: MessageService,
   ) { 
     this.resetForm();
   }
@@ -35,7 +37,7 @@ export class CreateFormComponent implements OnInit {
 
   resetForm(){
     this.formGroup = this.formBuilder.group({
-      code: ["", [Validators.required, Validators.maxLength(3)]],
+      code: ["", [Validators.required, Validators.maxLength(3),Validators.pattern('[a-zA-Z ]*')]],
       type: ["", Validators.required],
       description: ["", Validators.required]
     });
@@ -65,10 +67,11 @@ export class CreateFormComponent implements OnInit {
     this.warehouseManagementService.saveWarehouse(this.warehouseRow, this.isUpdate).subscribe(
       response => {
         //cambios de post
-        console.log("exitoso")
+        this.messageService.add({severity: 'success', summary: 'almancen o localidad creado correctamente.', detail: ''})
         this.updateList.emit();
       },
       err => {
+        this.messageService.add({severity: 'error', summary: 'Ha ocurrido un error al generar el almancen o localidad.', detail: ''})
         console.log(err)
       }
     );

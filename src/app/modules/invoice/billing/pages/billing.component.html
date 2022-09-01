@@ -1,5 +1,6 @@
+<p-toast></p-toast>
+<p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000" rejectButtonStyleClass="p-button-text"></p-confirmDialog>
 <div>
-
     <div *ngIf="currentStep === 1">
         <app-quote-package (FinalizeStep)="packageList = $event; isValid = false"
                             #child>
@@ -33,13 +34,13 @@
                     class="p-button-outlined"
                     label="Confirmar"
                     [disabled]="isValid"
-                    (click)="nextStep()">
+                    (click)="confirm()">
             </button>
         </div>
     </div>
 </div>
 
-<p-dialog header="Descripcion del paquete" [(visible)]="displayDescription" [style]="{width: '50vw'}">
+<p-dialog header="Descripcion de la Factura" [(visible)]="displayDescription" [style]="{width: '50vw'}">
     <div class="row justify-content-center">
         <textarea rows="5" cols="30" pInputTextarea [(ngModel)]="description" (ngModelChange)="modalIsValid = false" ></textarea>
     </div>

@@ -10,6 +10,7 @@ import { CreateFormComponent } from './components/create-form/create-form.compon
 import { ReactiveFormsModule } from '@angular/forms';
 import { DropdownModule } from 'primeng/dropdown';
 import { ButtonModule } from 'primeng/button';
+import {ToastModule} from 'primeng/toast';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { ButtonModule } from 'primeng/button';
     InputTextModule,
     DialogModule,
     ReactiveFormsModule,
-    DropdownModule
+    DropdownModule,
+    ToastModule
   ]
 })
 export class WarehouseManagementModule { }

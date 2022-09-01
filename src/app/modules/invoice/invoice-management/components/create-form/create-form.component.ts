@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MessageService } from 'primeng/api';
 import { InvoiceManagementService } from 'src/app/core/services/invoice/invoice-management.service';
 import { InvoiceInformation } from 'src/app/shared/models/request/invoiceInformation-request.model';
 
@@ -24,7 +25,8 @@ export class CreateFormComponent implements OnInit {
 
  constructor(
    private formBuilder: FormBuilder,
-   private invoiceManagementService: InvoiceManagementService
+   private invoiceManagementService: InvoiceManagementService,
+   private messageService: MessageService,
  ) { 
    this.resetForm();
  }
@@ -55,10 +57,12 @@ export class CreateFormComponent implements OnInit {
    this.invoiceManagementService.changeInvoice(this.invoiceRow).subscribe(
      response => {
        //cambios de post
+       this.messageService.add({severity: 'success', summary: 'Estatus de la Factura modificado correctamente.', detail: ''});
        this.updateList.emit();
      },
      err => {
-       console.log(err)
+      this.messageService.add({severity: 'error', summary: 'Ha ocurrido un error al modificar el Estatus de la Factura.', detail: ''})
+      console.log(err)
      }
    );
    

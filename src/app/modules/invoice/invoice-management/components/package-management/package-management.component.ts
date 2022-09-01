@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MessageService } from 'primeng/api';
 import { InvoiceManagementService } from 'src/app/core/services/invoice/invoice-management.service';
 import { PackageInformation } from 'src/app/shared/models/request/packageInformation-request.model';
 
@@ -34,7 +35,8 @@ export class PackageManagementComponent implements OnInit {
   ];
 
   constructor(
-    private invoiceManagementService: InvoiceManagementService
+    private invoiceManagementService: InvoiceManagementService,
+    private messageService: MessageService,
     ) { 
   }
 
@@ -54,13 +56,15 @@ export class PackageManagementComponent implements OnInit {
       )
    
    this.invoiceManagementService.changePackage(this.packageRow).subscribe(
-     response => {
-       //cambios de post
-       this.updateList.emit();
-     },
-     err => {
-       console.log(err)
-     }
+    response => {
+      //cambios de post
+      this.messageService.add({severity: 'success', summary: 'Estatus del paquete modificado correctamente.', detail: ''});
+      this.updateList.emit();
+    },
+    err => {
+     this.messageService.add({severity: 'error', summary: 'Ha ocurrido un error al modificar el Estatus del paquete.', detail: ''})
+     console.log(err)
+    }
    );
   }
 

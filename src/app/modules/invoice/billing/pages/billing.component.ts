@@ -1,4 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
+import { ConfirmationService } from 'primeng/api';
 import { TableManagmentService } from 'src/app/core/services/consult/table-managment.service';
 import { billing } from 'src/app/shared/models/request/billing-request';
 import { BillingInformationComponent } from '../components/billing-information/billing-information.component';
@@ -26,7 +28,9 @@ export class BillingComponent implements OnInit {
   @ViewChild(QuotePackageComponent) child: QuotePackageComponent;
 
   constructor(
-    private tableManagmentService: TableManagmentService,) {
+    private tableManagmentService: TableManagmentService,
+    private confirmationService: ConfirmationService,
+    private router: Router) {
       this.tableManagmentService.buttonEvent.subscribe(data => {
         this.selectedButton(data);
       });
@@ -35,7 +39,7 @@ export class BillingComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  nextStep(lastStep: boolean = false){
+ async nextStep(lastStep: boolean = false){
     if(!lastStep){
       switch(this.currentStep){
         case 1:
@@ -53,9 +57,19 @@ export class BillingComponent implements OnInit {
           break;
       }
     }else{ 
-      this.billingInformationComponent.setInvoiceInformation(this.description);
+      await this.billingInformationComponent.setInvoiceInformation(this.description);   
+      lastStep = false;
+      this.isValid = true;
+      this.currentStep = 1;
+     
     }
     
+  }
+  sleep() {
+    this.redirect
+  }
+  redirect(){
+    this.router.navigate([`main`])
   }
 
   selectedButton(data: any){
@@ -69,7 +83,15 @@ export class BillingComponent implements OnInit {
       }
     }
   }
-
+  confirm() {
+    this.confirmationService.confirm({
+      message: 'Estos son los datos que desea registrar?',
+      accept: () => {
+        this.nextStep();
+          //Actual logic to perform a confirmation
+      }
+  });
+}
   
 
 }

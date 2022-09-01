@@ -2,6 +2,7 @@ import { DatePipe } from '@angular/common';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 import { AlertService } from 'src/app/core/services/alert/alert.service';
 import { AppConfigService } from 'src/app/core/services/app-config/app-config.service';
 import { TableManagmentService } from 'src/app/core/services/consult/table-managment.service';
@@ -49,8 +50,7 @@ export class BillingInformationComponent implements OnInit {
     private warehouseManagementService: WarehouseManagementService,
     public datepipe: DatePipe,
     private formBuilder: FormBuilder,
-    private alertService: AlertService,
-    private router: Router
+    private messageService: MessageService
     ) {   
     this.page = this.appConfig.invoiceCreation;
     this.page = this.page.default;
@@ -121,24 +121,25 @@ export class BillingInformationComponent implements OnInit {
     this.warehouseList = this.warehouseList.filter(obj => obj.type == "Localidad");
   }
 
-  setInvoiceInformation(description: string){
+ async setInvoiceInformation(description: string){
+
     this.packageList.forEach(packages => {
       this.packageRequest.push(packages.package_information)
     });
     this.billingInformation = new billing(description, this.billingsForm.controls['invoice'].value, this.datepipe.transform(this.today, 'yyyy-MM-dd'), this.datepipe.transform(this.today, 'yyyy-MM-dd'), this.totalPayment
                               , this.totalPayment, this.selectedShipper.code, this.selectedConsignee.code, this.selectedAgent.code, this.selectedBillTo.code, 1, 11,this.packageRequest,"Cash",this.billingsForm.controls['origin_destination'].value.id,
-                                this.billingsForm.controls['final_destination'].value.id);
-   this.invoiceManagementService.createInvoice(this.billingInformation).subscribe(
+                                this.billingsForm.controls['final_destination'].value.id, this.billingsForm.controls['final_destination'].value.description);
+  await this.invoiceManagementService.createInvoice(this.billingInformation).subscribe(
       response => {
-        this.alertService.showToast({severity: 'success', summary: 'Factura y Paquetes creados correctamente.', detail: ''})
+        this.messageService.addAll([{severity: 'success', summary: 'Factura y Paquetes creados correctamente.', detail: '', sticky: true},
+                                    {severity: 'success', summary: 'Correo con la factura enviado al remitente correctamente.', detail: '', sticky: true}]);
+        
         //cambios de post
-        this.router.navigate([`main`]);
-
       },
       err => {
-        this.alertService.showToast({severity: 'error', summary: 'Ha ocurrido un error al generar la Factura y los Paquetes.', detail: ''})
+        this.messageService.add({severity: 'error', summary: 'Ha ocurrido un error al generar la Factura y los Paquetes.', detail: ''})
         console.log(err)
       }
-    ); 
+    );
   }
 }
