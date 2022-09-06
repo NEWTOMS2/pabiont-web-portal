@@ -86,8 +86,11 @@ export class CreateFormComponent implements OnInit {
         this.updateList.emit();
       },
       err => {
-        this.messageService.add({severity: 'error', summary: 'Ha ocurrido un error al crear o modificar el Cliente.', detail: ''})
-        console.log(err)
+        if((err.error).some(e => e.error_description === 'User already exist')){
+          this.messageService.add({severity: 'error', summary: 'el Cliente ya existe, intente un correo diferente.', detail: ''})
+        }
+        else
+        this.messageService.add({severity: 'error', summary: 'Ha ocurrido un error al crear o modificar el Usuario.', detail: ''})
       }
     );
   }

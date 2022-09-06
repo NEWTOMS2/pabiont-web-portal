@@ -71,7 +71,11 @@ export class CreateFormComponent implements OnInit {
         this.updateList.emit();
       },
       err => {
-        this.messageService.add({severity: 'error', summary: 'Ha ocurrido un error al generar el almancen o localidad.', detail: ''})
+        if((err.error).some(e => e.error_description === 'warehouse already exist')){
+          this.messageService.add({severity: 'error', summary: 'el Almacen o Localidad ya existe, intente un código diferente.', detail: ''})
+        }
+        else
+        this.messageService.add({severity: 'error', summary: 'Ha ocurrido un error al generar el Almancen o Localidad.', detail: ''})
         console.log(err)
       }
     );

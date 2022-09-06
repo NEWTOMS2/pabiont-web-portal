@@ -75,7 +75,6 @@ export class CreateFormComponent implements OnInit {
         this.code,
         ) 
     }else{
-      if(this.formGroup.controls['rol'].value.value == "Administrador"){
         this.password = this.generateP()
         this.userRow = new UserInformation(
           this.formGroup.controls['first_name'].value,
@@ -86,38 +85,36 @@ export class CreateFormComponent implements OnInit {
           this.idEmpresa,
           this.convertirTexto(this.password)
           )
-      }
-      else {
-      this.userRow = new UserInformation(
-        this.formGroup.controls['first_name'].value,
-        this.formGroup.controls['last_name'].value,
-        this.formGroup.controls['email'].value,       
-        this.formGroup.controls['rol'].value.value,
-        this.formGroup.controls['phone'].value,
-        this.idEmpresa
-        )
-      }
     }
     this.usersManagementService.saveUser(this.userRow, this.isUpdate).subscribe(
       response => {
         //cambios de post
         this.messageService.add({severity: 'success', summary: 'Usuario creado o modificado correctamente.', detail: ''});
-        
+        this.generateEmail(this.isUpdate)
         this.updateList.emit();
       },
       err => {
+        if((err.error).some(e => e.error_description === 'User already exist')){
+          this.messageService.add({severity: 'error', summary: 'el Usuario ya existe, intente un correo diferente.', detail: ''})
+        }
+        else
         this.messageService.add({severity: 'error', summary: 'Ha ocurrido un error al crear o modificar el Usuario.', detail: ''})
-        console.log(err)
+        
       }
     );
-    if(this.formGroup.controls['rol'].value.value == "Administrador" && this.isUpdate == false ){
-      this.sendEmailCredentialRow = new SendEmailCredential(
-        this.formGroup.controls['email'].value,
-        this.password,
-        "credential" 
-      )
-      this.sendEmail(this.sendEmailCredentialRow)
   }
+
+  generateEmail(send: boolean){
+    if(send == false){
+    this.sendEmailCredentialRow = new SendEmailCredential(
+      this.formGroup.controls['email'].value,
+      this.password,
+      "credential" 
+    )
+    this.sendEmail(this.sendEmailCredentialRow)
+  }
+  else null
+
   }
 
   async sendEmail(body: any){
