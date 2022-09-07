@@ -82,9 +82,10 @@ export class CreateFormComponent implements OnInit {
           this.formGroup.controls['email'].value,       
           this.formGroup.controls['rol'].value.value,
           this.formGroup.controls['phone'].value,
-          this.idEmpresa,
+          1,
           this.convertirTexto(this.password)
           )
+          console.log(this.userRow)
     }
     this.usersManagementService.saveUser(this.userRow, this.isUpdate).subscribe(
       response => {
@@ -104,20 +105,21 @@ export class CreateFormComponent implements OnInit {
     );
   }
 
-  generateEmail(send: boolean){
+  async generateEmail(send: boolean){
     if(send == false){
     this.sendEmailCredentialRow = new SendEmailCredential(
-      this.formGroup.controls['email'].value,
+      this.userRow.email,
       this.password,
       "credential" 
     )
-    this.sendEmail(this.sendEmailCredentialRow)
+   await this.sendEmail(this.sendEmailCredentialRow)
   }
   else null
 
   }
 
   async sendEmail(body: any){
+    console.log(body)
    await this.sendEmailManagementService.sendEmail(body).subscribe(
       response => {
         this.messageService.add({severity: 'success', summary: 'Email enviado con la contraseña al Usuario creado.', detail: ''});

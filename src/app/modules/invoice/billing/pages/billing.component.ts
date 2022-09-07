@@ -60,6 +60,7 @@ export class BillingComponent implements OnInit {
       await this.billingInformationComponent.setInvoiceInformation(this.description);   
       lastStep = false;
       this.isValid = true;
+      this.description = "";
       this.currentStep = 1;
      
     }
