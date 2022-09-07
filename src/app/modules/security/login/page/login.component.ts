@@ -54,7 +54,7 @@ export class LoginComponent implements OnInit {
   resetForm(){
     this.formGroup = this.formBuilder.group({
       password: ["", Validators.required],
-      email: ["", [Validators.required]],
+      email: ["", [Validators.required,Validators.pattern(/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/)]],
     });
 
     this.formGroup.statusChanges.subscribe(status => {
@@ -67,26 +67,27 @@ export class LoginComponent implements OnInit {
   }
 
  async gotoDashboard() {
-    await this.credentials(this.formGroup.controls['email'].value)
-    if ((this.validateRow) != null){
+    await this.credentials(this.formGroup.controls['email'].value) 
+    if ((this.validateRow.password) != null){
       if (this.formGroup.controls['password'].value == this.desconvertirTexto(this.validateRow.password))
         this.valid = true
       else{
         this.valid = false
+        this.messageService.add({severity:'error', summary: 'Access failed', detail: 'Contraseña incorrecta para el usuario proporcionado.'});
       }
     }
-    else
+    else{
       this.valid = false
+      this.messageService.add({severity:'error', summary: 'Access failed', detail: 'Correo incorrecto, Usuario no registrado.'});
+    }
 
     if(this.isValid && this.valid){
       this.usersService.saveData("user",{email:this.formGroup.controls['email'].value, isLogged: true})
       this.router.navigate([`main`]);
-      
     }
     else{
       this.passwordClass = "ng-invalid ng-dirty";
       this.emailClass = false;
-      this.messageService.add({severity:'error', summary: 'Access failed', detail: 'Please double check the username and password and try again.'});
     }
   }
 

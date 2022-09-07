@@ -1,4 +1,4 @@
-<p-toast></p-toast>
+
 <div class="row area m-0" >
     <ul class="circles">
             <li></li>
@@ -12,6 +12,7 @@
             <li></li>
             <li></li>
     </ul>
+    <p-toast></p-toast>
     <div class="loginContainer">
         <div class="col-12 p-0">
             <div class="row m-0">
@@ -55,7 +56,7 @@
                         </div>
                     </form>
                     <div class="col-12 p-0">
-                        <p-button label="Login" (click)="gotoDashboard()"></p-button>
+                        <p-button label="Login" [disabled]="!isValid" (click)="gotoDashboard()"></p-button>
                     </div>
                 </div>
                 
