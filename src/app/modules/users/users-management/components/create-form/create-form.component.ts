@@ -133,6 +133,7 @@ export class CreateFormComponent implements OnInit {
   enable(){
     this.formGroup.controls['email'].enable();
     this.formGroup.controls['rol'].enable();
+    this.isUpdate=false;
   }
 
   updateForm(rowData: any){
