@@ -85,7 +85,6 @@ export class CreateFormComponent implements OnInit {
           1,
           this.convertirTexto(this.password)
           )
-          console.log(this.userRow)
     }
     this.usersManagementService.saveUser(this.userRow, this.isUpdate).subscribe(
       response => {
@@ -119,7 +118,6 @@ export class CreateFormComponent implements OnInit {
   }
 
   async sendEmail(body: any){
-    console.log(body)
    await this.sendEmailManagementService.sendEmail(body).subscribe(
       response => {
         this.messageService.add({severity: 'success', summary: 'Email enviado con la contraseña al Usuario creado.', detail: ''});

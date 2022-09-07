@@ -13,7 +13,6 @@ export class SendEmailManagementService {
     private appConfig: AppConfigService) { }
 
   sendEmail(email: any): Observable<any> {
-  console.log(email)
       return this.httpService.post(`${this.appConfig.config.url.sendEmail}`, email)
             .pipe(map(response => response.data));
     }
