@@ -2,7 +2,7 @@
     "card": [
         {
             "title": "Facturación de Envíos",
-            "subtitle": "Ver Facturación de envíos",
+            "subtitle": "Creación de Facturas para Envíos ",
             "description": "Contiene la lista de las órdenes por despachar con información que describe su estatus actual y fecha.",
             "icon": "fas fa-newspaper me-2",
             "urlID": 0,
