@@ -16,6 +16,7 @@ export class QuotesComponent implements OnInit {
   quotesForm: FormGroup;
   packageInformation: any;
   isValid: boolean = false;
+  isTouched: boolean = false;
   sizeValid: boolean = true;
 
   @Input() isSelectable: boolean;
@@ -72,6 +73,7 @@ export class QuotesComponent implements OnInit {
       this.isValid = status == "VALID" ? true : false;  
       });
       this.sizeValid = true;
+      this.isTouched = false;
 
   }
 
@@ -87,6 +89,7 @@ export class QuotesComponent implements OnInit {
       });
       this.isValid = true;
       this.sizeValid = false;
+      this.isTouched = true;
   }
   setMedium(){
     this.quotesForm = this.formBuilder.group({
@@ -100,6 +103,7 @@ export class QuotesComponent implements OnInit {
       });
       this.isValid = true;
       this.sizeValid = false;
+      this.isTouched = true;
   }
   setLarge(){
     this.quotesForm = this.formBuilder.group({
@@ -113,6 +117,7 @@ export class QuotesComponent implements OnInit {
       });
       this.isValid = true;
       this.sizeValid = false;
+      this.isTouched = true;
   }
 
   setPackage(type: string){

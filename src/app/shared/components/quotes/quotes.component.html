@@ -108,15 +108,18 @@
  </div>
  <div class="col-lg-4 col-md-6 p-3">
     <div class="pabiont-card text-center" >
-        <div *ngIf="isSelectable">
-            <span class="mt-2 sub-title">Seleccione el tipo de envío</span> 
+        <div *ngIf="isSelectable && isTouched">
+            <span class="mt-2 sub-title">Seleccione el tipo de envío</span>
+        </div>
+        <div *ngIf="isSelectable && !isTouched">
+            <span class="mt-2 sub-title">Seleccione el tamaño de la caja para visualizar el monto</span>
         </div>
         <div *ngIf="!isSelectable">
             <span class="mt-2 sub-title">Costo total del envío</span> 
         </div>
         <!--ENVIO MARITIMO-->
-        <div class="row p-0 m-0 mt-4 rowBack" *ngIf="isSelectable" (click)="setPackage('Maritimo')" [ngClass]="{'isValid': !isValid}">
-            <div class="col-12 backgroundQuote pointer text-center" > 
+        <div class="row p-0 m-0 mt-4 rowBack" *ngIf="isSelectable && isTouched" [ngClass]="{'isValid': !isValid}">
+            <div class="col-12 backgroundQuote pointer text-center" (click)="setPackage('Maritimo')"> 
                 <p class="titleQuote">Envío Marítimo</p>
                 <span class="number" [innerHTML]="calculateRateMaritime().toFixed(2)"></span>
                 <span class="number"> USD</span>
@@ -131,8 +134,8 @@
         </div>
     
         <!--ENVIO AEREO-->
-        <div class="row p-0 m-0 mt-4 rowBack" *ngIf="isSelectable" (click)="setPackage('Aereo')"[ngClass]="{'isValid': !isValid}">
-            <div class="col-12 backgroundQuote pointer">
+        <div class="row p-0 m-0 mt-4 rowBack" *ngIf="isSelectable && isTouched" [ngClass]="{'isValid': !isValid}">
+            <div class="col-12 backgroundQuote pointer" (click)="setPackage('Aereo')">
                 <p class="titleQuote">Envío Aéreo</p>
                 <span class="number" [innerHTML]="calculateRateAerial().toFixed(2)"></span>
                 <span class="number"> USD</span>
