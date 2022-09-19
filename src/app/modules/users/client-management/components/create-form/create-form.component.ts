@@ -44,8 +44,8 @@ export class CreateFormComponent implements OnInit {
 
   resetForm(){
     this.formGroup = this.formBuilder.group({
-      first_name: ["", [Validators.required,Validators.pattern('[a-zA-Z ]*')]],
-      last_name: ["", [Validators.required,Validators.pattern('[a-zA-Z ]*')]],
+      first_name: ["", [Validators.required,Validators.pattern(/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u)]],
+      last_name: ["", [Validators.required,Validators.pattern(/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u)]],
       email: ["", [Validators.required,Validators.pattern(/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/)]],
       rol: ["",],
       phone: ["", Validators.required]
@@ -76,7 +76,7 @@ export class CreateFormComponent implements OnInit {
         this.formGroup.controls['email'].value,       
         "Cliente",
         this.formGroup.controls['phone'].value,
-        this.idEmpresa
+        1
         )
     }
     this.usersManagementService.saveUser(this.userRow, this.isUpdate).subscribe(
@@ -99,6 +99,7 @@ export class CreateFormComponent implements OnInit {
   enable(){
     this.formGroup.controls['email'].enable();
     this.formGroup.controls['rol'].enable();
+    this.isUpdate=false;
   }
 
   updateForm(rowData: any){

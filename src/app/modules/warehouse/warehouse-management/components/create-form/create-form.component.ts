@@ -14,7 +14,7 @@ export class CreateFormComponent implements OnInit {
   //Page Variables
   formGroup: FormGroup;//Dropdown data
   typeList: any[] = [
-    { label: "Almacen", value: "Almacen" },
+    { label: "Almacén", value: "Almacén" },
     { label: "Localidad", value: "Localidad" }
   ];
   warehouseRow: WarehouseInformation;
@@ -67,15 +67,15 @@ export class CreateFormComponent implements OnInit {
     this.warehouseManagementService.saveWarehouse(this.warehouseRow, this.isUpdate).subscribe(
       response => {
         //cambios de post
-        this.messageService.add({severity: 'success', summary: 'almancen o localidad creado correctamente.', detail: ''})
+        this.messageService.add({severity: 'success', summary: 'Almacén o Localidad creado correctamente.', detail: ''})
         this.updateList.emit();
       },
       err => {
         if((err.error).some(e => e.error_description === 'warehouse already exist')){
-          this.messageService.add({severity: 'error', summary: 'el Almacen o Localidad ya existe, intente un código diferente.', detail: ''})
+          this.messageService.add({severity: 'error', summary: 'el Almacén o Localidad ya existe, intente un código diferente.', detail: ''})
         }
         else
-        this.messageService.add({severity: 'error', summary: 'Ha ocurrido un error al generar el Almancen o Localidad.', detail: ''})
+        this.messageService.add({severity: 'error', summary: 'Ha ocurrido un error al generar el Almacén o Localidad.', detail: ''})
         console.log(err)
       }
     );

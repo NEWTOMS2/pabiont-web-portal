@@ -1,4 +1,6 @@
 .uppercase{
     text-transform: uppercase;
   }
-
+::placeholder{
+  font-size: 16px;
+}

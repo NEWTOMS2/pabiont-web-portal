@@ -1,7 +1,7 @@
 <form [formGroup]="formGroup" >
     <div class="row p-formgrid p-grid mt-3">
         <div class="p-field col-6">
-            <label for="Code">Codigo</label>
+            <label for="Code">Código</label>
             <input  type="text" 
                     id="Code" 
                     [ngClass]="{'ng-dirty ng-invalid': formGroup.controls['code'].touched && formGroup.controls['code'].errors?.required}"

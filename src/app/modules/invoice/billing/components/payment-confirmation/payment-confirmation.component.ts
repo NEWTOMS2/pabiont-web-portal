@@ -1,12 +1,8 @@
-import { DatePipe } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AppConfigService } from 'src/app/core/services/app-config/app-config.service';
-import { TableManagmentService } from 'src/app/core/services/consult/table-managment.service';
+import { FormGroup } from '@angular/forms';
 import { InvoiceManagementService } from 'src/app/core/services/invoice/invoice-management.service';
-import { UsersManagementService } from 'src/app/core/services/users/users-management.service';
-import { WarehouseManagementService } from 'src/app/core/services/warehouse/warehouse-management.service';
-import { billing } from 'src/app/shared/models/request/billing-request';
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
 
 @Component({
   selector: 'app-payment-confirmation',
@@ -20,78 +16,63 @@ export class PaymentConfirmationComponent implements OnInit {
   billingsForm: FormGroup;
 
   //dropdown variables
-  clientList: any[];
-  userList: any[];
-  warehouseList: any[];
-  selectedShipper: any;
-  selectedConsignee: any;
-  selectedBillTo: any;
-  selectedAgent: any;
-  selectedBranch: any;
-  selectedOrigin: any;
-  selectedDestination: any;
-  selectedLocation: any;
+  invoice: any[];
+  package: any[];
+  invoicedata: string;
+  isDownloaded: boolean = false;
+  DATA: any;
   
-  @Input() paymentInformation: billing;
+  @Input() invoiceInformation: string;
 
   constructor(
-    private appConfig: AppConfigService,
-    private formBuilder: FormBuilder,
-    private usersManagementService: UsersManagementService,
-    private warehouseManagementService: WarehouseManagementService,
-    private datepipe: DatePipe
-    ) {   
+    private invoiceManagementService: InvoiceManagementService
+    ) {  
       
-   console.log("test:", this.paymentInformation)
-    this.page = this.appConfig.invoiceCreation;
-    this.page = this.page.default;
-    this.resetForm();
-    this.getClientList();
-    this.getUserList();
-    this.getWarehouseList();
      }
 
   ngOnInit(): void {
+    this.setData(this.invoiceInformation);
   }
 
-  resetForm() {
-    this.billingsForm = this.formBuilder.group({
-      date: ["",[Validators.required]],
-      invoice: ["",[Validators.required]],
-      shipper: ["",[Validators.required]],
-      consignee: ["",[Validators.required]],
-      agent: ["",[Validators.required]],
-      bill_to: ["",[Validators.required]],
-      tracking: ["",[Validators.required]],
-      branch: ["",[Validators.required]],
-      origin_destination: ["",[Validators.required]],
-      final_destination: ["",[Validators.required]],
-      location: ["",[Validators.required]],
+  async getData(){
+    this.invoice = await this.invoiceManagementService.getSingleInvoice(this.invoicedata).
+      toPromise().then(response => {  
+        return  response
+      });
+    this.package = await this.invoiceManagementService.getPackages(this.invoicedata).
+      toPromise().then(response => {  
+        return  response
+      });
+      this.isDownloaded = true
+    }
+
+setData(invoiceCode: string){
+  this.invoicedata = invoiceCode
+}
+
+  downloadPDF() {
+    // Extraemos el
+    this.DATA = document.getElementById('page1-div');
+    const doc = new jsPDF('p', 'pt', 'a4');
+    const options = {
+      background: 'white',
+      scale: 3
+    };
+    html2canvas(this.DATA, options).then((canvas) => {
+
+      const img = canvas.toDataURL('image/PNG');
+
+      // Add image Canvas to PDF
+      const bufferX = 15;
+      const bufferY = 15;
+      const imgProps = (doc as any).getImageProperties(img);
+      const pdfWidth = doc.internal.pageSize.getWidth() - 2 * bufferX;
+      const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+      doc.addImage(img, 'PNG', bufferX, bufferY, pdfWidth, pdfHeight, undefined, 'FAST');
+      return doc;
+    }).then((docResult) => {
+      docResult.save(`${this.invoicedata}-${new Date().toDateString()}.pdf`);
     });
-   this.billingsForm.controls['invoice'].disable();
-  }
-
-  async getClientList(){
-    this.clientList = await this.usersManagementService.getUserClient().
-            toPromise().then(response => { 
-              return response
-            });
-            
-  }
-
-  async getUserList(){
-    this.userList = await this.usersManagementService.getUserAdmin().
-            toPromise().then(response => { 
-              return response
-            });
-  }
-
-  async getWarehouseList(){
-    this.warehouseList = await this.warehouseManagementService.getWarehouses().
-            toPromise().then(response => { 
-              return response
-            });
-    this.warehouseList = this.warehouseList.filter(obj => obj.type == "Localidad");
   }
 
 

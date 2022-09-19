@@ -1,9 +1,9 @@
 {
     "tableConfiguration": {
         "headerList": [
-            { "field": "size", "header": "Tamaño" },
-            { "field": "weight", "header": "Peso" },
-            { "field": "volume", "header": "Volumen" }, 
+            { "field": "size", "header": "Tamaño (Pulgadas)" },
+            { "field": "weight", "header": "Peso (Libras)" },
+            { "field": "volume", "header": "Volumen (m3)" }, 
             { "field": "description", "header": "Descripción" },
             { "field": "type", "header": "Tipo de Envio" },
             { "field": "price", "header": "Costo (USD)" }

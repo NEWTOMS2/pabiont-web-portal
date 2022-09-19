@@ -23,20 +23,20 @@ export class ChatbotComponent implements OnInit {
 
   messages: any[] = [
     {
-      text: '¡Hola! Soy el asistente virtual de Pabiont. \n¿Cómo te puedo ayudar?',
+      text: '¡Hola! Soy el Asistente Virtual de Pabiont. \n¿Cómo le puedo ayudar?',
       date: new Date(),
       reply: false,
       user: {
-        name: 'Pabiont Virtual assistent',
+        name: 'Pabiont Virtual Assistent',
         avatar: 'assets/img/avatar-bot-1.jpg',
       },
     },
     {
-      text: '1. Artículos prohibídos \n2. Cotizar mi envío \n3. Localizar mi paquete \n4. Información de contacto',
+      text: '1. Artículos prohibídos \n2. Cotizar mi Envío \n3. Localizar mi Paquete \n4. Información de Contacto',
       date: null,
       reply: false,
       user: {
-        name: 'Pabiont Virtual assistent',
+        name: 'Pabiont Virtual Assistent',
         avatar: 'assets/img/avatar-bot-1.jpg',
       },
     },
@@ -63,7 +63,7 @@ export class ChatbotComponent implements OnInit {
             type: "text",
             reply: false,
             user: {
-              name: 'Pabiont Virtual assistent',
+              name: 'Pabiont Virtual Assistent',
               avatar: 'assets/img/avatar-bot-1.jpg',
             },
           });  

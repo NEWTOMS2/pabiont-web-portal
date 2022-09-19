@@ -23,16 +23,19 @@ export class BillingInformationComponent implements OnInit {
   billingsForm: FormGroup;
   today: Date = new Date();
   billingInformation: any;
+  invoice: string;
 
   //dropdown variables
   clientList: any[];
   userList: any[];
   packageRequest: any[] = [];
   warehouseList: any[];
+  paymentType: any[]= [{"code":"Cash"},{"code":"Wire Transfer"}]
   selectedShipper: any;
   selectedConsignee: any;
   selectedBillTo: any;
   selectedAgent: any;
+  selectedPayment: any;
   selectedBranch: any;
   selectedOrigin: any;
   selectedDestination: any;
@@ -54,6 +57,7 @@ export class BillingInformationComponent implements OnInit {
     ) {   
     this.page = this.appConfig.invoiceCreation;
     this.page = this.page.default;
+    this.paymentType
     this.resetForm();
     this.getClientList();
     this.getUserList();
@@ -77,6 +81,7 @@ export class BillingInformationComponent implements OnInit {
       origin_destination: ["",[Validators.required]],
       final_destination: ["",[Validators.required]],
       location: ["",[Validators.required]],
+      paymentType: ["",[Validators.required]]
     });
    this.billingsForm.controls['invoice'].disable();
    this.billingsForm.statusChanges.subscribe(status => {
@@ -121,13 +126,16 @@ export class BillingInformationComponent implements OnInit {
     this.warehouseList = this.warehouseList.filter(obj => obj.type == "Localidad");
   }
 
- async setInvoiceInformation(description: string){
+  setInvoice(){
+    return this.billingsForm.controls['invoice'].value
+  }
 
+ async setInvoiceInformation(description: string){
     this.packageList.forEach(packages => {
       this.packageRequest.push(packages.package_information)
     });
     this.billingInformation = new billing(description, this.billingsForm.controls['invoice'].value, this.datepipe.transform(this.today, 'yyyy-MM-dd'), this.datepipe.transform(this.today, 'yyyy-MM-dd'), this.totalPayment
-                              , this.totalPayment, this.selectedShipper.code, this.selectedConsignee.code, this.selectedAgent.code, this.selectedBillTo.code, 1, 11,this.packageRequest,"Cash",this.billingsForm.controls['origin_destination'].value.id,
+                              , this.totalPayment, this.selectedShipper.code, this.selectedConsignee.code, this.selectedAgent.code, this.selectedBillTo.code, 1, 11,this.packageRequest,this.selectedPayment.code,this.billingsForm.controls['origin_destination'].value.id,
                                 this.billingsForm.controls['final_destination'].value.id, this.billingsForm.controls['final_destination'].value.description);
   await this.invoiceManagementService.createInvoice(this.billingInformation).subscribe(
       response => {
@@ -142,4 +150,5 @@ export class BillingInformationComponent implements OnInit {
       }
     );
   }
+  
 }

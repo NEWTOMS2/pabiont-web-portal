@@ -31,7 +31,7 @@ export class PackageManagementComponent implements OnInit {
     { label: "En Aduana en Venezuela", value: "En Aduana en Venezuela" },
     { label: "En Ruta al Almacén en Venezuela", value: "En Ruta al Almacén en Venezuela" },
     { label: "Entregado a Tienda en Venezuela", value: "Entregado a Tienda en Venezuela" },
-    { label: "Entregado", value: "Entregado" }
+    { label: "Entregado a Cliente", value: "Entregado a Cliente" }
   ];
 
   constructor(
@@ -101,7 +101,7 @@ export class PackageManagementComponent implements OnInit {
       case "Entregado a Tienda en Venezuela":{
         return 9
       }
-      case "Entregado":{
+      case "Entregado a Cliente":{
         return 10
       }
       default: {

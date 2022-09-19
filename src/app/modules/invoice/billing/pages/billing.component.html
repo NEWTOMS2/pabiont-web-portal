@@ -17,19 +17,21 @@
         </app-billing-information>
     </div>
     <div *ngIf="currentStep === 3">
-        <app-payment-confirmation [paymentInformation]="billingInformation"> 
+        <app-payment-confirmation [invoiceInformation]="invoiceInformation"
+        #child> 
         </app-payment-confirmation>
     </div>
 
     <!--STEPPER BUTTONS-->
     <div class="row m-0 justify-content-between">
-        <div class="col d-flex justify-content-start px-5 mb-3">
+        <div class="col d-flex justify-content-start px-5 mb-3" *ngIf="currentStep === 1">
             <button pButton pRipple  
                     class="p-button-outlined"
-                    label="Volver">
+                    label="Volver"
+                    (click)="redirect()">
             </button>
         </div>
-        <div class="col d-flex justify-content-end px-5 mb-3">
+        <div class="col d-flex justify-content-end px-5 mb-3" *ngIf="currentStep != 3" >
             <button pButton pRipple  
                     class="p-button-outlined"
                     label="Confirmar"
@@ -40,7 +42,7 @@
     </div>
 </div>
 
-<p-dialog header="Descripcion de la Factura" [(visible)]="displayDescription" [style]="{width: '50vw'}">
+<p-dialog header="Descripción de la Factura" [(visible)]="displayDescription" [style]="{width: '50vw'}">
     <div class="row justify-content-center">
         <textarea rows="5" cols="30" pInputTextarea [(ngModel)]="description" (ngModelChange)="modalIsValid = false" ></textarea>
     </div>

@@ -7,6 +7,7 @@ import { BillingInformationComponent } from '../components/billing-information/b
 import { PaymentConfirmationComponent } from '../components/payment-confirmation/payment-confirmation.component';
 import { QuotePackageComponent } from '../components/quote-package/quote-package.component';
 
+
 @Component({
   selector: 'app-billing',
   templateUrl: './billing.component.html',
@@ -14,11 +15,12 @@ import { QuotePackageComponent } from '../components/quote-package/quote-package
 })
 export class BillingComponent implements OnInit {
 
-  currentStep: number = 1;
+  currentStep: number = 3;
   packageList: any;
   packageRequest: any;
   totalPayment: number;
   billingInformation: billing;
+  invoiceInformation: string;
   displayDescription: boolean = false;
   description: string="";
   isValid: boolean = true;
@@ -26,6 +28,7 @@ export class BillingComponent implements OnInit {
     //ViewChild Data
   @ViewChild(BillingInformationComponent) billingInformationComponent:BillingInformationComponent;
   @ViewChild(QuotePackageComponent) child: QuotePackageComponent;
+  @ViewChild(PaymentConfirmationComponent) childq: PaymentConfirmationComponent;
 
   constructor(
     private tableManagmentService: TableManagmentService,
@@ -50,6 +53,7 @@ export class BillingComponent implements OnInit {
           });
           this.isValid = true;
           this.currentStep = 2;
+          
           break;
         case 2:
           this.modalIsValid = true;
@@ -57,17 +61,14 @@ export class BillingComponent implements OnInit {
           break;
       }
     }else{ 
+      this.invoiceInformation = await this.billingInformationComponent.setInvoice()
       await this.billingInformationComponent.setInvoiceInformation(this.description);   
       lastStep = false;
       this.isValid = true;
       this.description = "";
-      this.currentStep = 1;
-     
+      this.currentStep = 3;
     }
     
-  }
-  sleep() {
-    this.redirect
   }
   redirect(){
     this.router.navigate([`main`])
@@ -93,6 +94,8 @@ export class BillingComponent implements OnInit {
       }
   });
 }
+
+
   
 
 }

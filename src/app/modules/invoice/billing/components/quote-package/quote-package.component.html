@@ -1,5 +1,5 @@
 <div class="row m-0">
-    <span class="title">Cotización de Paquetes</span>
+    <span class="title">Información de Paquetes</span>
     <app-quotes  #child
                  [isSelectable]="true"
                  (isClicked)="packageInformation = $event; displayDescription=true ">
@@ -15,7 +15,7 @@
     </div>
 </div>
 
-<p-dialog header="Descripcion del paquete" [(visible)]="displayDescription" [style]="{width: '50vw'}">
+<p-dialog header="Descripción del paquete" [(visible)]="displayDescription" [style]="{width: '50vw'}">
     <div class="row justify-content-center">
         <textarea rows="5" cols="30" pInputTextarea [(ngModel)]="description" (ngModelChange)="modalIsValid = false" ></textarea>
     </div>

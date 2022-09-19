@@ -28,7 +28,7 @@
 </div>
 
 <div *ngIf="currentStep == 2">
-    <p-dialog [(visible)]="visibleDialog" (onHide)="hideDialog2()" [style]="{width: '950px'}" header="Modificar Estatus de Paquetes" [modal]="true" styleClass="p-fluid" >
+    <p-dialog [(visible)]="visibleDialog" (onHide)="hideDialog2()" [style]="{width: '1000px', margin: '20px'}" header="Modificar Estatus de Paquetes" [modal]="true" styleClass="p-fluid" >
     
         <app-package-management [packageList]="packageList"
                                 [invoice]="invoiceCode"

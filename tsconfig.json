@@ -22,6 +22,7 @@
     "esModuleInterop": true,
     "noImplicitAny": false,
     "module": "es2020",
+    "allowSyntheticDefaultImports": true,
     "lib": [
       "es2020",
       "dom"

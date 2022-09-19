@@ -21,7 +21,7 @@ export class InvoiceManagementService {
   }
 
   getInvoices(): Observable<any> {
-    return this.httpService.get(`${this.appConfig.config.url.getInvoice}`)
+    return this.httpService.get(`${this.appConfig.config.url.getInvoiceAll}`)
       .pipe(map(response => response.data));
   }
 
@@ -62,6 +62,11 @@ export class InvoiceManagementService {
       return this.httpService.get(`${this.appConfig.config.url.getPrefixCompany}`)
             .pipe(map(response => response.data));
     
+  }
+
+  getSingleInvoice(invoice: any): Observable<any>{
+    return this.httpService.get(`${this.appConfig.config.url.getSingleInvoice}${invoice}`)
+          .pipe(map(response => response.data));
   }
 
 }

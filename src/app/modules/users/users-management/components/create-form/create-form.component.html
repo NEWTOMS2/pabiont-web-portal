@@ -4,7 +4,6 @@
             <label for="First_name">Nombre</label>
             <input  type="text" 
                     id="First_name"
-                    pattern="[a-zA-Z ]*" 
                     [ngClass]="{'ng-dirty ng-invalid': formGroup.controls['first_name'].touched && formGroup.controls['first_name'].errors?.required}"
                     pInputText 
                     formControlName="first_name" 
@@ -15,7 +14,6 @@
             <label for="Last_name">Apellido</label>
             <input  type="text" 
                     id="Last_name" 
-                    pattern="[a-zA-Z ]*" 
                     [ngClass]="{'ng-dirty ng-invalid': formGroup.controls['last_name'].touched && formGroup.controls['last_name'].errors?.required}"
                     pInputText 
                     formControlName="last_name" 
