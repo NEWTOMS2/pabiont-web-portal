@@ -39,10 +39,6 @@ export class PaymentConfirmationComponent implements OnInit {
       toPromise().then(response => {  
         return  response
       });
-    this.package = await this.invoiceManagementService.getPackages(this.invoicedata).
-      toPromise().then(response => {  
-        return  response
-      });
       this.isDownloaded = true
     }
 

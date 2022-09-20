@@ -15,7 +15,7 @@ import { QuotePackageComponent } from '../components/quote-package/quote-package
 })
 export class BillingComponent implements OnInit {
 
-  currentStep: number = 3;
+  currentStep: number = 1;
   packageList: any;
   packageRequest: any;
   totalPayment: number;
