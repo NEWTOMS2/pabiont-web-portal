@@ -119,7 +119,7 @@
         </div>
         <!--ENVIO MARITIMO-->
         <div class="row p-0 m-0 mt-4 rowBack" *ngIf="isSelectable && isTouched" [ngClass]="{'isValid': !isValid}">
-            <div class="col-12 backgroundQuote pointer text-center" (click)="setPackage('Maritimo')"> 
+            <div class="col-12 backgroundQuote pointer text-center" (click)="setPackage('Marítimo')"> 
                 <p class="titleQuote">Envío Marítimo</p>
                 <span class="number" [innerHTML]="calculateRateMaritime().toFixed(2)"></span>
                 <span class="number"> USD</span>
@@ -135,7 +135,7 @@
     
         <!--ENVIO AEREO-->
         <div class="row p-0 m-0 mt-4 rowBack" *ngIf="isSelectable && isTouched" [ngClass]="{'isValid': !isValid}">
-            <div class="col-12 backgroundQuote pointer" (click)="setPackage('Aereo')">
+            <div class="col-12 backgroundQuote pointer" (click)="setPackage('Aéreo')">
                 <p class="titleQuote">Envío Aéreo</p>
                 <span class="number" [innerHTML]="calculateRateAerial().toFixed(2)"></span>
                 <span class="number"> USD</span>
