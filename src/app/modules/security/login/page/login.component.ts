@@ -82,7 +82,7 @@ export class LoginComponent implements OnInit {
     }
 
     if(this.isValid && this.valid){
-      this.usersService.saveData("user",{email:this.formGroup.controls['email'].value, isLogged: true})
+      this.usersService.saveData("user",{email:this.formGroup.controls['email'].value, isLogged: true, rol: this.validateRow.rol })
       this.router.navigate([`main`]);
     }
     else{

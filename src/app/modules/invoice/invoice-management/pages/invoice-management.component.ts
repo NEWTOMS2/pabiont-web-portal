@@ -5,6 +5,7 @@ import { TableManagmentService } from 'src/app/core/services/consult/table-manag
 import { InvoiceManagementService } from 'src/app/core/services/invoice/invoice-management.service';
 import { CreateFormComponent } from '../components/create-form/create-form.component';
 import { PackageManagementComponent } from '../components/package-management/package-management.component';
+import { PaymentConfirmationComponent } from '../components/payment-confirmation/payment-confirmation.component';
 
 @Component({
   selector: 'app-invoice-management',
@@ -22,9 +23,11 @@ export class InvoiceManagementComponent implements OnInit {
   currentStep: number = -1;
   modalTitle: string ="";
   packageList: any[];
+  invoiceInformation: any;
 
    //ViewChild Data
    @ViewChild(CreateFormComponent) child: CreateFormComponent;
+   @ViewChild(PaymentConfirmationComponent) childq: PaymentConfirmationComponent;
    
   constructor(
     private appConfig: AppConfigService,
@@ -71,6 +74,12 @@ export class InvoiceManagementComponent implements OnInit {
       case 2:{
         this.invoiceCode = data.rowData.invoice_number
         this.getPackagesList(data.rowData.invoice_number)
+        break;
+      }
+      case 3:{
+        this.invoiceInformation = data.rowData.invoice_number
+        this.childq.setData(this.invoiceInformation)
+        console.log(this.invoiceInformation)
         break;
       }
     }

@@ -11,7 +11,7 @@
     </div>
 </div>
 
-<div *ngIf="currentStep != 2">
+<div *ngIf="currentStep != 2 && currentStep != 3 ">
     <p-dialog [(visible)]="visibleDialog" (onHide)="child.resetForm()" [style]="{width: '450px'}" header="Modificar Estatus de Factura" [modal]="true" styleClass="p-fluid" >
     
         <app-create-form    (buttonEnabled)="buttonEnabled($event)"
@@ -27,7 +27,7 @@
     </p-dialog>
 </div>
 
-<div *ngIf="currentStep == 2">
+<div *ngIf="currentStep != 1 && currentStep != 3 ">
     <p-dialog [(visible)]="visibleDialog" (onHide)="hideDialog2()" [style]="{width: '1000px', margin: '20px'}" header="Modificar Estatus de Paquetes" [modal]="true" styleClass="p-fluid" >
     
         <app-package-management [packageList]="packageList"
@@ -39,6 +39,16 @@
         <ng-template class="m-0" pTemplate="footer">
             <button pButton pRipple label="Continuar" icon="pi pi-check" class="p-button-text" (click)="hideDialog()"></button>
         </ng-template>
+    </p-dialog>
+</div>
+
+<div *ngIf="currentStep != 2 && currentStep != 1 ">
+    <p-dialog [(visible)]="visibleDialog" (onHide)="hideDialog()" [style]="{width: '100%', margin: '20px'}" header="Imprimir Factura" [modal]="true" styleClass="p-fluid" >
+        
+        <app-payment-confirmation [invoiceInformation]="invoiceInformation"
+        #child> 
+        </app-payment-confirmation>
+
     </p-dialog>
 </div>
 

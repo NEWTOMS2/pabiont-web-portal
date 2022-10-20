@@ -46,7 +46,7 @@
             <tr>
                 <td *ngFor="let col of columns">
                     <span class="ui-column-title" *ngIf="innerWidth < 960">{{col.header}}: </span> 
-                    <span class="product-badge status-INSTOCK">
+                    <span class="product-badge status-INSTOCK" style="word-break: break-all; margin: 5px;">
                         {{rowData[col.field]}}
                     </span>
                 </td>

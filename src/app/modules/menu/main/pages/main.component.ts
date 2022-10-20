@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppConfigService } from 'src/app/core/services/app-config/app-config.service';
+import { UsersService } from 'src/app/core/services/security/users.service';
 
 @Component({
   selector: 'app-main',
@@ -10,13 +11,24 @@ import { AppConfigService } from 'src/app/core/services/app-config/app-config.se
 export class MainComponent implements OnInit {
 
   page: any;
+  menuType: any;
+  getUser: any
 
   constructor(
     private appConfig: AppConfigService,
-    private router:Router
+    private router:Router,
+    private usersService: UsersService
     ) {
-    this.page = this.appConfig.mainView;
-    this.page = this.page.card
+    this.page = this.appConfig.mainView;  
+   this.getUser = this.usersService.getData('user');
+    switch(this.getUser.rol){
+      case "Administrador":
+        this.menuType = this.page.admin
+        break;
+      case "Agente":
+        this.menuType = this.page.agent
+        break;
+    }
    }
 
   ngOnInit(): void {
@@ -45,6 +57,9 @@ export class MainComponent implements OnInit {
         break;
       case 6: 
         this.router.navigate([`/users-management`]);
+        break;
+      case 7: 
+        this.router.navigate([`/rate-management`]);
         break;
     }
     

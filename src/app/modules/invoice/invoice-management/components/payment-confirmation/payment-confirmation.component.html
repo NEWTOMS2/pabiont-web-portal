@@ -1,0 +1,56 @@
+<div class="row ">
+    <div class="col-12 showInvoice">
+        <div id="page1-div" style="position:relative;width:918px;height:1188px;" *ngFor="let data of invoice">
+            <img style="position:absolute;top:22px;left:60px;white-space:nowrap;" src="assets/img/ri_1.png" alt="background image"/> 
+            <p style="position:absolute;top:22px;left:706px;font-size:35px;white-space:nowrap" class="ft10">FACTURA</p>
+            <p style="position:absolute;top:90px;left:696px;font-weight:bold;font-size:20px;color:red;white-space:nowrap" class="ft11"># {{invoiceInformation}}</p>
+            <p style="position:absolute;top:129px;left:73px;white-space:nowrap" class="ft12"><b>Newtoms Cargo Radar</b></p>
+            <p style="position:absolute;top:173px;left:73px;white-space:nowrap" class="ft13">Serviced Billed to :</p>
+            <p style="position:absolute;top:197px;left:73px;white-space:nowrap" class="ft12"><b>{{data.bill_to}}</b></p>
+            <p style="position:absolute;top:217px;left:73px;white-space:nowrap" class="ft12"><b>tel: {{data.phone_bill_to}}</b></p>
+            <p style="position:absolute;top:273px;left:73px;white-space:nowrap" class="ft13">Shipper:</p>
+            <p style="position:absolute;top:297px;left:73px;white-space:nowrap" class="ft12"><b>{{data.shipper}}</b></p>
+            <p style="position:absolute;top:173px;left:295px;white-space:nowrap" class="ft13">Consignee:</p>
+            <p style="position:absolute;top:197px;left:295px;white-space:nowrap" class="ft12"><b>{{data.consignee}}</b></p>
+            <p style="position:absolute;top:273px;left:295px;white-space:nowrap" class="ft13">Instruction:</p>
+            <p style="position:absolute;top:297px;left:295px;white-space:nowrap" class="ft12"><b>{{data.instruction}}</b></p>
+            <p style="position:absolute;top:169px;left:762px;white-space:nowrap" class="ft14">{{data.date}}</p>
+            <p style="position:absolute;top:203px;left:762px;white-space:nowrap" class="ft14">{{data.payment_type}}</p>
+            <p style="position:absolute;top:236px;left:762px;white-space:nowrap" class="ft14">{{data.due_date}}</p>
+            <p style="position:absolute;top:270px;left:749px;white-space:nowrap" class="ft14">{{invoiceInformation}}</p>
+            <p style="position:absolute;top:305px;left:776px;white-space:nowrap" class="ft15"><b>USD 0.00</b></p>
+            <p style="position:absolute;top:169px;left:654px;white-space:nowrap" class="ft13">Date:</p>
+            <p style="position:absolute;top:203px;left:588px;white-space:nowrap" class="ft13">Payment Type:</p>
+            <p style="position:absolute;top:236px;left:621px;white-space:nowrap" class="ft13">Due Date:</p>
+            <p style="position:absolute;top:270px;left:570px;white-space:nowrap" class="ft13">Tracking Number:</p>
+            <p style="position:absolute;top:305px;left:581px;white-space:nowrap" class="ft15"><b>Balance Due:</b></p>
+            <p style="position:absolute;top:395px;left:67px;font-weight:bold;white-space:nowrap" class="ft16">Items</p>
+            <p style="position:absolute;top:395px;left:551px;font-weight:bold;white-space:nowrap" class="ft16">Pieces</p>
+            <p style="position:absolute;top:395px;left:816px;font-weight:bold;white-space:nowrap" class="ft16">Price</p>
+            <p style="position:absolute;top:434px;left:67px;white-space:nowrap" class="ft12"><b>Paquetes enviados</b></p>
+            <p style="position:absolute;top:434px;left:565px;white-space:nowrap" class="ft14">{{data.package_count}}</p>
+            <p style="position:absolute;top:434px;left:786px;white-space:nowrap" class="ft14">USD {{data.total}}</p>
+            <p style="position:absolute;top:533px;left:786px;white-space:nowrap" class="ft14">USD {{data.total}}</p>
+            <p style="position:absolute;top:567px;left:786px;white-space:nowrap" class="ft14">USD 0.00</p>
+            <p style="position:absolute;top:600px;left:786px;white-space:nowrap" class="ft14">USD {{data.total}}</p>
+            <p style="position:absolute;top:634px;left:786px;white-space:nowrap" class="ft14">USD {{data.total}}</p>
+            <p style="position:absolute;top:533px;left:629px;white-space:nowrap" class="ft13">Subtotal:</p>
+            <p style="position:absolute;top:567px;left:624px;white-space:nowrap" class="ft13">Tax (0%):</p>
+            <p style="position:absolute;top:600px;left:651px;white-space:nowrap" class="ft13">Total:</p>
+            <p style="position:absolute;top:634px;left:600px;white-space:nowrap" class="ft13">Amount paid:</p>
+            <p style="position:absolute;top:683px;left:73px;white-space:nowrap" class="ft13"><b>Location Info:</b></p>
+            <p style="position:absolute;top:708px;left:73px;white-space:nowrap" class="ft17">Origin: {{data.origin}}<br/>Destination: {{data.destination}}</p>
+            <p style="position:absolute;top:763px;left:73px;white-space:nowrap" class="ft13"><b>Notes:</b></p>
+            <p style="position:absolute;top:783px;left:73px;white-space:wrap" class="ft13">{{data.description}}</p>
+            <p style="position:absolute;top:826px;left:73px;white-space:nowrap" class="ft13"><b>Términos:</b></p>
+            <p style="position:absolute;top:852px;left:73px;white-space:nowrap" class="ft14">Terminos y condiciones varios</p>
+        </div>
+    </div>
+</div>
+<div class="col d-flex justify-content-center px-5 mb-3" *ngIf="isDownloaded == true">
+    <button pButton pRipple  
+            class="p-button-info"
+            label="Descargar PDF"
+            (click)="downloadPDF()">
+    </button>
+</div>

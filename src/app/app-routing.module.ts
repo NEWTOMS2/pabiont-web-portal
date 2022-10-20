@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CheckLoginGuard } from './core/guard/check-login.guard';
+import { CheckLoginGuard } from './core/guard/login/check-login.guard';
+import { CheckRoleGuard } from './core/guard/role/check-role.guard';
 
 const routes: Routes = [
   
@@ -24,37 +25,64 @@ const routes: Routes = [
     path: "warehouse-management",
     loadChildren: () => import('./modules/warehouse/warehouse-management/warehouse-management.module')
       .then(m => m.WarehouseManagementModule),
-      canActivate:[CheckLoginGuard]
+      canActivate:[CheckLoginGuard, CheckRoleGuard],
+      data: {
+        roles: ['Administrador']
+      }
   },
   {
     path: "users-management",
     loadChildren: () => import('./modules/users/users-management/users-management.module')
       .then(m => m.UsersManagementModule),
-      canActivate:[CheckLoginGuard]
+      canActivate:[CheckLoginGuard, CheckRoleGuard],
+      data: {
+        roles: ['Administrador']
+      }
   },
   {
     path: "client-management",
     loadChildren: () => import('./modules/users/client-management/client-management.module')
       .then(m => m.ClientManagementModule),
-      canActivate:[CheckLoginGuard]
+      canActivate:[CheckLoginGuard, CheckRoleGuard],
+      data: {
+        roles: ['Administrador','Agente']
+      }
   },
   {
     path: "invoice-management",
     loadChildren: () => import('./modules/invoice/invoice-management/invoice-management.module')
       .then(m => m.InvoiceManagementModule),
-      canActivate:[CheckLoginGuard]
+      canActivate:[CheckLoginGuard, CheckRoleGuard],
+      data: {
+        roles: ['Administrador','Agente']
+      }
   },
   {
     path: "quotes-management",
     loadChildren: () => import('./modules/quotes-management/quotes-management.module')
       .then(m => m.QuotesManagementModule),
-      canActivate:[CheckLoginGuard]
+      canActivate:[CheckLoginGuard, CheckRoleGuard],
+      data: {
+        roles: ['Administrador','Agente']
+      }
   },
   {
     path: "invoice-creation",
     loadChildren: () => import('./modules/invoice/billing/billing.module')
       .then(m => m.BillingModule),
-      canActivate:[CheckLoginGuard]
+      canActivate:[CheckLoginGuard, CheckRoleGuard],
+      data: {
+        roles: ['Administrador','Agente']
+      }
+  },
+  {
+    path: "rate-management",
+    loadChildren: () => import('./modules/general/rate-management/rate-management.module')
+      .then(m => m.RateManagementModule),
+      canActivate:[CheckLoginGuard, CheckRoleGuard],
+      data: {
+        roles: ['Administrador']
+      }
   },
   { path: '**', redirectTo: `/` },
 ];

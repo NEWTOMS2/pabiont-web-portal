@@ -1,0 +1,37 @@
+<form [formGroup]="formGroup" >
+    <div class="row p-formgrid p-grid mt-3">
+        <div class="p-field col-6">
+            <label for="Aerial">Tarifa Aérea</label>
+            <input  type="text" 
+                    id="aerial" 
+                    [ngClass]="{'ng-dirty ng-invalid': formGroup.controls['aerial'].touched && formGroup.controls['aerial'].errors?.required}"
+                    pInputText 
+                    class="uppercase"
+                    formControlName="aerial" 
+                    required autofocus />
+            <small class="p-error" *ngIf="formGroup.controls['aerial'].touched && formGroup.controls['aerial'].errors?.required">El campo es obligatorio.</small>
+        </div>
+        <div class="p-field col-6">
+            <label for="Maritime">Tarifa Marítima</label>
+            <input  type="text" 
+                    id="maritime" 
+                    [ngClass]="{'ng-dirty ng-invalid': formGroup.controls['aerial'].touched && formGroup.controls['aerial'].errors?.required}"
+                    pInputText 
+                    class="uppercase"
+                    formControlName="maritime" 
+                    required autofocus />
+            <small class="p-error" *ngIf="formGroup.controls['maritime'].touched && formGroup.controls['maritime'].errors?.required">El campo es obligatorio.</small>
+        </div>
+    </div>
+    <div class="p-field mt-3">
+        <label for="Company">Compañía</label>
+        <input  type="text" 
+                    id="Company" 
+                    [ngClass]="{'ng-dirty ng-invalid': formGroup.controls['company'].touched && formGroup.controls['company'].errors?.required}"
+                    pInputText 
+                    formControlName="company" 
+                    required />
+        <small class="p-error" *ngIf="formGroup.controls['company'].touched && formGroup.controls['company'].errors?.required">El campo es obligatorio.</small>
+    </div>
+    
+</form>

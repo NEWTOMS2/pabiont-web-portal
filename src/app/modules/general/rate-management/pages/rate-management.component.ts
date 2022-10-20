@@ -1,25 +1,23 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { MessageService } from 'primeng/api';
 import { AppConfigService } from 'src/app/core/services/app-config/app-config.service';
 import { TableManagmentService } from 'src/app/core/services/consult/table-managment.service';
-import { WarehouseManagementService } from 'src/app/core/services/warehouse/warehouse-management.service';
+import { RateManagementService } from 'src/app/core/services/general/rate-management.service';
 import { CreateFormComponent } from '../components/create-form/create-form.component';
 
 @Component({
-  selector: 'app-warehouse-management',
-  templateUrl: './warehouse-management.component.html',
-  styleUrls: ['./warehouse-management.component.scss']
+  selector: 'app-rate-management',
+  templateUrl: './rate-management.component.html',
+  styleUrls: ['./rate-management.component.scss']
 })
-export class WarehouseManagementComponent implements OnInit {
+export class RateManagementComponent implements OnInit {
 
   //Page Variables
   page: any;
   visibleDialog: boolean = false;
   buttonIsEnabled: boolean = false;
   warehouseCode: string;
-  warehouseList: any[] = []
+  rateList: any = [];
 
   //ViewChild Data
   @ViewChild(CreateFormComponent) child: CreateFormComponent;
@@ -27,13 +25,12 @@ export class WarehouseManagementComponent implements OnInit {
   constructor(
     private appConfig: AppConfigService,
     private tableManagmentService: TableManagmentService,
-    private warehouseManagementService: WarehouseManagementService,
+    private rateManagementService: RateManagementService,
     private router:Router,
-    private messageService: MessageService,
     ) { 
-      this.page = this.appConfig.warehouseManagement;
+      this.page = this.appConfig.rateManagement;
       this.page = this.page.default;
-      this.getWarehouseList();
+      this.getRateList();
       this.tableManagmentService.buttonEvent.subscribe(data => {
         this.selectedButton(data);
       });
@@ -41,15 +38,16 @@ export class WarehouseManagementComponent implements OnInit {
     
 
   ngOnInit(): void {
+    console.log("hola")
   }
 
-  async getWarehouseList(){
-    this.warehouseList = await this.warehouseManagementService.getWarehouses().
+  async getRateList(){
+    this.rateList = await this.rateManagementService.getRate(1).
             toPromise().then(response => { 
-              return response
+              return [response]
             });
-            
-          console.log( this.warehouseList) 
+
+          console.log( this.rateList)  
   }
 
   buttonEnabled(isValid: boolean){
@@ -59,10 +57,6 @@ export class WarehouseManagementComponent implements OnInit {
   selectedButton(data: any){ 
     this.visibleDialog = true;
     switch(data.buttonId) { 
-      case 0:{
-        this.child.enable()
-        break;
-      }
       case 1:{
         this.child.updateForm(data.rowData)
         break;
@@ -78,5 +72,6 @@ export class WarehouseManagementComponent implements OnInit {
   redirect(){
     this.router.navigate([`main`]);
   }
+
 
 }

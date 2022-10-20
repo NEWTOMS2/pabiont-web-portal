@@ -1,6 +1,6 @@
 <div class="container text-center mt-3 ">
   <div class="row justify-content-center menu">
-    <div class="col-11 col-md-6 col-xl-4 mb-3" *ngFor="let label of page">
+    <div class="col-11 col-md-6 col-xl-4 mb-3" *ngFor="let label of menuType">
         <div class="mt-2 cardBody p-3" (click)="gotoPage(label.urlID)">
           <!--<i class="{{label.icon}} optionIcon cardIcon d-none d-sm-block"></i>      icono lateral--> 
           <span class="title">{{label.title}}</span>

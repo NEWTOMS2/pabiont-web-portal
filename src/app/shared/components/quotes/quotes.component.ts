@@ -129,7 +129,7 @@ export class QuotesComponent implements OnInit {
       width: this.quotesForm.controls['width'].value,
       long: this.quotesForm.controls['long'].value,
       type: type, 
-      price: type == "Maritimo" ? this.calculateMaritime : this.calculateAerial
+      price: type == "Marítimo" ? this.calculateMaritime : this.calculateAerial
     }
     this.isClicked.emit(this.packageInformation);
   }

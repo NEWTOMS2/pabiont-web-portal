@@ -3,6 +3,7 @@
     "apiBaseURL": "https://pabiont-process-api.us-e1.cloudhub.io/api/",
     "url": {
         "rate": "rate?company=",
+        "changeRate": "rate",
         "trackingByCode": "tracking?code=",
         "trackingByEmail": "tracking?email=",
         "saveWarehouse": "destination",

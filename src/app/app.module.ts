@@ -23,7 +23,7 @@ import { AlertComponent } from './shared/components/alert/alert.component';
     AppComponent,
     NavbarComponent,
     SidebarComponent,
-    AlertComponent
+    AlertComponent,
   ],
   imports: [
     BrowserModule,

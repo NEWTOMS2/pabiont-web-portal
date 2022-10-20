@@ -6,6 +6,7 @@ import * as JSON_WAREHOUSE_MANAGEMENT from '@json/pages/warehouse/warehouse-mana
 import * as JSON_USERS_MANAGEMENT from '@json/pages/users/user-management.json';
 import * as JSON_INVOICE_MANAGEMENT from '@json/pages/invoice/invoice-management.json';
 import * as JSON_INVOICE_CREATION from '@json/pages/invoice/invoice-creation.json';
+import * as JSON_RATE_MANAGEMENT from '@json/pages/general/rate/rate-management.json';
 
 @Injectable({
   providedIn: 'root'
@@ -28,4 +29,7 @@ export class AppConfigService {
   //INVOICE
   public invoiceManagement = JSON_INVOICE_MANAGEMENT;
   public invoiceCreation = JSON_INVOICE_CREATION;
+
+  //RATE
+  public rateManagement = JSON_RATE_MANAGEMENT;
 }

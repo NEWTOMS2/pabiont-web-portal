@@ -14,12 +14,14 @@ import { PackageManagementComponent } from './components/package-management/pack
 import { TableModule } from 'primeng/table';
 import { QuotesModule } from 'src/app/shared/components/quotes/quotes.module';
 import { ToastModule } from 'primeng/toast';
+import { PaymentConfirmationComponent } from './components/payment-confirmation/payment-confirmation.component';
 
 @NgModule({
   declarations: [
     InvoiceManagementComponent,
     CreateFormComponent,
-    PackageManagementComponent
+    PackageManagementComponent,
+    PaymentConfirmationComponent
   ],
   imports: [
     CommonModule,
