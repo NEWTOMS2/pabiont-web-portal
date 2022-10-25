@@ -28,11 +28,9 @@ export class PaymentConfirmationComponent implements OnInit {
     private invoiceManagementService: InvoiceManagementService
     ) {  
     this.invoiceInformation
-    console.log(this.invoiceInformation)
      }
 
   ngOnInit(): void {
-    console.log(this.invoiceInformation)
   }
 
   async getData(){
@@ -41,13 +39,11 @@ export class PaymentConfirmationComponent implements OnInit {
         return  response
       });
       this.isDownloaded = true
-      console.log(this.invoice)
     }
 
 setData(invoiceCode: string){
   this.invoicedata = invoiceCode
   this.getData()
-  console.log(this.invoicedata)
 }
 
   downloadPDF() {
