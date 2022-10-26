@@ -135,7 +135,7 @@ export class BillingInformationComponent implements OnInit {
       this.packageRequest.push(packages.package_information)
     });
     this.billingInformation = new billing(description, this.billingsForm.controls['invoice'].value, this.datepipe.transform(this.today, 'yyyy-MM-dd'), this.datepipe.transform(this.today, 'yyyy-MM-dd'), this.totalPayment
-                              , this.totalPayment, this.selectedShipper.code, this.selectedConsignee.code, this.selectedAgent.code, this.selectedBillTo.code, 1, 11,this.packageRequest,this.selectedPayment.code,this.billingsForm.controls['origin_destination'].value.id,
+                              , Number(this.totalPayment.toFixed(2)), this.selectedShipper.code, this.selectedConsignee.code, this.selectedAgent.code, this.selectedBillTo.code, 1, 11,this.packageRequest,this.selectedPayment.code,this.billingsForm.controls['origin_destination'].value.id,
                                 this.billingsForm.controls['final_destination'].value.id, this.billingsForm.controls['final_destination'].value.description);
   await this.invoiceManagementService.createInvoice(this.billingInformation).subscribe(
       response => {
