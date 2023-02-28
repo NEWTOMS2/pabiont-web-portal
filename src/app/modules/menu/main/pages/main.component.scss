@@ -1,10 +1,10 @@
 .cardBody{
-    background: linear-gradient(-111deg, rgb(40,170,224) 0%, rgb(138,191,213) 50%, white 99%), #28aae0;   
+    background: linear-gradient(90deg, rgba(21,14,131,1) 17%, rgba(15,30,171,0.9220063025210083) 41%, rgba(19,83,138,1) 66%, rgba(4,113,135,1) 100%);
     border-radius: 18px;
     border-width: 0px;
     box-shadow: 6px 4px 5px rgb(158,168,179);
     height: 220px;
-    color:rgb(0, 0, 0);
+    color:rgb(255, 255, 255);
 
     .cardTitle{
         font-size: 24px;
@@ -23,7 +23,7 @@
         position: absolute;
         bottom: 10px;
         right: 35px;
-        color: rgba(255, 255, 255, 0.11);
+        color: rgb(255, 255, 255);
     }
 
     .cardButon{
@@ -49,7 +49,7 @@
     margin-top: 24px;
     .cardBody{
         margin-bottom: 32px;
-        background: linear-gradient(-111deg, rgb(40,170,224) 0%, rgb(138,191,213) 50%, white 99%), #28aae0;
+        background: linear-gradient(90deg, rgba(37,100,191,0.8547794117647058) 7%, rgba(37,94,172,0.896796218487395) 92%);
         border-radius: 18px;
         border-width: 0px;
         box-shadow: 6px 4px 5px rgb(158,168,179);

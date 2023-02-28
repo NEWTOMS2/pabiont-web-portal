@@ -43,7 +43,7 @@
 </div>
 
 <div *ngIf="currentStep != 2 && currentStep != 1 ">
-    <p-dialog [(visible)]="visibleDialog" (onHide)="hideDialog()" [style]="{width: '100%', margin: '20px'}" header="Imprimir Factura" [modal]="true" styleClass="p-fluid" >
+    <p-dialog [(visible)]="visibleDialog" (onHide)="hideDialog2()" [style]="{width: '100%', margin: '20px'}" header="Imprimir Factura" [modal]="true" styleClass="p-fluid" >
         
         <app-payment-confirmation [invoiceInformation]="invoiceInformation"
         #child> 

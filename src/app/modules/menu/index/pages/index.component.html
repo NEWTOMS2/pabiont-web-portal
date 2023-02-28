@@ -3,18 +3,18 @@
 <div class="headerSection" (click)="closeForm()">
     <!--NAVBAR-->
     <div>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-lg navbar-white bg-white">
             <div class="container-fluid">
-                <img src="assets/img/logo.png" height="80" class="logo mr-2">
+                <img src="assets/img/cargo-radar-logo.png" height="80" class="logo mr-2">
                 <button class="navbar-toggler" type="button" (click)="isMenuCollapsed = !isMenuCollapsed">
                     &#9776;
                 </button>
                 <div [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse">
                     <div class="navbar-nav navSection">
-                        <a class="nav-item nav-link active" href="#Home">Home</a>
+                        <a class=" nav-link active" href="#Home">Home</a>
                         <a class="nav-item nav-link" href="#Cotizaciones">Cotizaciones</a>
                         <a class="nav-item nav-link" href="#Contactanos">Contáctanos</a>                
-                        <a class="nav-item nav-link" href="/login">Login</a>
+                        <a class="nav-item nav-link p-button" style="color: white; margin: auto; padding-left: 16px; padding-right: 16px;" href="/login"> Login</a>
                     </div>
                 </div>
             </div>
@@ -22,52 +22,76 @@
     </div>
     <div class="formSection" id="Home">
         <div class="title">Envíos de Paquetes Rápidos y Económicos</div>
-        <div class="subtitle">Verifica el estatus de tu envío desde tu computador o celular</div>
-        <div class="searchInput row justify-content-center">
-            <div class="col-12 col-md-10 col-lg-9">
-                <form [formGroup]="searchForm">
-                    <input  class="formSection m-0" 
-                            placeholder="Ingresa el código de Tracking..."
-                            type="text" 
-                            pInputText
-                            formControlName = "searchInput"
-                            (keyup.enter)="searchPackage(searchForm.controls['searchInput'].value, Tracking)"> 
-                    <button pButton 
-                            pRipple 
-                            type="button" 
-                            icon="pi pi-search" 
-                            class="p-button-rounded p-button-success group"
-                            (click)="searchPackage(searchForm.controls['searchInput'].value, Tracking)">
-                    </button>   
-                </form>
-            </div>
-            <div >
-                <i ></i>
-            </div>
+        <div class="subtitle">Desde su origen hasta su destino</div>
+    </div>
+</div>
+<div class="search">
+    <div>
+        <div class="formSection" id="Home">
+            <div class="title">Verifica el estatus de tu envío desde tu computador o celular</div>
         </div>
     </div>
-    
+    <div class="searchInput row justify-content-center m-0">
+        <div class="col-12 col-md-10 col-lg-9">
+            <form [formGroup]="searchForm">
+                <input  class="formSection m-0" 
+                        placeholder="Ingresa el código de Tracking..."
+                        type="text" 
+                        pInputText
+                        formControlName = "searchInput"
+                        (keyup.enter)="searchPackage(searchForm.controls['searchInput'].value, Tracking)"> 
+                <button pButton 
+                        pRipple 
+                        type="button" 
+                        icon="pi pi-search" 
+                        class="p-button-rounded p-button-success group"
+                        style="background: rgba(58, 141, 239, 0.83)"
+                        (click)="searchPackage(searchForm.controls['searchInput'].value, Tracking)">
+                </button>   
+            </form>
+        </div>
+        <div >
+            <i ></i>
+        </div>
+    </div>
 </div>
 <!--TRACKING-->
 <div (click)="closeForm()" #Tracking>
     <div *ngIf="isSubmit" class="row trackingSection m-0" >
+        <div class="pabiont-card">
             <app-basic-table   
                                 [headerList]=headerList
                                 [dataList]=tracking
                                 [canCreate]="false"
                                 [searchField]="searchField">
             </app-basic-table>
-        
+        </div>
     </div>
 </div>
 <!--QUOTE-->
 <div (click)="closeForm()" id="Cotizaciones">
+    <div class="">
+        <hr style="color: black; background-color: black;text-align: center;" />
+    </div>
     <div class="quotesSection row p-0 m-0">
-        <div class="col-6 d-none d-lg-block p-0">
-            <img class="image img-fluid" src="assets/img/Cotizacion-back.jpg">
+        <div class="row justify-content-between text-center">
+            <div class="inputSection">
+            <div class="text-center title">Nuestros Sevicios de Envío</div>
+            </div>
+            <div class="col-12 col-sm-6 backgroundQuote ">
+                <div class="pabiont-card"> 
+                <img class="img-fluid" src="assets/img/maritime.png">
+                <p style="font-weight: bold;">Transporte Marítimo</p>
+                </div>
+            </div>
+            <div class="col-12 col-sm-6 backgroundQuote separate">
+                <div class="pabiont-card">
+                <img class="img-fluid" src="assets/img/aereal.png">
+                <p style="font-weight: bold;">Transporte Aéreo</p>
+                </div>
+            </div>
         </div>
-        
-        <div class="inputSection col-12 col-lg-6 p-0 m-0">
+        <div class="inputSection col-12 p-0 m-0">
             <form [formGroup]="quotesForm">
                 <div class="text-center title">Ingresa los Datos de tu Paquete</div>
                 <div class="row p-formgrid p-grid m-3">
@@ -137,15 +161,19 @@
                     </div>
                 <div class="text-center title mt-5">Costos Estimados</div>
                 <div class="row justify-content-between text-center">
-                    <div class="col-5 backgroundQuote">
+                    <div class="col-12 col-sm-6 backgroundQuote">
+                        <div class="pabiont-card">
                         <p class="titleQuote">Envío Marítimo</p>
                         <span class="number" [innerHTML]="calculateRateMaritime().toFixed(2)"></span>
                         <span class="number"> USD</span>
+                        </div>
                     </div>
-                    <div class="col-5 backgroundQuote">
+                    <div class="col-12 col-sm-6 backgroundQuote">
+                        <div class="pabiont-card">
                         <p class="titleQuote">Envío Aéreo</p>
                         <span class="number" [innerHTML]="calculateRateAerial().toFixed(2)"></span>
                         <span class="number"> USD</span>
+                        </div>
                     </div>
                 </div>
                 
@@ -153,45 +181,61 @@
             </form>
         </div>
     </div>
+      <div class="">
+        <hr style="color: black; background-color: black;text-align: center;" />
+    </div>
 </div>
 <!--FOOTER-->
-<div (click)="closeForm()" id="Contactanos">
-    <img class="img-fluid" src="assets/img/footerimagen.jpg">
-    <div class="footerSection row p-0 m-0 align-items-start">
-        <div class="col-12 col-sm-6 col-lg-5">
-            <p class="footerSecundaryTitle">Datos de contacto <br></p>
-            <span class="footerSecundarySubtitle">Comunícaticate con Nosotros</span>     
+<div (click)="closeForm()" id="Contactanos" style="margin-top: 70px;">
+    <div class="footerBackground">
+        <img class="img-fluid" src="assets/img/footerimagen.png">
+    </div>
+    
+    <div class="footerSection row m-0 ">
+        <div class="col-12 col-md-4 mb-5 mb-md-0" style="text-align: center;">
+            <img class="img-fluid" src="assets/img/cargo-radar-logo-blanco.png" >
         </div>
-        <div class="col-12 col-sm-6 d-lg-none mt-4">
-            <p class="footerSecundaryTitle">Dirección Postal<br></p>  
-            <span class="footerSecundarySubtitle">Calle Faisanes 123, Durango, Dgo.12600 Deerfield Parkway #100
-                Alpharetta, Georgia 30004</span>
+        <div class="col-12 col-md-8">
+            <div class="row m-0 mb-5">  
+                <div class="col-12">
+                    <span class="footerSecundaryTitle">Datos de contacto <br></span>
+                    <span class="footerSecundarySubtitle">Comunícaticate con Nosotros</span>     
+                </div>
+            </div>
+            <div class="row m-0">
+                <div class="col-12 col-sm-6 col-lg-4 mb-4 mb-lg-0">
+                    <span class="footerSecundaryTitle">WhatsApp<br></span>
+                   <i class="pi pi-whatsapp"></i>
+                   <a style="color: white !important; text-decoration: none !important" href="https://api.whatsapp.com/send?phone=+14155238886&text=join%20hall-ancient">+1 415 523 8886</a>    
+                </div>
+                <div class="col-12 col-sm-6 col-lg-4 mb-4 mb-lg-0">
+                    <span class="footerSecundaryTitle">Correo<br></span>
+                    <span class="footerSecundarySubtitle">cargoradar@newtoms.com</span>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-4 ">
+                    <span class="footerSecundaryTitle">Dirección Postal<br></span>  
+                    <span class="footerSecundarySubtitle">12600 Deerfield Parkway #100
+                        Alpharetta, Georgia 30004</span>
+                </div>
+            </div>
         </div>
-        <div class="col-12 col-sm-6 col-lg-2 mt-4">
-            <p class="footerSecundaryTitle">WhatsApp<br></p>
-           <i class="pi pi-whatsapp"></i>
-           <a href="https://api.whatsapp.com/send?phone=+14155238886&text=join%20hall-ancient">+1 415 523 8886</a>
-           
-        </div>
-        <div class="col-12 col-sm-6 col-lg-2 mt-4">
-            <p class="footerSecundaryTitle">Correo<br></p>
-            <span class="footerSecundarySubtitle">info@newtoms.com</span>
-        </div>
-        <div class="col-3 d-none d-lg-block mt-4">
-            <p class="footerSecundaryTitle">Dirección Postal<br></p>  
-            <span class="footerSecundarySubtitle"> Dgo.12600 Deerfield Parkway #100
-                Alpharetta, Georgia 30004</span>
+    </div>
+    <div class="row subfooter m-0">
+        <div class="col-12 " style="text-align: center;">
+            <img src="assets/img/logo.png" class="footerlogo">
         </div>
     </div>
 </div>
+<!--CHATBOT-->
+<div>
+    <button style="background: url(assets/img/webchat-icon.png)" class="open-button ring-effect-ph-circle-fill" (click)="openForm()"></button>
 
-<button style="background: url(assets/img/webchat-icon.png)" class="open-button ring-effect-ph-circle-fill" (click)="openForm()"></button>
-
-<div class="chat-popup"  [ngClass]="{'d-block': showWebChat, 'd-none': !showWebChat}"> 
-  
-    <button style="background: url(assets/img/close-icon.png)" class="close-button" (click)="closeForm()"></button>
-    <div class="form-container">
-      <app-chatbot></app-chatbot>
-      <!--<button type="button" class="btn cancel" (click)="closeForm()">Close</button>-->
+    <div class="chat-popup"  [ngClass]="{'d-block': showWebChat, 'd-none': !showWebChat}"> 
+    
+        <button style="background: url(assets/img/close-icon.png)" class="close-button" (click)="closeForm()"></button>
+        <div class="form-container">
+        <app-chatbot></app-chatbot>
+        <!--<button type="button" class="btn cancel" (click)="closeForm()">Close</button>-->
+        </div>
     </div>
-  </div>
+</div>

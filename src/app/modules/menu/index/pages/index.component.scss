@@ -5,48 +5,70 @@
     top: 0;
     width: 100%;
     font-size: 20px;
+
     .navSection{
         margin-left: auto;
+        color: black !important;
     }
 }
 .headerSection{   
     text-align: center;
     color: white;
     display: flex;
-    background-image: url('./../../../../../assets/img/portada.jpg');
+    background-image: url('./../../../../../assets/img/cargo-radar-bg.jpeg');
     height: 100vh;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     justify-content: center;
     flex-direction: column;
+    text-shadow: 6px 6px 10px rgba(0, 0, 0, 0.7);
     .logo{
         margin-left: 10px;
     }
     .formSection{
         margin: 0px 60px 30px 60px;
         .title{
-            font-size: 70px;
+            font-style: normal;
+            font-weight: 700;
+            font-size: 74px;
+            line-height: 97px;
         }
         .subtitle{
             font-size: 35px;
             font-weight: bold;
             margin-top: 8px;
         }
-        .searchInput{
-            margin-top: 24px;
-            .group {
-                margin: -8px 0px 6px -60px;
-            }
-            .formSection{
-                width: 100%;
-                height: 60px;
-                border-radius: 30px;
-            }
-            
-        }
+
     }
     
+}
+.search{
+    margin-bottom: 40px;
+    .searchInput{
+        margin-top: 24px;
+        .group {
+            margin: -8px 0px 6px -60px;
+        }
+        .formSection{
+            width: 100%;
+            height: 60px;
+            border-radius: 30px;
+        }
+    }
+    .formSection{
+        margin: 30px 60px 30px 60px;
+        .title{
+            font-size: 34px;
+            line-height: 63px;
+            text-align: center;
+        }
+        .subtitle{
+            font-size: 35px;
+            font-weight: bold;
+            margin-top: 8px;
+        }
+    }
 }
 
 .quotesSection{
@@ -57,7 +79,7 @@
         height: 100%;
     }
     .inputSection{
-        background-color: #efefef;
+        background-color: #ffffff;
         .title{
             font-size: 24px;
             font-weight: bold;
@@ -72,9 +94,20 @@
         height: 170px;
         margin-top: 24px;
         z-index: 1;
+        text-align: -webkit-center;
+        .pabiont-card{
+            -webkit-border-radius: 20px;
+            -moz-border-radius: 20px;
+            border-radius: 20px;
+            border: 2px solid rgba(0, 0, 0, 0.05);
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            width: 50%;
+        }
         .titleQuote{
             font-size: 30px;
             margin-top: 18px;
+            color: #4289C7;
+            font-weight: bold;
         }
         .number{
             font-size: 42px;
@@ -86,42 +119,63 @@
 }
 
 .trackingSection{
-    background-image: url('./../../../../../assets/img/tracking.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     align-items: center;
     padding: 24px !important;
 
+    .pabiont-card{
+        -webkit-border-radius: 20px;
+        -moz-border-radius: 20px;
+        border-radius: 20px;
+        border: 2px solid rgba(0, 0, 0, 0.05);
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    }
+
 }
 
 .footerSection{
-    background-color: white;
-    height: 200px;
+    background-color: #13538A;
+    width: 100%;
     align-items: center;
+    padding: 48px 0px;
     .footerTitle{
-        color: #4b39b5;
+        color: #3CCBFF;
         font-size: 40px;      
         margin-top: 18px;
     }
     .footerSubtitle{
-        color: black;
+        color: white;
         font-size: 24px;
     }
     .footerSecundaryTitle{
-        color: #4b39b5;
+        color: #3CCBFF;
         font-size: 24px;
         line-height: 24px;
         
     }
     .footerSecundarySubtitle{
-        color: black;
+        color: white;
         font-size: 18px;
 
     }
 }
+.subfooter{
+    height: 50px;
+    background-color: #3CCBFF;
+    .footerlogo{
+        width: 100px;
+        height: 40px;
+        margin-top: 5px;
+        text-align: center;
+    }
+
+}
 .footerBackground{
-    background-image: url('./../../../../../assets/img/footerimagen.jpg');
+    height: auto;
+    text-align: center;
+    margin: 48px 5%;
 }
 
 
@@ -164,8 +218,6 @@ br{
                 z-index: 1;
             }
         }
-            
-    
     }
 
 }
@@ -300,7 +352,7 @@ br{
 
 }
 
-@media (max-width: 576px) {
+@media (max-width: 575px) {
 
     .headerSection{   
     
@@ -323,9 +375,11 @@ br{
             .number{
                 font-size: 24px;
                 font-weight: bold;
-            }
-            
-            
+            }   
+        }
+        .separate{
+            margin-top: 60px;
+            margin-bottom: 40px;
         }
     }
 

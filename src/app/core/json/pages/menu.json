@@ -37,7 +37,7 @@
             "title": "Gestión de Usuarios",
             "subtitle": "Gestión de Usuarios (Administradores y Agentes)",
             "description": "Gestiona y edita la información personal de la cuenta.",
-            "icon": "fas fa-user me-2",
+            "icon": "fa-solid fa-people-arrows me-2",
             "urlID": 6,
             "url": "users-management"
         },
