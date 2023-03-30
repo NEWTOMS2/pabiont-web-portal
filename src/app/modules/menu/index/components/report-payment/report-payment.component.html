@@ -1,0 +1,114 @@
+<div class="pabiont-card reportSection row m-0" >
+    <form [formGroup]="formGroup">
+        <div class="col-12 py-3">
+            <span class="title">Datos de cliente</span>
+        </div>
+        <div class="col-12">
+            <div class="row m-0">
+                <div class="col-4">
+                    <label class="inputTitle">
+                        Código de cliente
+                    </label>
+                    <div>
+                        <input  type="text" 
+                                id="Code"
+                                [ngClass]="{'ng-dirty ng-invalid': formGroup.controls['code'].touched && formGroup.controls['code'].errors?.required}"
+                                pInputText 
+                                formControlName="code"
+                                class="w-100" 
+                                required autofocus />
+                        <small class="p-error" *ngIf="formGroup.controls['code'].touched && formGroup.controls['code'].errors?.required">El codigo es obligatorio.</small>
+                    </div>
+                </div>
+                <div class="col-8">
+                    <label class="inputTitle">
+                        Titular de la cuenta
+                    </label>
+                    <div>
+                        <input  type="text" 
+                                id="AccountHolder"
+                                [ngClass]="{'ng-dirty ng-invalid': formGroup.controls['accountHolder'].touched && formGroup.controls['accountHolder'].errors?.required}"
+                                pInputText 
+                                formControlName="accountHolder"
+                                class="w-100"
+                                required autofocus />
+                        <small class="p-error" *ngIf="formGroup.controls['accountHolder'].touched && formGroup.controls['accountHolder'].errors?.required">El titular de la cuenta es obligatorio.</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 py-3">
+            <span class="title">Datos de Zelle</span>
+        </div>
+        <div class="col-12">
+            <div class="row m-0">
+                <div class="col-4">
+                    <label class="inputTitle">
+                        Monto pagado
+                    </label>
+                    <p-inputNumber  inputId="amountId" 
+                                    mode="decimal"
+                                    formControlName="amount"
+                                    [minFractionDigits]="1" 
+                                    [maxFractionDigits]="2"
+                                    placeholder="0"
+                                    style="width: 100%;"
+                                    [ngClass]="{'ng-dirty ng-invalid': (formGroup.controls['amount'].touched && formGroup.controls['amount'].errors?.required) 
+                                                    || (formGroup.controls['amount'].value <= 0 && formGroup.controls['amount'].value != null)}">
+                    </p-inputNumber>
+                    <small class="p-error d-block" *ngIf="(formGroup.controls['amount'].touched && formGroup.controls['amount'].errors?.required) 
+                                                    || (formGroup.controls['amount'].value <= 0 && formGroup.controls['amount'].value != null)">
+                        El campo no puede ser cero o estar vacío.
+                    </small>
+                </div>
+                <div class="col-8">
+                    <label class="inputTitle">
+                        Facturas pagadas
+                    </label>
+                    <div>
+                        <input  type="text" 
+                                id="InvoiceNumber"
+                                [ngClass]="{'ng-dirty ng-invalid': formGroup.controls['invoiceNumber'].touched && formGroup.controls['invoiceNumber'].errors?.required}"
+                                pInputText 
+                                formControlName="invoiceNumber" 
+                                class="w-100"
+                                required autofocus />
+                        <small class="p-error" *ngIf="formGroup.controls['invoiceNumber'].touched && formGroup.controls['invoiceNumber'].errors?.required">El Numero de factura es obligatorio.</small>
+                    </div>
+                </div>
+                <div class="col-6 mt-3">
+                    <label class="inputTitle">
+                        Referencia del pago
+                    </label>
+                    <div>
+                        <input  type="text" 
+                                id="PaymentReference"
+                                [ngClass]="{'ng-dirty ng-invalid': formGroup.controls['paymentReference'].touched && formGroup.controls['paymentReference'].errors?.required}"
+                                pInputText 
+                                formControlName="paymentReference"
+                                class="w-100"
+                                required autofocus />
+                        <small class="p-error" *ngIf="formGroup.controls['paymentReference'].touched && formGroup.controls['paymentReference'].errors?.required">La referencia del pago es obligatorio.</small>
+                    </div>
+                </div>
+                <div class="col-6 mt-3">
+                    <label class="d-block inputTitle">
+                        Fecha de la transferencia
+                    </label>
+                    <p-calendar inputId="basic"
+                                formControlName="date"
+                                [showIcon]="true"
+                                dateFormat="dd/mm/yy"
+                                appendTo="body"
+                                class="w-100"
+                                placeholder="fecha"
+                                [ngClass]="{'ng-dirty ng-invalid': formGroup.controls['date'].touched && formGroup.controls['date'].errors?.required}">
+                    </p-calendar>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 py-4 d-flex justify-content-center">
+            <a class="p-button reportButton">Enviar reporte</a>
+        </div>
+     </form>
+</div>

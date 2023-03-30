@@ -13,10 +13,13 @@ import { ToastModule } from 'primeng/toast';
 import { NbChatModule } from '@nebular/theme';
 import { ChatbotModule } from 'src/app/shared/components/chatbot/chatbot.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ReportPaymentComponent } from './components/report-payment/report-payment.component';
+import { CalendarModule } from 'primeng/calendar';
 
 @NgModule({
   declarations: [
-    IndexComponent
+    IndexComponent,
+    ReportPaymentComponent
   ],
   imports: [
     CommonModule,
@@ -31,7 +34,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ConsultModule,
     ChatbotModule,
     NbChatModule,
-    NgbModule
+    NgbModule,
+    CalendarModule
   ]
 })
 export class IndexModule { }

@@ -1,21 +1,24 @@
 
 .navbar{
     background: transparent;
-    position: absolute;
     top: 0;
     width: 100%;
     font-size: 20px;
-
+    box-shadow: 1px 1px 10px #888888;
     .navSection{
         margin-left: auto;
         color: black !important;
+    .listItems{
+        color: #1078d1  !important;
+        text-shadow: 0px 0px 0px rgba(0, 0, 0, 0.7) !important;
+    }
     }
 }
 .headerSection{   
     text-align: center;
     color: white;
     display: flex;
-    background-image: url('./../../../../../assets/img/cargo-radar-bg.jpeg');
+    background-image: url('./../../../../../assets/img/cargo-radar-bg.png');
     height: 100vh;
     background-position: center;
     background-repeat: no-repeat;
@@ -39,7 +42,6 @@
             font-weight: bold;
             margin-top: 8px;
         }
-
     }
     
 }
@@ -176,6 +178,19 @@
     height: auto;
     text-align: center;
     margin: 48px 5%;
+    .report{
+        align-items: center;
+        margin-top: 5%;
+        margin-bottom: 5%;
+        color: #13538A !important;
+        font-style: italic;
+        font-size: 300%;
+        text-align: center;
+        text-transform: uppercase;
+        font-weight: 900;
+        text-decoration: none;
+        cursor: pointer !important;
+    }
 }
 
 

@@ -3,7 +3,7 @@
         "headerList": [
             { "field": "size", "header": "Tamaño (Pulgadas)" },
             { "field": "weight", "header": "Peso (Libras)" },
-            { "field": "volume", "header": "Volumen (m3)" }, 
+            { "field": "volume", "header": "Volumen (ft3)" }, 
             { "field": "description", "header": "Descripción" },
             { "field": "type", "header": "Tipo de Envio" },
             { "field": "price", "header": "Costo (USD)" }

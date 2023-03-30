@@ -1,196 +1,201 @@
 <!--HEADER-->
 <p-toast position="top-center" key="tc"></p-toast>
-<div class="headerSection" (click)="closeForm()">
-    <!--NAVBAR-->
-    <div>
-        <nav class="navbar navbar-expand-lg navbar-white bg-white">
-            <div class="container-fluid">
-                <img src="assets/img/cargo-radar-logo.png" height="80" class="logo mr-2">
-                <button class="navbar-toggler" type="button" (click)="isMenuCollapsed = !isMenuCollapsed">
-                    &#9776;
-                </button>
-                <div [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse">
-                    <div class="navbar-nav navSection">
-                        <a class=" nav-link active" href="#Home">Home</a>
-                        <a class="nav-item nav-link" href="#Cotizaciones">Cotizaciones</a>
-                        <a class="nav-item nav-link" href="#Contactanos">Contáctanos</a>                
-                        <a class="nav-item nav-link p-button" style="color: white; margin: auto; padding-left: 16px; padding-right: 16px;" href="/login"> Login</a>
-                    </div>
+<!--NAVBAR-->
+<div>
+    <nav class="navbar navbar-expand-lg navbar-white bg-white">
+        <div class="container-fluid">
+            <img src="assets/img/cargo-radar-logo.png" height="80" class="logo mr-2">
+            <button class="navbar-toggler" type="button" (click)="isMenuCollapsed = !isMenuCollapsed">
+                &#9776;
+            </button>
+            <div [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse">
+                <div class="navbar-nav navSection">
+                    <a class="nav-link active listItems" (click)="gotoPage(0) "href="#Home">Home</a>
+                    <a class="nav-item nav-link listItems" (click)="gotoPage(0)" href="#Cotizaciones">Cotizaciones</a>
+                    <a class="nav-item nav-link listItems" (click)="gotoPage(0)" href="#Contactanos">Contáctanos</a>
+                    <a class="nav-item nav-link listItems" (click)="gotoPage(1)" href="#Reporte">Reporte pago</a>                 
+                    <a class="nav-item nav-link p-button" style="color: white; margin: auto; padding-left: 16px; padding-right: 16px;" href="/login"> Login</a>
                 </div>
             </div>
-        </nav>
-    </div>
-    <div class="formSection" id="Home">
-        <div class="title">Envíos de Paquetes Rápidos y Económicos</div>
-        <div class="subtitle">Desde su origen hasta su destino</div>
-    </div>
+        </div>
+    </nav>
 </div>
-<div class="search">
-    <div>
-        <div class="formSection" id="Home">
-            <div class="title">Verifica el estatus de tu envío desde tu computador o celular</div>
-        </div>
-    </div>
-    <div class="searchInput row justify-content-center m-0">
-        <div class="col-12 col-md-10 col-lg-9">
-            <form [formGroup]="searchForm">
-                <input  class="formSection m-0" 
-                        placeholder="Ingresa el código de Tracking..."
-                        type="text" 
-                        pInputText
-                        formControlName = "searchInput"
-                        (keyup.enter)="searchPackage(searchForm.controls['searchInput'].value, Tracking)"> 
-                <button pButton 
-                        pRipple 
-                        type="button" 
-                        icon="pi pi-search" 
-                        class="p-button-rounded p-button-success group"
-                        style="background: rgba(58, 141, 239, 0.83)"
-                        (click)="searchPackage(searchForm.controls['searchInput'].value, Tracking)">
-                </button>   
-            </form>
-        </div>
-        <div >
-            <i ></i>
-        </div>
-    </div>
-</div>
-<!--TRACKING-->
-<div (click)="closeForm()" #Tracking>
-    <div *ngIf="isSubmit" class="row trackingSection m-0" >
-        <div class="pabiont-card">
-            <app-basic-table   
-                                [headerList]=headerList
-                                [dataList]=tracking
-                                [canCreate]="false"
-                                [searchField]="searchField">
-            </app-basic-table>
-        </div>
-    </div>
-</div>
-<!--QUOTE-->
-<div (click)="closeForm()" id="Cotizaciones">
-    <div class="">
-        <hr style="color: black; background-color: black;text-align: center;" />
-    </div>
-    <div class="quotesSection row p-0 m-0">
-        <div class="row justify-content-between text-center">
-            <div class="inputSection">
-            <div class="text-center title">Nuestros Sevicios de Envío</div>
+<div [ngSwitch]="option">
+    <div *ngSwitchCase="0">
+        <!--HEADER-->
+        <div class="headerSection" (click)="closeForm()">
+            <div class="formSection" id="Home">
+                <div class="title">Envíos de Paquetes Rápidos y Económicos</div>
+                <div class="subtitle">Desde su origen hasta su destino</div>
             </div>
-            <div class="col-12 col-sm-6 backgroundQuote ">
-                <div class="pabiont-card"> 
-                <img class="img-fluid" src="assets/img/maritime.png">
-                <p style="font-weight: bold;">Transporte Marítimo</p>
+        </div>
+        <div class="search">
+            <div>
+                <div class="formSection" id="Home">
+                    <div class="title">Verifica el estatus de tu envío desde tu computador o celular</div>
                 </div>
             </div>
-            <div class="col-12 col-sm-6 backgroundQuote separate">
+            <div class="searchInput row justify-content-center m-0">
+                <div class="col-12 col-md-10 col-lg-9">
+                    <form [formGroup]="searchForm">
+                        <input  class="formSection m-0" 
+                                placeholder="Ingresa el código de Tracking..."
+                                type="text" 
+                                pInputText
+                                formControlName = "searchInput"
+                                (keyup.enter)="searchPackage(searchForm.controls['searchInput'].value, Tracking)"> 
+                        <button pButton 
+                                pRipple 
+                                type="button" 
+                                icon="pi pi-search" 
+                                class="p-button-rounded p-button-success group"
+                                style="background: rgba(58, 141, 239, 0.83)"
+                                (click)="searchPackage(searchForm.controls['searchInput'].value, Tracking)">
+                        </button>   
+                    </form>
+                </div>
+                <div >
+                    <i ></i>
+                </div>
+            </div>
+        </div>
+        <!--TRACKING-->
+        <div (click)="closeForm()" #Tracking>
+            <div *ngIf="isSubmit" class="row trackingSection m-0" >
                 <div class="pabiont-card">
-                <img class="img-fluid" src="assets/img/aereal.png">
-                <p style="font-weight: bold;">Transporte Aéreo</p>
+                    <app-basic-table   
+                                        [headerList]=headerList
+                                        [dataList]=tracking
+                                        [canCreate]="false"
+                                        [searchField]="searchField">
+                    </app-basic-table>
                 </div>
             </div>
         </div>
-        <div class="inputSection col-12 p-0 m-0">
-            <form [formGroup]="quotesForm">
-                <div class="text-center title">Ingresa los Datos de tu Paquete</div>
-                <div class="row p-formgrid p-grid m-3">
-                    <div class="col-12 col-sm-6 col- p-0 p-field text-center">
-                        <label class="d-block my-3 label" for="weightId">Peso(Libras)</label>
-                        <p-inputNumber  inputId="weightId" 
-                                        mode="decimal"
-                                        formControlName="weight"
-                                        [minFractionDigits]="1" 
-                                        [maxFractionDigits]="2"
-                                        placeholder="0"
-                                        [ngClass]="{'ng-dirty ng-invalid': (quotesForm.controls['weight'].touched && quotesForm.controls['weight'].errors?.required) 
-                                                        || (quotesForm.controls['weight'].value <= 0 && quotesForm.controls['weight'].value != null)}">
-                        </p-inputNumber>
-                        <small class="p-error d-block" *ngIf="(quotesForm.controls['weight'].touched && quotesForm.controls['weight'].errors?.required) 
-                                                        || (quotesForm.controls['weight'].value <= 0 && quotesForm.controls['weight'].value != null)">
-                            El campo no puede ser cero o estar vacío.
-                        </small>
-                    </div>
-                    <div class="col-12 col-sm-6 p-0 p-field text-center">
-                        <label class="d-block my-3 label" for="highId">Largo(Pulgadas)</label>
-                        <p-inputNumber  inputId="highId" 
-                                        mode="decimal"
-                                        formControlName="high" 
-                                        [minFractionDigits]="1" 
-                                        [maxFractionDigits]="2"
-                                        placeholder="0"
-                                        [ngClass]="{'ng-dirty ng-invalid': (quotesForm.controls['high'].touched && quotesForm.controls['high'].errors?.required) 
-                                                        || (quotesForm.controls['high'].value <= 0 && quotesForm.controls['high'].value != null)}">
-                        </p-inputNumber>                  
-                        <small class="p-error d-block" *ngIf="(quotesForm.controls['high'].touched && quotesForm.controls['high'].errors?.required) 
-                                                        || (quotesForm.controls['high'].value <= 0 && quotesForm.controls['width'].value != null)">
-                            El campo no puede ser cero o estar vacío.
-                        </small>
-                    </div>
-                    <div class="col-12 col-sm-6 p-0 p-field text-center mt-3">
-                        <label class="d-block my-3 label" for="widthId">Ancho(Pulgadas)</label>
-                        <p-inputNumber  inputId="widthId" 
-                                        mode="decimal"
-                                        formControlName="width"  
-                                        [minFractionDigits]="1" 
-                                        [maxFractionDigits]="2"
-                                        placeholder="0"
-                                        [ngClass]="{'ng-dirty ng-invalid': (quotesForm.controls['width'].touched && quotesForm.controls['width'].errors?.required) 
-                                                        || (quotesForm.controls['width'].value <= 0 && quotesForm.controls['width'].value != null)}">
-                    </p-inputNumber>                  
-                    <small class="p-error d-block" *ngIf="(quotesForm.controls['width'].touched && quotesForm.controls['width'].errors?.required) 
-                                                    || (quotesForm.controls['width'].value <= 0 && quotesForm.controls['width'].value != null)">
-                        El campo no puede ser cero o estar vacío.
-                    </small>
-                    </div>
-                    <div class="col-12 col-sm-6 p-0 p-field text-center mt-3">
-                        <label class="d-block my-3 label" for="longId">Alto(Pulgadas)</label>
-                        <p-inputNumber  inputId="longId" 
-                                        mode="decimal"
-                                        formControlName="long" 
-                                        [minFractionDigits]="1" 
-                                        [maxFractionDigits]="2"
-                                        placeholder="0"
-                                        [ngClass]="{'ng-dirty ng-invalid': (quotesForm.controls['long'].touched && quotesForm.controls['long'].errors?.required) 
-                                                        || (quotesForm.controls['long'].value <= 0 && quotesForm.controls['long'].value != null)}">
-                        </p-inputNumber>                  
-                        <small class="p-error d-block" *ngIf="(quotesForm.controls['long'].touched && quotesForm.controls['long'].errors?.required) 
-                                                        || (quotesForm.controls['long'].value <= 0 && quotesForm.controls['width'].value != null)">
-                            El campo no puede ser cero o estar vacío.
-                        </small>
-                    </div>
-                <div class="text-center title mt-5">Costos Estimados</div>
+        <!--QUOTE-->
+        <div (click)="closeForm()" id="Cotizaciones">
+            <div class="">
+                <hr style="color: black; background-color: black;text-align: center;" />
+            </div>
+            <div class="quotesSection row p-0 m-0">
                 <div class="row justify-content-between text-center">
-                    <div class="col-12 col-sm-6 backgroundQuote">
-                        <div class="pabiont-card">
-                        <p class="titleQuote">Envío Marítimo</p>
-                        <span class="number" [innerHTML]="calculateRateMaritime().toFixed(2)"></span>
-                        <span class="number"> USD</span>
+                    <div class="inputSection">
+                    <div class="text-center title">Nuestros Servicios de Envío</div>
+                    </div>
+                    <div class="col-12 col-sm-6 backgroundQuote ">
+                        <div class="pabiont-card"> 
+                        <img class="img-fluid" src="assets/img/maritime.png">
+                        <p style="font-weight: bold;">Transporte Marítimo</p>
                         </div>
                     </div>
-                    <div class="col-12 col-sm-6 backgroundQuote">
+                    <div class="col-12 col-sm-6 backgroundQuote separate">
                         <div class="pabiont-card">
-                        <p class="titleQuote">Envío Aéreo</p>
-                        <span class="number" [innerHTML]="calculateRateAerial().toFixed(2)"></span>
-                        <span class="number"> USD</span>
+                        <img class="img-fluid" src="assets/img/aereal.png">
+                        <p style="font-weight: bold;">Transporte Aéreo</p>
                         </div>
                     </div>
                 </div>
-                
+                <div class="inputSection col-12 p-0 m-0">
+                    <form [formGroup]="quotesForm">
+                        <div class="text-center title">Ingresa los Datos de tu Paquete</div>
+                        <div class="row p-formgrid p-grid m-3">
+                            <div class="col-12 col-sm-6 col- p-0 p-field text-center">
+                                <label class="d-block my-3 label" for="weightId">Peso(Libras)</label>
+                                <p-inputNumber  inputId="weightId" 
+                                                mode="decimal"
+                                                formControlName="weight"
+                                                [minFractionDigits]="1" 
+                                                [maxFractionDigits]="2"
+                                                placeholder="0"
+                                                [ngClass]="{'ng-dirty ng-invalid': (quotesForm.controls['weight'].touched && quotesForm.controls['weight'].errors?.required) 
+                                                                || (quotesForm.controls['weight'].value <= 0 && quotesForm.controls['weight'].value != null)}">
+                                </p-inputNumber>
+                                <small class="p-error d-block" *ngIf="(quotesForm.controls['weight'].touched && quotesForm.controls['weight'].errors?.required) 
+                                                                || (quotesForm.controls['weight'].value <= 0 && quotesForm.controls['weight'].value != null)">
+                                    El campo no puede ser cero o estar vacío.
+                                </small>
+                            </div>
+                            <div class="col-12 col-sm-6 p-0 p-field text-center">
+                                <label class="d-block my-3 label" for="highId">Largo(Pulgadas)</label>
+                                <p-inputNumber  inputId="highId" 
+                                                mode="decimal"
+                                                formControlName="high" 
+                                                [minFractionDigits]="1" 
+                                                [maxFractionDigits]="2"
+                                                placeholder="0"
+                                                [ngClass]="{'ng-dirty ng-invalid': (quotesForm.controls['high'].touched && quotesForm.controls['high'].errors?.required) 
+                                                                || (quotesForm.controls['high'].value <= 0 && quotesForm.controls['high'].value != null)}">
+                                </p-inputNumber>                  
+                                <small class="p-error d-block" *ngIf="(quotesForm.controls['high'].touched && quotesForm.controls['high'].errors?.required) 
+                                                                || (quotesForm.controls['high'].value <= 0 && quotesForm.controls['width'].value != null)">
+                                    El campo no puede ser cero o estar vacío.
+                                </small>
+                            </div>
+                            <div class="col-12 col-sm-6 p-0 p-field text-center mt-3">
+                                <label class="d-block my-3 label" for="widthId">Ancho(Pulgadas)</label>
+                                <p-inputNumber  inputId="widthId" 
+                                                mode="decimal"
+                                                formControlName="width"  
+                                                [minFractionDigits]="1" 
+                                                [maxFractionDigits]="2"
+                                                placeholder="0"
+                                                [ngClass]="{'ng-dirty ng-invalid': (quotesForm.controls['width'].touched && quotesForm.controls['width'].errors?.required) 
+                                                                || (quotesForm.controls['width'].value <= 0 && quotesForm.controls['width'].value != null)}">
+                            </p-inputNumber>                  
+                            <small class="p-error d-block" *ngIf="(quotesForm.controls['width'].touched && quotesForm.controls['width'].errors?.required) 
+                                                            || (quotesForm.controls['width'].value <= 0 && quotesForm.controls['width'].value != null)">
+                                El campo no puede ser cero o estar vacío.
+                            </small>
+                            </div>
+                            <div class="col-12 col-sm-6 p-0 p-field text-center mt-3">
+                                <label class="d-block my-3 label" for="longId">Alto(Pulgadas)</label>
+                                <p-inputNumber  inputId="longId" 
+                                                mode="decimal"
+                                                formControlName="long" 
+                                                [minFractionDigits]="1" 
+                                                [maxFractionDigits]="2"
+                                                placeholder="0"
+                                                [ngClass]="{'ng-dirty ng-invalid': (quotesForm.controls['long'].touched && quotesForm.controls['long'].errors?.required) 
+                                                                || (quotesForm.controls['long'].value <= 0 && quotesForm.controls['long'].value != null)}">
+                                </p-inputNumber>                  
+                                <small class="p-error d-block" *ngIf="(quotesForm.controls['long'].touched && quotesForm.controls['long'].errors?.required) 
+                                                                || (quotesForm.controls['long'].value <= 0 && quotesForm.controls['width'].value != null)">
+                                    El campo no puede ser cero o estar vacío.
+                                </small>
+                            </div>
+                        <div class="text-center title mt-5">Costos Estimados</div>
+                        <div class="row justify-content-between text-center">
+                            <div class="col-12 col-sm-6 backgroundQuote">
+                                <div class="pabiont-card">
+                                <p class="titleQuote">Envío Marítimo</p>
+                                <span class="number" [innerHTML]="calculateRateMaritime().toFixed(2)"></span>
+                                <span class="number"> USD</span>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6 backgroundQuote">
+                                <div class="pabiont-card">
+                                <p class="titleQuote">Envío Aéreo</p>
+                                <span class="number" [innerHTML]="calculateRateAerial().toFixed(2)"></span>
+                                <span class="number"> USD</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        </div>
+                    </form>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
-      <div class="">
-        <hr style="color: black; background-color: black;text-align: center;" />
+    <div *ngSwitchCase="1">
+        <div class="footerBackground" #Reporte>
+            <span class="report">Reportar pago</span> 
+            <app-report-payment></app-report-payment>
+        </div>
     </div>
 </div>
 <!--FOOTER-->
 <div (click)="closeForm()" id="Contactanos" style="margin-top: 70px;">
-    <div class="footerBackground">
-        <img class="img-fluid" src="assets/img/footerimagen.png">
-    </div>
-    
     <div class="footerSection row m-0 ">
         <div class="col-12 col-md-4 mb-5 mb-md-0" style="text-align: center;">
             <img class="img-fluid" src="assets/img/cargo-radar-logo-blanco.png" >

@@ -31,6 +31,7 @@ export class IndexComponent implements OnInit {
   isSubmit: boolean = false;
   showWebChat: boolean = false;
   isMenuCollapsed: boolean = true
+  option: Number = 0;
   
   @ViewChild('Tracking',{static: true}) public Tracking: ElementRef;
 
@@ -143,6 +144,9 @@ export class IndexComponent implements OnInit {
     this.showWebChat = false;
   }
 
-
-
+  gotoPage(op: Number) {
+     this.option = op
+  }
+    
 }
+

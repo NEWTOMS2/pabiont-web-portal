@@ -1,0 +1,44 @@
+.reportSection{
+    .title{
+        font-weight:bold;
+        font-size: 24px;
+        color: #000000;
+    }
+    .inputTitle{
+        font-weight: 400;
+        font-size: 18px;
+        color: #000000;
+    }
+    .reportButton{
+        color: white; 
+        margin: auto; 
+        padding-left: 16px; 
+        padding-right: 16px;
+        text-align: center;
+        text-decoration: none;
+        font-size: 24px;
+    }
+}
+
+::ng-deep{
+    .p-inputnumber{
+        width: 100%;
+    }
+    .p-calendar{
+        width: 100%;
+    }
+    .p-button{
+        background: #1078d1;
+    }
+}
+
+
+.pabiont-card{
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    border: 2px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    padding: 24px;
+    text-align: left;
+}
