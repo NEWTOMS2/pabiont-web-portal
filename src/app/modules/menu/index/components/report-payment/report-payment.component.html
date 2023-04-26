@@ -1,3 +1,4 @@
+<p-toast position="top-center" key="tc"></p-toast>
 <div class="pabiont-card reportSection row m-0" >
     <form [formGroup]="formGroup">
         <div class="col-12 py-3">
@@ -98,7 +99,7 @@
                     <p-calendar inputId="basic"
                                 formControlName="date"
                                 [showIcon]="true"
-                                dateFormat="dd/mm/yy"
+                                dateFormat="yy-mm-dd"
                                 appendTo="body"
                                 class="w-100"
                                 placeholder="fecha"
@@ -108,7 +109,12 @@
             </div>
         </div>
         <div class="col-12 py-4 d-flex justify-content-center">
-            <a class="p-button reportButton">Enviar reporte</a>
+            <button pButton pRipple  
+                class="p-button reportButton"
+                (click)="send()"
+                [disabled]="!buttonEnabled"
+                label="Enviar Reporte">
+        </button>
         </div>
      </form>
 </div>

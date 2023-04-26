@@ -65,4 +65,10 @@ export class IndexService {
       ));
   }
 
+  createReport(report: any): Observable<any> {
+    //  updating an existing Invoice Status
+      return this.httpService.post(`${this.appConfig.config.url.reportPayment}`, report)
+            .pipe(map(response => response.data));
+    
+  }
 }

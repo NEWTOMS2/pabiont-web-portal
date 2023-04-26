@@ -11,6 +11,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { DropdownModule } from 'primeng/dropdown';
 import { ButtonModule } from 'primeng/button';
 import {ToastModule} from 'primeng/toast';
+import { GMapModule } from 'primeng/gmap';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import {ToastModule} from 'primeng/toast';
     DialogModule,
     ReactiveFormsModule,
     DropdownModule,
-    ToastModule
+    ToastModule,
+    GMapModule
   ]
 })
 export class WarehouseManagementModule { }

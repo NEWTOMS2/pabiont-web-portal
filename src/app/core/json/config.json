@@ -21,7 +21,9 @@
         "sendEmail": "send-email",
         "postInvoice": "invoice",
         "getLastInvoice": "invoice/last_invoice",
-        "getPrefixCompany": "company?code=1"
+        "getPrefixCompany": "company?code=1",
+        "reportPayment": "report-payment",
+        "getLocationByCode": "location?code="
     }
 
 }

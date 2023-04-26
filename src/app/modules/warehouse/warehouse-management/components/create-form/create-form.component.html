@@ -23,6 +23,74 @@
             </p-dropdown>
             <small class="p-error" *ngIf="formGroup.controls['type'].touched && formGroup.controls['type'].errors?.required">El Tipo es obligatorio.</small>
         </div>
+        <div class="p-field col-6 mt-3">
+            <label for="Country">Pais</label>
+            <p-dropdown [options]="countryList" 
+                        optionLabel="label"
+                        styleClass="w-100"
+                        dataKey="value"
+                        placeholder="Selecciona el Tipo"
+                        (onChange)="getStateList()"
+                        [ngClass]="{'ng-dirty ng-invalid': formGroup.controls['country'].touched && formGroup.controls['country'].errors?.required}"
+                        formControlName="country">
+            </p-dropdown>
+            <small class="p-error" *ngIf="formGroup.controls['country'].touched && formGroup.controls['country'].errors?.required">El Pais es obligatorio.</small>
+        </div>
+        <div class="p-field col-6 mt-3">
+            <label for="State">Estado</label>
+            <p-dropdown [options]="stateList" 
+                                    [(ngModel)]="selectedLocation"
+                                    optionLabel="description" 
+                                    [filter]="true" 
+                                    filterBy="description,code"
+                                    [disabled]="validShow"
+                                    [showClear]="true"
+                                    appendTo="body" 
+                                    styleClass="w-100"
+                                    formControlName="state"
+                                    placeholder="Estado">
+                            <ng-template pTemplate="selectedItem">
+                                <div *ngIf="selectedLocation">
+                                    <div>
+                                        {{selectedLocation.description}}
+                                    </div>
+                                </div>
+                            </ng-template>
+                            <ng-template let-destination pTemplate="item">
+                                <div>
+                                    <div>
+                                        {{destination.description}}
+                                    </div>
+                                    <div class="filterSubtitle">
+                                        {{destination.code}}
+                                    </div>
+                                </div>
+                            </ng-template>
+                        </p-dropdown>
+            <small class="p-error" *ngIf="formGroup.controls['state'].touched && formGroup.controls['state'].errors?.required">El estado es obligatorio.</small>
+        </div>
+        <div class="p-field col-6 mt-3">
+            <label for="Latitude">Latitud</label>
+            <input  type="text" 
+                    id="Latitude" 
+                    [ngClass]="{'ng-dirty ng-invalid': formGroup.controls['latitude'].touched && formGroup.controls['latitude'].errors?.required}"
+                    pInputText 
+                    class="uppercase"
+                    formControlName="latitude" 
+                    required autofocus />
+            <small class="p-error" *ngIf="formGroup.controls['latitude'].touched && formGroup.controls['latitude'].errors?.required">La latitud es obligatorio.</small>
+        </div>
+        <div class="p-field col-6 mt-3">
+            <label for="Longitude">Longitud</label>
+            <input  type="text" 
+                    id="Longitude" 
+                    [ngClass]="{'ng-dirty ng-invalid': formGroup.controls['longitude'].touched && formGroup.controls['longitude'].errors?.required}"
+                    pInputText 
+                    class="uppercase"
+                    formControlName="longitude" 
+                    required autofocus />
+            <small class="p-error" *ngIf="formGroup.controls['longitude'].touched && formGroup.controls['longitude'].errors?.required">El código es obligatorio.</small>
+        </div>
     </div>
     <div class="p-field mt-3">
         <label for="Description">Descripción</label>
@@ -34,6 +102,5 @@
                     placeholder="Coloque la Ciudad y el Estado"
                     required />
         <small class="p-error" *ngIf="formGroup.controls['description'].touched && formGroup.controls['description'].errors?.required">La descripción es Obligatoria.</small>
-    </div>
-    
+    </div>  
 </form>

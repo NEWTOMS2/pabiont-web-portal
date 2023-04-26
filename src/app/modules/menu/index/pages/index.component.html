@@ -95,84 +95,90 @@
                         </div>
                     </div>
                 </div>
-                <div class="inputSection col-12 p-0 m-0">
-                    <form [formGroup]="quotesForm">
-                        <div class="text-center title">Ingresa los Datos de tu Paquete</div>
-                        <div class="row p-formgrid p-grid m-3">
-                            <div class="col-12 col-sm-6 col- p-0 p-field text-center">
-                                <label class="d-block my-3 label" for="weightId">Peso(Libras)</label>
-                                <p-inputNumber  inputId="weightId" 
-                                                mode="decimal"
-                                                formControlName="weight"
-                                                [minFractionDigits]="1" 
-                                                [maxFractionDigits]="2"
-                                                placeholder="0"
-                                                [ngClass]="{'ng-dirty ng-invalid': (quotesForm.controls['weight'].touched && quotesForm.controls['weight'].errors?.required) 
-                                                                || (quotesForm.controls['weight'].value <= 0 && quotesForm.controls['weight'].value != null)}">
-                                </p-inputNumber>
-                                <small class="p-error d-block" *ngIf="(quotesForm.controls['weight'].touched && quotesForm.controls['weight'].errors?.required) 
-                                                                || (quotesForm.controls['weight'].value <= 0 && quotesForm.controls['weight'].value != null)">
-                                    El campo no puede ser cero o estar vacío.
-                                </small>
-                            </div>
-                            <div class="col-12 col-sm-6 p-0 p-field text-center">
-                                <label class="d-block my-3 label" for="highId">Largo(Pulgadas)</label>
-                                <p-inputNumber  inputId="highId" 
-                                                mode="decimal"
-                                                formControlName="high" 
-                                                [minFractionDigits]="1" 
-                                                [maxFractionDigits]="2"
-                                                placeholder="0"
-                                                [ngClass]="{'ng-dirty ng-invalid': (quotesForm.controls['high'].touched && quotesForm.controls['high'].errors?.required) 
-                                                                || (quotesForm.controls['high'].value <= 0 && quotesForm.controls['high'].value != null)}">
+                <div class=" inputSection row"> 
+                    <div class="text-center title mb-4 mt-4">Realice la Cotizacion de su envío</div>
+                    <div class="inputSection col-12 col-lg-6 p-0 m-0">
+                        <form [formGroup]="quotesForm">
+                            <div class="text-center title">Ingresa los Datos de tu Paquete</div>
+                            <div class="row p-formgrid p-grid m-3">
+                                <div class="col-12 col-sm-6 col- p-0 p-field text-center">
+                                    <label class="d-block my-3 label" for="weightId">Peso(Libras)</label>
+                                    <p-inputNumber  inputId="weightId" 
+                                                    mode="decimal"
+                                                    formControlName="weight"
+                                                    [minFractionDigits]="1" 
+                                                    [maxFractionDigits]="2"
+                                                    placeholder="0"
+                                                    [ngClass]="{'ng-dirty ng-invalid': (quotesForm.controls['weight'].touched && quotesForm.controls['weight'].errors?.required) 
+                                                                    || (quotesForm.controls['weight'].value <= 0 && quotesForm.controls['weight'].value != null)}">
+                                    </p-inputNumber>
+                                    <small class="p-error d-block" *ngIf="(quotesForm.controls['weight'].touched && quotesForm.controls['weight'].errors?.required) 
+                                                                    || (quotesForm.controls['weight'].value <= 0 && quotesForm.controls['weight'].value != null)">
+                                        El campo no puede ser cero o estar vacío.
+                                    </small>
+                                </div>
+                                <div class="col-12 col-sm-6 p-0 p-field text-center">
+                                    <label class="d-block my-3 label" for="highId">Largo(Pulgadas)</label>
+                                    <p-inputNumber  inputId="highId" 
+                                                    mode="decimal"
+                                                    formControlName="high" 
+                                                    [minFractionDigits]="1" 
+                                                    [maxFractionDigits]="2"
+                                                    placeholder="0"
+                                                    [ngClass]="{'ng-dirty ng-invalid': (quotesForm.controls['high'].touched && quotesForm.controls['high'].errors?.required) 
+                                                                    || (quotesForm.controls['high'].value <= 0 && quotesForm.controls['high'].value != null)}">
+                                    </p-inputNumber>                  
+                                    <small class="p-error d-block" *ngIf="(quotesForm.controls['high'].touched && quotesForm.controls['high'].errors?.required) 
+                                                                    || (quotesForm.controls['high'].value <= 0 && quotesForm.controls['width'].value != null)">
+                                        El campo no puede ser cero o estar vacío.
+                                    </small>
+                                </div>
+                                <div class="col-12 col-sm-6 p-0 p-field text-center mt-3">
+                                    <label class="d-block my-3 label" for="widthId">Ancho(Pulgadas)</label>
+                                    <p-inputNumber  inputId="widthId" 
+                                                    mode="decimal"
+                                                    formControlName="width"  
+                                                    [minFractionDigits]="1" 
+                                                    [maxFractionDigits]="2"
+                                                    placeholder="0"
+                                                    [ngClass]="{'ng-dirty ng-invalid': (quotesForm.controls['width'].touched && quotesForm.controls['width'].errors?.required) 
+                                                                    || (quotesForm.controls['width'].value <= 0 && quotesForm.controls['width'].value != null)}">
                                 </p-inputNumber>                  
-                                <small class="p-error d-block" *ngIf="(quotesForm.controls['high'].touched && quotesForm.controls['high'].errors?.required) 
-                                                                || (quotesForm.controls['high'].value <= 0 && quotesForm.controls['width'].value != null)">
+                                <small class="p-error d-block" *ngIf="(quotesForm.controls['width'].touched && quotesForm.controls['width'].errors?.required) 
+                                                                || (quotesForm.controls['width'].value <= 0 && quotesForm.controls['width'].value != null)">
                                     El campo no puede ser cero o estar vacío.
                                 </small>
+                                </div>
+                                <div class="col-12 col-sm-6 p-0 p-field text-center mt-3">
+                                    <label class="d-block my-3 label" for="longId">Alto(Pulgadas)</label>
+                                    <p-inputNumber  inputId="longId" 
+                                                    mode="decimal"
+                                                    formControlName="long" 
+                                                    [minFractionDigits]="1" 
+                                                    [maxFractionDigits]="2"
+                                                    placeholder="0"
+                                                    [ngClass]="{'ng-dirty ng-invalid': (quotesForm.controls['long'].touched && quotesForm.controls['long'].errors?.required) 
+                                                                    || (quotesForm.controls['long'].value <= 0 && quotesForm.controls['long'].value != null)}">
+                                    </p-inputNumber>                  
+                                    <small class="p-error d-block" *ngIf="(quotesForm.controls['long'].touched && quotesForm.controls['long'].errors?.required) 
+                                                                    || (quotesForm.controls['long'].value <= 0 && quotesForm.controls['width'].value != null)">
+                                        El campo no puede ser cero o estar vacío.
+                                    </small>
+                                </div>
                             </div>
-                            <div class="col-12 col-sm-6 p-0 p-field text-center mt-3">
-                                <label class="d-block my-3 label" for="widthId">Ancho(Pulgadas)</label>
-                                <p-inputNumber  inputId="widthId" 
-                                                mode="decimal"
-                                                formControlName="width"  
-                                                [minFractionDigits]="1" 
-                                                [maxFractionDigits]="2"
-                                                placeholder="0"
-                                                [ngClass]="{'ng-dirty ng-invalid': (quotesForm.controls['width'].touched && quotesForm.controls['width'].errors?.required) 
-                                                                || (quotesForm.controls['width'].value <= 0 && quotesForm.controls['width'].value != null)}">
-                            </p-inputNumber>                  
-                            <small class="p-error d-block" *ngIf="(quotesForm.controls['width'].touched && quotesForm.controls['width'].errors?.required) 
-                                                            || (quotesForm.controls['width'].value <= 0 && quotesForm.controls['width'].value != null)">
-                                El campo no puede ser cero o estar vacío.
-                            </small>
-                            </div>
-                            <div class="col-12 col-sm-6 p-0 p-field text-center mt-3">
-                                <label class="d-block my-3 label" for="longId">Alto(Pulgadas)</label>
-                                <p-inputNumber  inputId="longId" 
-                                                mode="decimal"
-                                                formControlName="long" 
-                                                [minFractionDigits]="1" 
-                                                [maxFractionDigits]="2"
-                                                placeholder="0"
-                                                [ngClass]="{'ng-dirty ng-invalid': (quotesForm.controls['long'].touched && quotesForm.controls['long'].errors?.required) 
-                                                                || (quotesForm.controls['long'].value <= 0 && quotesForm.controls['long'].value != null)}">
-                                </p-inputNumber>                  
-                                <small class="p-error d-block" *ngIf="(quotesForm.controls['long'].touched && quotesForm.controls['long'].errors?.required) 
-                                                                || (quotesForm.controls['long'].value <= 0 && quotesForm.controls['width'].value != null)">
-                                    El campo no puede ser cero o estar vacío.
-                                </small>
-                            </div>
-                        <div class="text-center title mt-5">Costos Estimados</div>
+                        </form>
+                    </div>
+                    <div class="inputSection col-12 col-lg-6 p-0 m-0">
+                        <div class="text-center title mt-3">Costos Estimados</div>
                         <div class="row justify-content-between text-center">
-                            <div class="col-12 col-sm-6 backgroundQuote">
+                            <div class="col-12 backgroundQuote">
                                 <div class="pabiont-card">
                                 <p class="titleQuote">Envío Marítimo</p>
                                 <span class="number" [innerHTML]="calculateRateMaritime().toFixed(2)"></span>
                                 <span class="number"> USD</span>
                                 </div>
                             </div>
-                            <div class="col-12 col-sm-6 backgroundQuote">
+                            <div class="col-12 backgroundQuote">
                                 <div class="pabiont-card">
                                 <p class="titleQuote">Envío Aéreo</p>
                                 <span class="number" [innerHTML]="calculateRateAerial().toFixed(2)"></span>
@@ -180,9 +186,7 @@
                                 </div>
                             </div>
                         </div>
-                        
-                        </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>

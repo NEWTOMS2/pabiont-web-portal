@@ -3,7 +3,9 @@
         "headerList": [
             { "field": "code", "header": "Código" },
             { "field": "type", "header": "Tipo" },
-            { "field": "description", "header": "Descripción" }
+            { "field": "description", "header": "Descripción" },
+            { "field": "country_name", "header": "País" },
+            { "field": "state_name", "header": "Estado" }
           ],
         "headerCustomButtons": [
             { "buttonId": 0, "icon": "pi pi-plus", "tooltipTitle": "Agregar", "iconClass": "p-speeddial-action"}

@@ -14,7 +14,6 @@ export class CreateFormComponent implements OnInit {
  formGroup: FormGroup;
  //Dropdown data
  statusList: any[] = [
-   { label: "Pagada", value: 12 },
    { label: "Anulada", value: 13 }
  ];
  invoiceRow: InvoiceInformation;
