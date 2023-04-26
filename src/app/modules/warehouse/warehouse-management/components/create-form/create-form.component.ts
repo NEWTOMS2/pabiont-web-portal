@@ -51,14 +51,14 @@ export class CreateFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.options = {
+   /* this.options = {
       center: { lat: 36.890257, lng: 30.707417 },
       zoom: 12
     };
 
     this.initOverlays();
 
-    this.infoWindow = new google.maps.InfoWindow();
+    this.infoWindow = new google.maps.InfoWindow();*/
   }
 
   resetForm(){
@@ -71,6 +71,7 @@ export class CreateFormComponent implements OnInit {
       latitude: ["", Validators.required],
       longitude: ["", Validators.required]
     });
+    this.validShow = true;
     this.formGroup.statusChanges.subscribe(status => {
       this.buttonEnabled.emit(status == "VALID" ? true : false);
     });
@@ -123,7 +124,7 @@ export class CreateFormComponent implements OnInit {
 
  async updateForm(rowData: any){
     console.log(rowData)
-    this.validShow = false;
+    this.validShow = true;
     this.formGroup.controls.code.setValue(rowData.code);
     this.formGroup.controls.type.setValue(this.typeList.find(type => rowData.type == type.value));
     this.formGroup.controls.description.setValue(rowData.description);
@@ -132,9 +133,10 @@ export class CreateFormComponent implements OnInit {
     this.formGroup.controls.longitude.setValue(rowData.longitude);
     this.formGroup.controls['code'].disable();
     this.getStateList();
+    this.validShow = true;
     await this.getIndState(this.formGroup.controls['country'].value.value);
-    console.log(this.infoState.find(state => rowData.state_code == state.code));
     this.formGroup.controls.state.setValue(this.infoState.find(state => rowData.state_code == state.code));
+    this.validShow = false;
     this.isUpdate=true;
   }
 
@@ -154,7 +156,7 @@ export class CreateFormComponent implements OnInit {
               
             });
   }
-
+/*
   handleMapClick(event: any) {
     this.dialogVisible = true;
     this.selectedPosition = event.latLng;
@@ -202,5 +204,5 @@ export class CreateFormComponent implements OnInit {
   handleDragEnd(event: any) {
     this.messageService.add({ severity: 'info', summary: 'Marker Dragged', detail: event.overlay.getTitle() });
   }
-
+*/
 }
