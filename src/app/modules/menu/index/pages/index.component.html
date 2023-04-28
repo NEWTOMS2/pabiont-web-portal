@@ -25,7 +25,7 @@
         <!--HEADER-->
         <div class="headerSection" (click)="closeForm()">
             <div class="formSection" id="Home">
-                <div class="title">Envíos de Paquetes Rápidos y Económicos</div>
+                <div class="title">Envíos de paquetes rápidos y económicos</div>
                 <div class="subtitle">Desde su origen hasta su destino</div>
             </div>
         </div>
@@ -80,29 +80,29 @@
             <div class="quotesSection row p-0 m-0">
                 <div class="row justify-content-between text-center">
                     <div class="inputSection">
-                    <div class="text-center title">Nuestros Servicios de Envío</div>
+                    <div class="text-center title">Nuestros servicios de envío</div>
                     </div>
                     <div class="col-12 col-sm-6 backgroundQuote ">
                         <div class="pabiont-card"> 
                         <img class="img-fluid" src="assets/img/maritime.png">
-                        <p style="font-weight: bold;">Transporte Marítimo</p>
+                        <p style="font-weight: bold;">Marítimo</p>
                         </div>
                     </div>
                     <div class="col-12 col-sm-6 backgroundQuote separate">
                         <div class="pabiont-card">
                         <img class="img-fluid" src="assets/img/aereal.png">
-                        <p style="font-weight: bold;">Transporte Aéreo</p>
+                        <p style="font-weight: bold;">Aéreo</p>
                         </div>
                     </div>
                 </div>
                 <div class=" inputSection row"> 
-                    <div class="text-center title mb-4 mt-4">Realice la Cotización de su envío</div>
+                    <div class="text-center title mb-4 mt-4">Realice la cotización de su envío</div>
                     <div class="inputSection col-12 col-lg-6 p-0 m-0">
                         <form [formGroup]="quotesForm">
-                            <div class="text-center title">Ingresa los Datos de tu Paquete</div>
+                            <div class="text-center title">Ingresa los datos de tu paquete</div>
                             <div class="row p-formgrid p-grid m-3">
                                 <div class="col-12 col-sm-6 col- p-0 p-field text-center">
-                                    <label class="d-block my-3 label" for="weightId">Peso(Libras)</label>
+                                    <label class="d-block my-3 label" for="weightId">Peso (libras)</label>
                                     <p-inputNumber  inputId="weightId" 
                                                     mode="decimal"
                                                     formControlName="weight"
@@ -118,7 +118,7 @@
                                     </small>
                                 </div>
                                 <div class="col-12 col-sm-6 p-0 p-field text-center">
-                                    <label class="d-block my-3 label" for="highId">Largo(Pulgadas)</label>
+                                    <label class="d-block my-3 label" for="highId">Largo (pulgadas)</label>
                                     <p-inputNumber  inputId="highId" 
                                                     mode="decimal"
                                                     formControlName="high" 
@@ -134,7 +134,7 @@
                                     </small>
                                 </div>
                                 <div class="col-12 col-sm-6 p-0 p-field text-center mt-3">
-                                    <label class="d-block my-3 label" for="widthId">Ancho(Pulgadas)</label>
+                                    <label class="d-block my-3 label" for="widthId">Ancho (pulgadas)</label>
                                     <p-inputNumber  inputId="widthId" 
                                                     mode="decimal"
                                                     formControlName="width"  
@@ -150,7 +150,7 @@
                                 </small>
                                 </div>
                                 <div class="col-12 col-sm-6 p-0 p-field text-center mt-3">
-                                    <label class="d-block my-3 label" for="longId">Alto(Pulgadas)</label>
+                                    <label class="d-block my-3 label" for="longId">Alto (pulgadas)</label>
                                     <p-inputNumber  inputId="longId" 
                                                     mode="decimal"
                                                     formControlName="long" 
@@ -169,18 +169,18 @@
                         </form>
                     </div>
                     <div class="inputSection col-12 col-lg-6 p-0 m-0">
-                        <div class="text-center title mt-3">Costos Estimados</div>
+                        <div class="text-center title mt-3">Costos estimados</div>
                         <div class="row justify-content-between text-center">
                             <div class="col-12 backgroundQuote">
                                 <div class="pabiont-card">
-                                <p class="titleQuote">Envío Marítimo</p>
+                                <p class="titleQuote">Marítimo</p>
                                 <span class="number" [innerHTML]="calculateRateMaritime().toFixed(2)"></span>
                                 <span class="number"> USD</span>
                                 </div>
                             </div>
                             <div class="col-12 backgroundQuote">
                                 <div class="pabiont-card">
-                                <p class="titleQuote">Envío Aéreo</p>
+                                <p class="titleQuote">Aéreo</p>
                                 <span class="number" [innerHTML]="calculateRateAerial().toFixed(2)"></span>
                                 <span class="number"> USD</span>
                                 </div>
@@ -207,8 +207,8 @@
         <div class="col-12 col-md-8">
             <div class="row m-0 mb-5">  
                 <div class="col-12">
-                    <span class="footerSecundaryTitle">Datos de contacto <br></span>
-                    <span class="footerSecundarySubtitle">Comunícaticate con Nosotros</span>     
+                    <span class="footerSecundaryTitle">Datos de contacto<br></span>
+                    <span class="footerSecundarySubtitle">Comunícaticate con nosotros</span>     
                 </div>
             </div>
             <div class="row m-0">
@@ -222,7 +222,7 @@
                     <span class="footerSecundarySubtitle">cargoradar@newtoms.com</span>
                 </div>
                 <div class="col-12 col-sm-6 col-lg-4 ">
-                    <span class="footerSecundaryTitle">Dirección Postal<br></span>  
+                    <span class="footerSecundaryTitle">Dirección postal<br></span>  
                     <span class="footerSecundarySubtitle">12600 Deerfield Parkway #100
                         Alpharetta, Georgia 30004</span>
                 </div>

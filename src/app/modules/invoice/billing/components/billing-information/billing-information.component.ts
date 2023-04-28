@@ -139,8 +139,8 @@ export class BillingInformationComponent implements OnInit {
                                 this.billingsForm.controls['final_destination'].value.id, this.billingsForm.controls['final_destination'].value.description);
   await this.invoiceManagementService.createInvoice(this.billingInformation).subscribe(
       response => {
-        this.messageService.addAll([{severity: 'success', summary: 'Factura y Paquetes creados correctamente.', detail: '', sticky: true},
-                                    {severity: 'success', summary: 'Correo con la factura enviado al remitente correctamente.', detail: '', sticky: true}]);
+        this.messageService.addAll([{severity: 'success', summary: 'Factura y Paquetes creados correctamente.', detail: ''},
+                                    {severity: 'success', summary: 'Correo con la factura enviado al remitente correctamente.', detail: ''}]);
         
         //cambios de post
       },
