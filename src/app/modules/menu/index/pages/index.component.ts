@@ -48,7 +48,8 @@ export class IndexComponent implements OnInit {
       this.headerList = [
         { field: 'Code', header: 'Código Tracking' },
         { field: 'description', header: 'Descripción' },
-        { field: 'status', header: 'Estatus' }
+        { field: 'status', header: 'Estatus' },
+        { field: 'location', header: 'Ubicación' }
       ];
       this.resetForm();
       this.getRate();

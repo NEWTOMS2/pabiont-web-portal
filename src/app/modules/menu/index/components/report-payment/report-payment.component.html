@@ -1,14 +1,46 @@
 <p-toast position="top-center" key="tc"></p-toast>
 <div class="pabiont-card reportSection row m-0" >
-    <form [formGroup]="formGroup">
+    <form [formGroup]="formInvoice">
+        <div class="col-12 py-3" style="text-align: center;">
+            <span class="title">Ingrese el numero de factura/tracking</span>
+        </div>
+        <div class="col-12">
+            <div class="row m-0">
+                <div class="col-12 mb-3">
+                    <div class="invoiceInput">
+                        <input  type="text" 
+                                id="Invoice"
+                                [ngClass]="{'ng-dirty ng-invalid': formInvoice.controls['invoice'].touched && formInvoice.controls['invoice'].errors?.required}"
+                                pInputText 
+                                formControlName="invoice"
+                                required autofocus />
+                        <small class="p-error" *ngIf="formInvoice.controls['invoice'].touched && formInvoice.controls['invoice'].errors?.required">El factura/tracking es obligatorio.</small>
+                    </div>
+                    <div class="col-12 py-4 d-flex justify-content-center">
+                        <button pButton pRipple  
+                            class="p-button reportButton"
+                            (click)="search()"
+                            [disabled]="!buttonInvoiceEnabled"
+                            label="Buscar">
+                    </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <form [formGroup]="formGroup">    
+    <div class="pabiont-card">
+        <div class="col-12 mb-4 py-3" style="text-align: center;">
+            <span class="title">Información de la factura</span>
+        </div>
         <div class="col-12 py-3">
             <span class="title">Datos de cliente</span>
         </div>
         <div class="col-12">
             <div class="row m-0">
-                <div class="col-4">
+                <div class="col-12 col-md-4 mt-2">
                     <label class="inputTitle">
-                        Código de cliente
+                        Remitente
                     </label>
                     <div>
                         <input  type="text" 
@@ -21,9 +53,9 @@
                         <small class="p-error" *ngIf="formGroup.controls['code'].touched && formGroup.controls['code'].errors?.required">El codigo es obligatorio.</small>
                     </div>
                 </div>
-                <div class="col-8">
+                <div class="col-12 col-md-8 mt-2">
                     <label class="inputTitle">
-                        Titular de la cuenta
+                        Titular de la cuenta zelle
                     </label>
                     <div>
                         <input  type="text" 
@@ -43,7 +75,7 @@
         </div>
         <div class="col-12">
             <div class="row m-0">
-                <div class="col-4">
+                <div class="col-12 col-md-4 mt-2 flex flex-wrap p-fluid">
                     <label class="inputTitle">
                         Monto pagado
                     </label>
@@ -53,7 +85,7 @@
                                     [minFractionDigits]="1" 
                                     [maxFractionDigits]="2"
                                     placeholder="0"
-                                    style="width: 100%;"
+                                    class="w-100"
                                     [ngClass]="{'ng-dirty ng-invalid': (formGroup.controls['amount'].touched && formGroup.controls['amount'].errors?.required) 
                                                     || (formGroup.controls['amount'].value <= 0 && formGroup.controls['amount'].value != null)}">
                     </p-inputNumber>
@@ -62,7 +94,7 @@
                         El campo no puede ser cero o estar vacío.
                     </small>
                 </div>
-                <div class="col-8">
+                <div class="col-12 col-md-8 mt-2">
                     <label class="inputTitle">
                         Factura pagada
                     </label>
@@ -77,7 +109,7 @@
                         <small class="p-error" *ngIf="formGroup.controls['invoiceNumber'].touched && formGroup.controls['invoiceNumber'].errors?.required">El Numero de factura es obligatorio.</small>
                     </div>
                 </div>
-                <div class="col-6 mt-3">
+                <div class="col-12 col-md-6 mt-3">
                     <label class="inputTitle">
                         Referencia del pago
                     </label>
@@ -92,7 +124,7 @@
                         <small class="p-error" *ngIf="formGroup.controls['paymentReference'].touched && formGroup.controls['paymentReference'].errors?.required">La referencia del pago es obligatorio.</small>
                     </div>
                 </div>
-                <div class="col-6 mt-3">
+                <div class="col-12 col-md-6 mt-3">
                     <label class="d-block inputTitle">
                         Fecha de la transferencia
                     </label>
@@ -108,6 +140,7 @@
                 </div>
             </div>
         </div>
+    </div>
         <div class="col-12 py-4 d-flex justify-content-center">
             <button pButton pRipple  
                 class="p-button reportButton"

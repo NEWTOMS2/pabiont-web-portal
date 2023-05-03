@@ -39,34 +39,34 @@
         <div class="p-field col-6 mt-3">
             <label for="State">Estado</label>
             <p-dropdown [options]="stateList" 
-                                    [(ngModel)]="selectedLocation"
-                                    optionLabel="description" 
-                                    [filter]="true" 
-                                    filterBy="description,code"
-                                    [disabled]="validShow"
-                                    [showClear]="true"
-                                    appendTo="body" 
-                                    styleClass="w-100"
-                                    formControlName="state"
-                                    placeholder="Estado">
-                            <ng-template pTemplate="selectedItem">
-                                <div *ngIf="selectedLocation">
-                                    <div>
-                                        {{selectedLocation.description}}
-                                    </div>
-                                </div>
-                            </ng-template>
-                            <ng-template let-destination pTemplate="item">
-                                <div>
-                                    <div>
-                                        {{destination.description}}
-                                    </div>
-                                    <div class="filterSubtitle">
-                                        {{destination.code}}
-                                    </div>
-                                </div>
-                            </ng-template>
-                        </p-dropdown>
+                        [(ngModel)]="selectedLocation"
+                        optionLabel="description" 
+                        [filter]="true" 
+                        filterBy="description,code"
+                        [disabled]="validShow"
+                        [showClear]="true"
+                        appendTo="body" 
+                        styleClass="w-100"
+                        formControlName="state"
+                        placeholder="Estado">
+                <ng-template pTemplate="selectedItem">
+                    <div *ngIf="selectedLocation">
+                        <div>
+                            {{selectedLocation.description}}
+                        </div>
+                    </div>
+                </ng-template>
+                <ng-template let-destination pTemplate="item">
+                    <div>
+                        <div>
+                            {{destination.description}}
+                        </div>
+                        <div class="filterSubtitle">
+                            {{destination.code}}
+                        </div>
+                    </div>
+                </ng-template>
+            </p-dropdown>
             <small class="p-error" *ngIf="formGroup.controls['state'].touched && formGroup.controls['state'].errors?.required">El estado es obligatorio.</small>
         </div>
         <div class="p-field col-6 mt-3">
@@ -89,7 +89,7 @@
                     class="uppercase"
                     formControlName="longitude" 
                     required autofocus />
-            <small class="p-error" *ngIf="formGroup.controls['longitude'].touched && formGroup.controls['longitude'].errors?.required">El código es obligatorio.</small>
+            <small class="p-error" *ngIf="formGroup.controls['longitude'].touched && formGroup.controls['longitude'].errors?.required">El longitud es obligatorio.</small>
         </div>
     </div>
     <div class="p-field mt-3">

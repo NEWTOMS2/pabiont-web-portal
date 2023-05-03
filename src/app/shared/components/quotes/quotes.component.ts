@@ -20,6 +20,8 @@ export class QuotesComponent implements OnInit {
   sizeValid: boolean = true;
 
   @Input() isSelectable: boolean;
+  @Input() isShowedA: boolean;
+  @Input() isShowedM: boolean;
   @Output() isClicked = new EventEmitter();
 
   constructor(

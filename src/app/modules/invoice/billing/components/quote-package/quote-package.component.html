@@ -2,6 +2,8 @@
     <span class="title">Información de Paquetes</span>
     <app-quotes  #child
                  [isSelectable]="true"
+                 [isShowedA]="isShowedA"
+                 [isShowedM]="isShowedM"
                  (isClicked)="packageInformation = $event; displayDescription=true ">
     </app-quotes>
 </div>

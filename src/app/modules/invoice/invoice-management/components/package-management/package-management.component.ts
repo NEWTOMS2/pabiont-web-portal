@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MessageService } from 'primeng/api';
 import { InvoiceManagementService } from 'src/app/core/services/invoice/invoice-management.service';
+import { WarehouseManagementService } from 'src/app/core/services/warehouse/warehouse-management.service';
 import { PackageInformation } from 'src/app/shared/models/request/packageInformation-request.model';
 
 @Component({
@@ -12,8 +13,12 @@ import { PackageInformation } from 'src/app/shared/models/request/packageInforma
 export class PackageManagementComponent implements OnInit {
 
   //Page Variables
+  formGroup: FormGroup
   canEdit: boolean = false;
-  packageRow: PackageInformation
+  packageRow: PackageInformation;
+  warehouseList: any;
+  selectedLocation: any;
+  iteration: Number = 0
 
    //INPUT AND OUPUTS
  @Output() updateList = new EventEmitter();
@@ -37,22 +42,30 @@ export class PackageManagementComponent implements OnInit {
   constructor(
     private invoiceManagementService: InvoiceManagementService,
     private messageService: MessageService,
+    private warehouseManagementService: WarehouseManagementService,
+    private formBuilder: FormBuilder
     ) { 
+      this.getWarehouseList()
   }
 
   ngOnInit(): void {
   }
 
-
   onRowEditInit() {
     this.canEdit = true
   }
 
-  onRowEditSave(packageValue: any) {
+
+  onRowEditSave(packageValue: any, location: any, invoice: any) {
     //Se Edita
+    console.log(invoice)
+    if (location !=null){
+      packageValue['location'] = location.description
+      console.log(1)
     this.packageRow = new PackageInformation(
       parseInt(packageValue.code),
       this.setStatusValue(packageValue.status),
+      parseInt(location.id)
       )
    
    this.invoiceManagementService.changePackage(this.packageRow).subscribe(
@@ -66,11 +79,23 @@ export class PackageManagementComponent implements OnInit {
      console.log(err)
     }
    );
+    }
+    else{
+      console.log(2)
+    this.messageService.add({severity: 'error', summary: 'Se necesita Ingresar una Ubicación.', detail: ''})
   }
+}
 
   onRowEditCancel(product: any, index: number) {
     window.location.reload()
-  } 
+  }
+
+  async getWarehouseList(){
+    this.warehouseList = await this.warehouseManagementService.getWarehouses().
+            toPromise().then(response => { 
+              return response
+            });
+  }
 
   setStatusValue(status: string){
     switch(status) { 

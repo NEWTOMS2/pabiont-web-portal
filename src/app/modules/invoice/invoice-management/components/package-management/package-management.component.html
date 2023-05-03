@@ -8,6 +8,7 @@
                 <th>Volumen</th>
                 <th>Tipo de Envío</th>
                 <th>Estatus</th>
+                <th>Ubicación</th>
                 <th style="width:8rem"></th>
             </tr>
         </ng-template>
@@ -77,9 +78,45 @@
                         </ng-template>
                     </p-cellEditor>
                 </td>
+                <td pEditableColumn> 
+                    <p-cellEditor> 
+                        <ng-template pTemplate="input">
+                            <p-dropdown [options]="warehouseList" 
+                                        [(ngModel)]="package.warehouse"
+                                        optionLabel="description" 
+                                        [filter]="true"
+                                        filterBy="description,code"
+                                        [showClear]="true"
+                                        appendTo="body" 
+                                        styleClass="w-100"
+                                        placeholder="Almacén/localidad">
+                                <ng-template pTemplate="selectedItem" >
+                                    <div *ngIf="package.warehouse">
+                                        <div>
+                                            {{package.warehouse.description}}
+                                        </div>
+                                    </div>
+                                </ng-template>
+                                <ng-template let-destination pTemplate="item">
+                                    <div>
+                                        <div>
+                                            {{destination.description}}
+                                        </div>
+                                        <div class="filterSubtitle">
+                                            {{destination.code}}
+                                        </div>
+                                    </div>
+                                </ng-template>
+                            </p-dropdown>
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                            {{package.location}}
+                        </ng-template>
+                    </p-cellEditor>
+                </td>
                 <td style="text-align:center">
                     <button *ngIf="!editing" pButton pRipple type="button" pInitEditableRow icon="pi pi-pencil" (click)="onRowEditInit()" class="p-button-rounded p-button-text"></button>
-                    <button *ngIf="editing" pButton pRipple type="button" pSaveEditableRow icon="pi pi-check" (click)="onRowEditSave(package)" class="p-button-rounded p-button-text p-button-success p-mr-2"></button>
+                    <button *ngIf="editing" pButton pRipple type="button" pSaveEditableRow icon="pi pi-check" (click)="onRowEditSave(package,package.warehouse, invoice)" class="p-button-rounded p-button-text p-button-success p-mr-2"></button>
                     <button *ngIf="editing" pButton pRipple type="button" pCancelEditableRow icon="pi pi-times" (click)="onRowEditCancel(package, ri)" class="p-button-rounded p-button-text p-button-danger"></button>
                 </td>
             </tr>

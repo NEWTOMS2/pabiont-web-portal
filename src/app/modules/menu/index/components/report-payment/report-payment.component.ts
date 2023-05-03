@@ -15,8 +15,10 @@ import { reportPayment } from 'src/app/shared/models/request/reportPayment-reque
 export class ReportPaymentComponent implements OnInit {
 
   formGroup: FormGroup;//Dropdown data
+  formInvoice: FormGroup;//Dropdown data
   today: Date = new Date();
   buttonEnabled: boolean = false;
+  buttonInvoiceEnabled: boolean = false;
   reportBody: reportPayment
   description: string
   finalDate: any
@@ -28,6 +30,7 @@ export class ReportPaymentComponent implements OnInit {
     private messageService: MessageService,
     public datepipe: DatePipe) { 
     this.resetForm()
+    this.resetInvoiceForm()
   }
 
   ngOnInit(): void {
@@ -35,7 +38,7 @@ export class ReportPaymentComponent implements OnInit {
 
   resetForm(){
     this.formGroup = this.formBuilder.group({
-      code: ["", [Validators.required,Validators.pattern(/^[0-9]/u)]],
+      code: ["", [Validators.required]],
       accountHolder: ["", [Validators.required,Validators.pattern(/^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u)]],
       amount: [0.1, [Validators.required]],
       invoiceNumber: ["",[Validators.required]],
@@ -47,11 +50,25 @@ export class ReportPaymentComponent implements OnInit {
       this.buttonEnabled = status == "VALID" ? true : false;
     });
   }
+  resetInvoiceForm(){
+    this.formInvoice = this.formBuilder.group({
+      invoice: ["", [Validators.required,Validators.pattern(/^[A-Za-z0-9-]*$/)]]
+    });
+    
+    this.formInvoice.statusChanges.subscribe(status => {
+      this.buttonInvoiceEnabled = status == "VALID" ? true : false;
+    });
+    this.formGroup.controls['code'].disable();
+    this.formGroup.controls['accountHolder'].disable();
+    this.formGroup.controls['amount'].disable();
+    this.formGroup.controls['invoiceNumber'].disable();
+    this.formGroup.controls['paymentReference'].disable();
+    this.formGroup.controls['date'].disable();
+  }
   send(){
     this.finalDate = this.datepipe.transform(this.formGroup.controls['date'].value,'yyyy-MM-dd')
-    console.log(this.datepipe.transform(this.formGroup.controls['date'].value,'yyyy-MM-dd'))
     this.description = this.formGroup.controls['accountHolder'].value + '-' + this.formGroup.controls['paymentReference'].value;
-    this.reportBody = new reportPayment(parseInt(this.formGroup.controls['code'].value),this.formGroup.controls['accountHolder'].value,parseFloat(this.formGroup.controls['amount'].value),this.formGroup.controls['invoiceNumber'].value,this.description,this.finalDate)
+    this.reportBody = new reportPayment(1,this.formGroup.controls['accountHolder'].value,parseFloat(this.formGroup.controls['amount'].value),this.formGroup.controls['invoiceNumber'].value,this.description,this.finalDate)
     console.log(this.reportBody)
     this.indexService.createReport(this.reportBody).subscribe(response => {
       if (response == 'Monto Incorrecto, verfique la Factura') {
@@ -67,12 +84,34 @@ export class ReportPaymentComponent implements OnInit {
       else {
         this.messageService.add({key: 'tc', severity:'success', summary: 'Reporte creado', detail: 'Pago de la factura registrado correctamente'});
       
-      }
-          console.log(response)
+      }    
+      this.resetInvoiceForm()
+      this.resetForm()
     },
       err => {
-        this.messageService.add({key: 'tc', severity:'warn', summary: 'No hay Informacion', detail: 'No existen paquetes enviados con este correo'});
+        this.messageService.add({key: 'tc', severity:'warn', summary: 'No hay Informacion', detail: 'Error de conexión, intente de nuevo'});
         console.log(err)
       });
+  }
+  search(){
+    this.indexService.getSingleInvoice(this.formInvoice.controls['invoice'].value).subscribe(response=>{
+      console.log(response[0])
+      if (response[0].payment_type == 'Cash' || response[0].payment_date != null) {
+        this.messageService.add({key: 'tc', severity:'error', summary: 'Factura Pagada', detail: 'Esta factura ya tiene un pago registrado'});
+      }
+      else{
+        this.formGroup.controls.code.setValue(response[0].shipper);
+        this.formGroup.controls.amount.setValue(parseFloat(response[0].total));
+        this.formGroup.controls.invoiceNumber.setValue(this.formInvoice.controls['invoice'].value);
+        this.formGroup.controls['accountHolder'].enable();
+        this.formGroup.controls['paymentReference'].enable();
+        this.formGroup.controls['date'].enable();
+      }
+    }, 
+    err => {
+      this.messageService.add({key: 'tc', severity:'warn', summary: 'No hay Informacion', detail: 'Error de conexión, intente de nuevo'});
+      console.log(err)
+    }
+    );
   }
 }

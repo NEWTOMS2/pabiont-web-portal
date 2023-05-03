@@ -118,7 +118,7 @@
             <span class="mt-2 sub-title">Costo total del envío</span> 
         </div>
         <!--ENVIO MARITIMO-->
-        <div class="row p-0 m-0 mt-4 rowBack" *ngIf="isSelectable && isTouched" [ngClass]="{'isValid': !isValid}">
+        <div class="row p-0 m-0 mt-4 rowBack" *ngIf="isSelectable && isTouched && isShowedA" [ngClass]="{'isValid': !isValid}">
             <div class="col-12 backgroundQuote pointer text-center" (click)="setPackage('Marítimo')"> 
                 <p class="titleQuote">Marítimo</p>
                 <span class="number" [innerHTML]="calculateRateMaritime().toFixed(2)"></span>
@@ -134,7 +134,7 @@
         </div>
     
         <!--ENVIO AEREO-->
-        <div class="row p-0 m-0 mt-4 rowBack" *ngIf="isSelectable && isTouched" [ngClass]="{'isValid': !isValid}">
+        <div class="row p-0 m-0 mt-4 rowBack" *ngIf="isSelectable && isTouched && isShowedM" [ngClass]="{'isValid': !isValid}">
             <div class="col-12 backgroundQuote pointer" (click)="setPackage('Aéreo')">
                 <p class="titleQuote">Aéreo</p>
                 <span class="number" [innerHTML]="calculateRateAerial().toFixed(2)"></span>
