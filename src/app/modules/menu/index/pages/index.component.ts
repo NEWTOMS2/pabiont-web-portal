@@ -86,14 +86,9 @@ export class IndexComponent implements OnInit {
 
 
   calculateRateMaritime(){
-    if (( (this.quotesForm.controls['high'].value * 
-      this.quotesForm.controls['width'].value * 
-      this.quotesForm.controls['long'].value)/1728) > this.quotesForm.controls['weight'].value )
-      return this.calculateMaritime = (( (this.quotesForm.controls['high'].value * 
-      this.quotesForm.controls['width'].value * 
-      this.quotesForm.controls['long'].value)/1728) * this.rates.maritime)
-    else
-      return this.calculateMaritime = (this.quotesForm.controls['weight'].value * this.rates.maritime)
+    return this.calculateMaritime = (( (this.quotesForm.controls['high'].value * 
+    this.quotesForm.controls['width'].value * 
+    this.quotesForm.controls['long'].value)/1728) * this.rates.maritime)
   }
 
   calculateRateAerial(){
