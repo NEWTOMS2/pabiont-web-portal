@@ -17,7 +17,7 @@
         "changeInvoice": "invoice",
         "getPackageByInvoice": "package?invoice=",
         "changeStatusPackage": "package",
-        "checkCredential": "validate-credential?email=",
+        "checkCredential": "validate-credential",
         "sendEmail": "send-email",
         "postInvoice": "invoice",
         "getLastInvoice": "invoice/last_invoice",

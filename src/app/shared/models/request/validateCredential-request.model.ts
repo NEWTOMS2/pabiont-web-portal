@@ -1,9 +1,9 @@
 export class ValidateCredential {
 
-    password: string;
+    email: string;
     
-    constructor( password: string){
-        this.password = password;
+    constructor( email: string){
+        this.email = email;
     }
     
 }

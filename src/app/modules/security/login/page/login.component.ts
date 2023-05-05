@@ -23,6 +23,7 @@ export class LoginComponent implements OnInit {
   emailClass: boolean = true;
   validateRow: any;
   valid: boolean;
+  Validcredential: any;
   
   constructor(
     private formBuilder: FormBuilder,
@@ -47,7 +48,10 @@ export class LoginComponent implements OnInit {
     return CryptoJS.AES.decrypt(conversion, "pabiont123").toString(CryptoJS.enc.Utf8);
   }
   async credentials(email: string){
-     await this.usersService.validateCre(email).toPromise().then(response => { 
+    this.Validcredential = new ValidateCredential(
+      email
+      )
+     await this.usersService.validateCre(this.Validcredential).toPromise().then(response => { 
      this.validateRow = response
     })
   }

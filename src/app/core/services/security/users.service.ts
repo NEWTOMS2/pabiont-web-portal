@@ -26,8 +26,8 @@ export class UsersService {
     this.router.navigate([`/login`])
   }
 
-  validateCre(credential: string): Observable<any>{
-            return this.httpService.get(`${this.appConfig.config.url.checkCredential}${credential}`)
-      .pipe(map(response => response.data));
+  validateCre(credential: any): Observable<any>{
+    return this.httpService.post(`${this.appConfig.config.url.checkCredential}`, credential)
+            .pipe(map(response => response.data));
   }
 }
