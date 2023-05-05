@@ -16,6 +16,7 @@
         "getSingleInvoice": "invoice?invoice_number=",
         "changeInvoice": "invoice",
         "getPackageByInvoice": "package?invoice=",
+        "getPackageHistoricalByInvoice": "package?historical=",
         "changeStatusPackage": "package",
         "checkCredential": "validate-credential",
         "sendEmail": "send-email",

@@ -30,6 +30,11 @@ export class InvoiceManagementService {
       .pipe(map(response => response.data));
   }
 
+  getHistoricalPackages(invoice: string): Observable<any> {
+    return this.httpService.get(`${this.appConfig.config.url.getPackageHistoricalByInvoice}${invoice}`)
+      .pipe(map(response => response.data));
+  }
+
   changePackage(packageValue: any): Observable<any> {
     //  updating an existing Invoice Status
       return this.httpService.patch(`${this.appConfig.config.url.changeStatusPackage}`, packageValue)

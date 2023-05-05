@@ -53,7 +53,7 @@ export class InvoiceManagementComponent implements OnInit {
   }
 
   async getPackagesList(invoiceId: string){
-    this.packageList = await this.invoiceManagementService.getPackages(invoiceId).
+    this.packageList = await this.invoiceManagementService.getHistoricalPackages(invoiceId).
             toPromise().then(response => { 
               return response
             });
