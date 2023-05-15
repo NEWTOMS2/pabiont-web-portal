@@ -50,6 +50,12 @@ export class ReportPaymentComponent implements OnInit {
       this.buttonEnabled = status == "VALID" ? true : false;
     });
   }
+
+  limitDate(){
+    let since = new Date();
+    since.setMonth(since.getMonth() - 2);
+    return since
+  }
   resetInvoiceForm(){
     this.formInvoice = this.formBuilder.group({
       invoice: ["", [Validators.required,Validators.pattern(/^[A-Za-z0-9-]*$/)]]
@@ -89,17 +95,18 @@ export class ReportPaymentComponent implements OnInit {
       this.resetForm()
     },
       err => {
-        this.messageService.add({key: 'tc', severity:'warn', summary: 'No hay Informacion', detail: 'Error de conexión, intente de nuevo'});
+        this.messageService.add({key: 'tc', severity:'warn', summary: 'No hay Información', detail: 'Error de conexión, intente de nuevo'});
         console.log(err)
       });
   }
   search(){
+    this.resetForm()
     this.indexService.getSingleInvoice(this.formInvoice.controls['invoice'].value).subscribe(response=>{
-      console.log(response[0])
       if (response[0].payment_type == 'Cash' || response[0].payment_date != null) {
         this.messageService.add({key: 'tc', severity:'error', summary: 'Factura Pagada', detail: 'Esta factura ya tiene un pago registrado'});
       }
       else{
+        this.messageService.add({key: 'tc', severity:'success', summary: 'Factura Encontrada', detail: 'Complete la información requerida para realizar el reporte del pago'});
         this.formGroup.controls.code.setValue(response[0].shipper);
         this.formGroup.controls.amount.setValue(parseFloat(response[0].total));
         this.formGroup.controls.invoiceNumber.setValue(this.formInvoice.controls['invoice'].value);
@@ -109,7 +116,7 @@ export class ReportPaymentComponent implements OnInit {
       }
     }, 
     err => {
-      this.messageService.add({key: 'tc', severity:'warn', summary: 'No hay Informacion', detail: 'Error de conexión, intente de nuevo'});
+      this.messageService.add({key: 'tc', severity:'warn', summary: 'No hay Información', detail: 'Error de conexión, intente de nuevo'});
       console.log(err)
     }
     );

@@ -42,7 +42,7 @@ export class QuotePackageComponent implements OnInit {
     this.packageList.push({
       size: `${this.packageInformation.high}x${this.packageInformation.width}x${this.packageInformation.long}`,
       weight: this.packageInformation.weight,
-      volume: `${volumeCalculation}m3`,   
+      volume: `${volumeCalculation}ft3`,   
       description: this.description,
       price: this.packageInformation.price.toFixed(2),
       type: this.packageInformation.type,

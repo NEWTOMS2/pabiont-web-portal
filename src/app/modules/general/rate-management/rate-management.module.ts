@@ -10,6 +10,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { ToastModule } from 'primeng/toast';
 import { RateManagementComponent } from './pages/rate-management.component';
 import { CreateFormComponent } from './components/create-form/create-form.component';
+import { InputNumberModule } from 'primeng/inputnumber';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { CreateFormComponent } from './components/create-form/create-form.compon
     ConsultModule,
     ButtonModule,
     InputTextModule,
+    InputNumberModule,
     DialogModule,
     ReactiveFormsModule,
     DropdownModule,

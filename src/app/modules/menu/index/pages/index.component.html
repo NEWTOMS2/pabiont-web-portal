@@ -40,7 +40,8 @@
                     <form [formGroup]="searchForm">
                         <input  class="formSection m-0" 
                                 placeholder="Ingresa el código de Tracking..."
-                                type="text" 
+                                type="text"
+                                maxlength="12" 
                                 pInputText
                                 formControlName = "searchInput"
                                 (keyup.enter)="searchPackage(searchForm.controls['searchInput'].value, Tracking)"> 
@@ -108,6 +109,7 @@
                                                     formControlName="weight"
                                                     [minFractionDigits]="1" 
                                                     [maxFractionDigits]="2"
+                                                    [maxlength]="8"
                                                     placeholder="0"
                                                     [ngClass]="{'ng-dirty ng-invalid': (quotesForm.controls['weight'].touched && quotesForm.controls['weight'].errors?.required) 
                                                                     || (quotesForm.controls['weight'].value <= 0 && quotesForm.controls['weight'].value != null)}">
@@ -124,6 +126,7 @@
                                                     formControlName="high" 
                                                     [minFractionDigits]="1" 
                                                     [maxFractionDigits]="2"
+                                                    [maxlength]="8"
                                                     placeholder="0"
                                                     [ngClass]="{'ng-dirty ng-invalid': (quotesForm.controls['high'].touched && quotesForm.controls['high'].errors?.required) 
                                                                     || (quotesForm.controls['high'].value <= 0 && quotesForm.controls['high'].value != null)}">
@@ -140,6 +143,7 @@
                                                     formControlName="width"  
                                                     [minFractionDigits]="1" 
                                                     [maxFractionDigits]="2"
+                                                    [maxlength]="8"
                                                     placeholder="0"
                                                     [ngClass]="{'ng-dirty ng-invalid': (quotesForm.controls['width'].touched && quotesForm.controls['width'].errors?.required) 
                                                                     || (quotesForm.controls['width'].value <= 0 && quotesForm.controls['width'].value != null)}">
@@ -156,6 +160,7 @@
                                                     formControlName="long" 
                                                     [minFractionDigits]="1" 
                                                     [maxFractionDigits]="2"
+                                                    [maxlength]="8"
                                                     placeholder="0"
                                                     [ngClass]="{'ng-dirty ng-invalid': (quotesForm.controls['long'].touched && quotesForm.controls['long'].errors?.required) 
                                                                     || (quotesForm.controls['long'].value <= 0 && quotesForm.controls['long'].value != null)}">

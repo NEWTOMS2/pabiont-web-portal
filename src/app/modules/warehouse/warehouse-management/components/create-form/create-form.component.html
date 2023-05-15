@@ -75,6 +75,7 @@
                     id="Latitude" 
                     [ngClass]="{'ng-dirty ng-invalid': formGroup.controls['latitude'].touched && formGroup.controls['latitude'].errors?.required}"
                     pInputText 
+                    [maxlength]="10"
                     class="uppercase"
                     formControlName="latitude" 
                     required autofocus />
@@ -84,6 +85,7 @@
             <label for="Longitude">Longitud</label>
             <input  type="text" 
                     id="Longitude" 
+                    [maxlength]="10"
                     [ngClass]="{'ng-dirty ng-invalid': formGroup.controls['longitude'].touched && formGroup.controls['longitude'].errors?.required}"
                     pInputText 
                     class="uppercase"
@@ -98,7 +100,8 @@
                     id="Description" 
                     [ngClass]="{'ng-dirty ng-invalid': formGroup.controls['description'].touched && formGroup.controls['description'].errors?.required}"
                     pInputText 
-                    formControlName="description" 
+                    formControlName="description"
+                    [maxlength]="150"
                     placeholder="Coloque la Ciudad y el Estado"
                     required />
         <small class="p-error" *ngIf="formGroup.controls['description'].touched && formGroup.controls['description'].errors?.required">La descripción es Obligatoria.</small>

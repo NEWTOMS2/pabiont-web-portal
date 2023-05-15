@@ -68,8 +68,8 @@ export class CreateFormComponent implements OnInit {
       description: ["", Validators.required],
       country: ["", Validators.required],
       state: ["", Validators.required],
-      latitude: ["", Validators.required],
-      longitude: ["", Validators.required]
+      latitude: ["", [Validators.required, Validators.pattern(/^(\+|-)?(?:90(?:(?:\.0{1,6})?)|(?:[0-9]|[1-8][0-9])(?:(?:\.[0-9]{1,6})?))$/) ]],
+      longitude: ["", [Validators.required, Validators.pattern(/^(\+|-)?(?:180(?:(?:\.0{1,6})?)|(?:[0-9]|[1-9][0-9]|1[0-7][0-9])(?:(?:\.[0-9]{1,6})?))$/)]]
     });
     this.validShow = true;
     this.formGroup.statusChanges.subscribe(status => {

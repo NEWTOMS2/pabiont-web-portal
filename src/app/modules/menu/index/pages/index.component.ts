@@ -106,7 +106,7 @@ export class IndexComponent implements OnInit {
     if (text.match(this.emailPattern)) {
       this.tracking = await this.indexService.getTrackingByEmail(text).toPromise().then(response => {return response?.data});
       if (this.tracking.length == 0){
-        this.messageService.add({key: 'tc', severity:'warn', summary: 'No hay Informacion', detail: 'No existen paquetes enviados con este correo'});
+        this.messageService.add({key: 'tc', severity:'warn', summary: 'No hay Información', detail: 'No existen paquetes enviados con este correo'});
         this.isSubmit=false;
       }
       else
@@ -117,7 +117,7 @@ export class IndexComponent implements OnInit {
     else if(text.match("^[A-Za-z0-9-]*$") ){
       this.tracking = await this.indexService.getTrackingByCode(text).toPromise().then(response => {return response?.data});
       if (this.tracking.length == 0){
-        this.messageService.add({key: 'tc', severity:'warn', summary: 'No hay Informacion', detail: 'No existe este codigo de tracking'});
+        this.messageService.add({key: 'tc', severity:'warn', summary: 'No hay Información', detail: 'No existe este codigo de tracking'});
         this.isSubmit=false;
       }
       else
