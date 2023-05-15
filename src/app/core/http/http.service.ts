@@ -3,11 +3,17 @@ import { catchError, Observable, throwError } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { AppConfigService } from '../services/app-config/app-config.service';
 
+type headerType = {
+  
+  [header: string]: string | string[];
+
+};
+
 @Injectable({
   providedIn: 'root'
 })
 export class HttpService {
-
+  private headers: headerType = { 'Content-Type': 'application/json' };
   private httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
   }
@@ -46,6 +52,18 @@ export class HttpService {
       return this.http.delete(
         `${this.appConfig.config.apiBaseURL}${path}`
       ).pipe(catchError(this.formatErrors));
+  }
+  getN(
+    path: string,
+    params: HttpParams = new HttpParams(),
+    headers: headerType = this.headers
+  ): Observable<any> {
+    return this.http
+      .get(`${path}`, {
+        params,
+        headers: new HttpHeaders(headers),
+      })
+      .pipe(catchError(this.formatErrors));
   }
 
 }

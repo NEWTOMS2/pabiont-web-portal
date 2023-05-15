@@ -84,6 +84,15 @@ const routes: Routes = [
         roles: ['Administrador']
       }
   },
+  {
+    path: "reports",
+    loadChildren: () => import('./modules/general/reports/reports.module')
+      .then(m => m.ReportsModule),
+      canActivate:[CheckLoginGuard, CheckRoleGuard],
+      data: {
+        roles: ['Administrador']
+      }
+  },
   { path: '**', redirectTo: `/` },
 ];
 

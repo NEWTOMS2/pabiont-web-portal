@@ -53,7 +53,7 @@ export class MainComponent implements OnInit {
         this.router.navigate([`/invoice-management`]);
         break;
       case 5: 
-        window.location.href = 'http://54.242.250.36/';
+        this.router.navigate([`/reports`]);
         break;
       case 6: 
         this.router.navigate([`/users-management`]);
