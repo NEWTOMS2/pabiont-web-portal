@@ -68,7 +68,6 @@ export class CreateFormComponent implements OnInit {
  }
 
  updateForm(rowData: any){
-   console.log(rowData)
    this.formGroup.controls.status.setValue(this.statusList.find(status => rowData.status == status.label));
    this.formGroup.controls.invoice_number.setValue(rowData.invoice_number);
    this.formGroup.controls.date.setValue(rowData.date);

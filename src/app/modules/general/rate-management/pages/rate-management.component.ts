@@ -38,7 +38,6 @@ export class RateManagementComponent implements OnInit {
     
 
   ngOnInit(): void {
-    console.log("hola")
   }
 
   async getRateList(){
@@ -46,8 +45,7 @@ export class RateManagementComponent implements OnInit {
             toPromise().then(response => { 
               return [response]
             });
-
-          console.log( this.rateList)  
+ 
   }
 
   buttonEnabled(isValid: boolean){

@@ -58,10 +58,8 @@ export class PackageManagementComponent implements OnInit {
 
   onRowEditSave(packageValue: any, location: any, invoice: any) {
     //Se Edita
-    console.log(invoice)
     if (location !=null){
       packageValue['location'] = location.description
-      console.log(1)
     this.packageRow = new PackageInformation(
       parseInt(packageValue.code),
       this.setStatusValue(packageValue.status),
@@ -81,7 +79,6 @@ export class PackageManagementComponent implements OnInit {
    );
     }
     else{
-      console.log(2)
     this.messageService.add({severity: 'error', summary: 'Se necesita Ingresar una Ubicación.', detail: ''})
   }
 }

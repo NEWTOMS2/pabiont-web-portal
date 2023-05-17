@@ -44,7 +44,7 @@
 
 <p-dialog header="Nota o observación de la factura" [(visible)]="displayDescription" [style]="{width: '40vw'}">
     <div class="row justify-content-center">
-        <textarea rows="5" cols="30" maxlength="400" pInputTextarea [(ngModel)]="description" (ngModelChange)="modalIsValid = false" ></textarea>
+        <textarea rows="5" cols="30" minlength="4" maxlength="400" pInputTextarea [(ngModel)]="description" (ngModelChange)="modalIsValid = false" ></textarea>
     </div>
     <ng-template pTemplate="footer">
         <button pButton pRipple label="Cancelar" icon="pi pi-times" class="p-button-text p-button-danger" (click)="displayDescription=false"></button>

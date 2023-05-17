@@ -48,7 +48,6 @@ export class CreateFormComponent implements OnInit {
       parseFloat(this.formGroup.controls['maritime'].value), 
         1
         )
-    console.log(this.rateRow)
     this.rateManagementService.changeRate(this.rateRow).subscribe(
       response => {
         //cambios de post
@@ -65,7 +64,6 @@ export class CreateFormComponent implements OnInit {
 
 
   updateForm(rowData: any){
-    console.log("DATA",rowData)
     this.formGroup.controls.aerial.setValue(rowData.aerial);
     this.formGroup.controls.maritime.setValue(rowData.maritime);
     this.formGroup.controls.company.setValue(rowData.company_name);

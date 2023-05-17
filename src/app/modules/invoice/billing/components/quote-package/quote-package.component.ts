@@ -52,7 +52,6 @@ export class QuotePackageComponent implements OnInit {
     this.description = "";
     this.modalIsValid = true;
     this.FinalizeStep.emit(this.packageList);
-console.log(this.packageInformation.type)
     if(this.packageInformation.type == 'Marítimo'){
        this.isShowedM = false;
       this.isShowedA = true;
@@ -61,11 +60,10 @@ console.log(this.packageInformation.type)
       this.isShowedM = true;
       this.isShowedA = false;
     }
-     
   }
 
   deleteItem(data: any){ 
-    let indice = this.packageList.indexOf(data.id); // obtenemos el indice
+    let indice = this.packageList.findIndex(option => option.id === data.id); // obtenemos el indice
     this.packageList.splice(indice, 1); // 1 es la cantidad de elemento a eliminar
     if(sizeof(this.packageList) == 0){
       this.isShowedM = true;

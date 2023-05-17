@@ -75,7 +75,6 @@ export class ReportPaymentComponent implements OnInit {
     this.finalDate = this.datepipe.transform(this.formGroup.controls['date'].value,'yyyy-MM-dd')
     this.description = this.formGroup.controls['accountHolder'].value + '-' + this.formGroup.controls['paymentReference'].value;
     this.reportBody = new reportPayment(1,this.formGroup.controls['accountHolder'].value,parseFloat(this.formGroup.controls['amount'].value),this.formGroup.controls['invoiceNumber'].value,this.description,this.finalDate)
-    console.log(this.reportBody)
     this.indexService.createReport(this.reportBody).subscribe(response => {
       if (response == 'Monto Incorrecto, verfique la Factura') {
         this.messageService.add({key: 'tc', severity:'error', summary: 'Monto Incorrecto', detail: 'Revisar monto detallado en la factura'});

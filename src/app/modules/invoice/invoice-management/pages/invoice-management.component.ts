@@ -79,7 +79,6 @@ export class InvoiceManagementComponent implements OnInit {
       case 3:{
         this.invoiceInformation = data.rowData.invoice_number
         this.childq.setData(this.invoiceInformation)
-        console.log(this.invoiceInformation)
         break;
       }
     }

@@ -98,8 +98,6 @@ export class CreateFormComponent implements OnInit {
         1
         )
     }
-    
-    console.log(this.warehouseRow)
     this.warehouseManagementService.saveWarehouse(this.warehouseRow, this.isUpdate).subscribe(
       response => {
         //cambios de post
@@ -123,7 +121,6 @@ export class CreateFormComponent implements OnInit {
   }
 
  async updateForm(rowData: any){
-    console.log(rowData)
     this.validShow = true;
     this.formGroup.controls.code.setValue(rowData.code);
     this.formGroup.controls.type.setValue(this.typeList.find(type => rowData.type == type.value));

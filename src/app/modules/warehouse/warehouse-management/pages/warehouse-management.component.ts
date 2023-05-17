@@ -48,8 +48,6 @@ export class WarehouseManagementComponent implements OnInit {
             toPromise().then(response => { 
               return response
             });
-            
-          console.log( this.warehouseList) 
   }
 
   buttonEnabled(isValid: boolean){
