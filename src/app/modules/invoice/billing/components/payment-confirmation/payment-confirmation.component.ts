@@ -3,6 +3,7 @@ import { FormGroup } from '@angular/forms';
 import { InvoiceManagementService } from 'src/app/core/services/invoice/invoice-management.service';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-payment-confirmation',
@@ -14,6 +15,8 @@ export class PaymentConfirmationComponent implements OnInit {
   page: any;
   packageList: any[] = [];
   billingsForm: FormGroup;
+  loadPage: boolean = true
+  check: boolean = false
 
   //dropdown variables
   invoice: any[];
@@ -25,13 +28,15 @@ export class PaymentConfirmationComponent implements OnInit {
   @Input() invoiceInformation: string;
 
   constructor(
-    private invoiceManagementService: InvoiceManagementService
+    private invoiceManagementService: InvoiceManagementService,
+    private router: Router
     ) {  
       
      }
 
   ngOnInit(): void {
     this.setData(this.invoiceInformation);
+
   }
 
   async getData(){
@@ -42,34 +47,18 @@ export class PaymentConfirmationComponent implements OnInit {
       this.isDownloaded = true
     }
 
-setData(invoiceCode: string){
-  this.invoicedata = invoiceCode
+async setData(invoiceCode: string){
+  this.invoicedata = invoiceCode;
+  await delay(7000);
+  this.check = true;
+  this.loadPage = false
+  await delay(4500);
+  this.router.navigate([`invoice-management`])  
+}
+  
 }
 
-  downloadPDF() {
-    // Extraemos el
-    this.DATA = document.getElementById('page1-div');
-    const doc = new jsPDF('p', 'pt', 'a4');
-    const options = {
-      background: 'white',
-      scale: 3
-    };
-    html2canvas(this.DATA, options).then((canvas) => {
-
-      const img = canvas.toDataURL('image/PNG');
-
-      // Add image Canvas to PDF
-      const bufferX = 15;
-      const bufferY = 15;
-      const imgProps = (doc as any).getImageProperties(img);
-      const pdfWidth = doc.internal.pageSize.getWidth() - 2 * bufferX;
-      const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
-      doc.addImage(img, 'PNG', bufferX, bufferY, pdfWidth, pdfHeight, undefined, 'FAST');
-      return doc;
-    }).then((docResult) => {
-      docResult.save(`${this.invoicedata}-${new Date().toDateString()}.pdf`);
-    });
-  }
-
-
+function delay(ms: number): Promise<unknown> {
+  return new Promise( resolve => setTimeout(resolve, ms) );
 }
+

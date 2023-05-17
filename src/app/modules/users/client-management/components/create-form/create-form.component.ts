@@ -110,7 +110,6 @@ export class CreateFormComponent implements OnInit {
     this.formGroup.controls.phone.setValue(rowData.phone);
     this.idEmpresa = rowData.idEmpresa;
     this.code = rowData.code;
-    this.formGroup.controls['email'].disable();
     this.formGroup.controls['rol'].disable();
     this.isUpdate=true;
   }
