@@ -68,6 +68,8 @@ export class CreateFormComponent implements OnInit {
         1,
         "",
         this.code,
+        null,
+        null
         ) 
     }else{
       this.userRow = new UserInformation(

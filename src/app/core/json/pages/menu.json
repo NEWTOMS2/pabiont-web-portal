@@ -41,6 +41,15 @@
             "urlID": 6,
             "url": "users-management"
         },
+        
+        {
+            "title": "Gestión de Choferes",
+            "subtitle": "Gestión de Choferes",
+            "description": "Gestiona y edita la información personal de la cuenta.",
+            "icon": "fa-solid fa-people-arrows me-2",
+            "urlID": 8,
+            "url": "users-management"
+        },
         {
             "title": "Almacenes y Localidades",
             "subtitle": "Ver Almacenes y Localidades",

@@ -1,0 +1,21 @@
+{
+    "tableConfiguration": {
+        "headerList": [
+            { "field": "code", "header": "Código" },
+            { "field": "first_name", "header": "Nombre" },
+            { "field": "last_name", "header": "Apellido" },
+            { "field": "email", "header": "Email" },
+            { "field": "phone", "header": "Teléfono" },
+            { "field": "license", "header": "Licencia" },
+            { "field": "date_exp_license", "header": "Fecha expiración" }
+          ],
+        "headerCustomButtons": [
+            { "buttonId": 0, "icon": "pi pi-plus", "tooltipTitle": "Agregar", "iconClass": "p-speeddial-action"}
+        ],
+        "customButtons": [
+            { "buttonId": 1, "icon": "pi pi-pencil", "tooltipTitle": "Editar", "iconClass": "mr-2 p-button-rounded p-button-info"}
+        ],
+        "searchField": ["code", "first_name", "last_name", "email","rol","phone", "date_exp_license", "license"]
+    },
+    "exampleData": []
+}

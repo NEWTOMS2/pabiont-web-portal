@@ -11,6 +11,7 @@
         "getUser": "clients?company=1",
         "getUserClient": "clients?code=Client",
         "getUserAdmin": "clients?code=User",
+        "getUserChofer": "clients?code=Driver",
         "saveUser": "clients",
         "getInvoiceAll": "invoice?company=1",      
         "getSingleInvoice": "invoice?invoice_number=",

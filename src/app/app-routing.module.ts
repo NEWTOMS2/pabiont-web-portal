@@ -49,6 +49,15 @@ const routes: Routes = [
       }
   },
   {
+    path: "driver-management",
+    loadChildren: () => import('./modules/users/driver-management/driver-management.module')
+      .then(m => m.DriverManagementModule),
+      canActivate:[CheckLoginGuard, CheckRoleGuard],
+      data: {
+        roles: ['Administrador']
+      }
+  },
+  {
     path: "invoice-management",
     loadChildren: () => import('./modules/invoice/invoice-management/invoice-management.module')
       .then(m => m.InvoiceManagementModule),

@@ -35,4 +35,9 @@ export class UsersManagementService {
       .pipe(map(response => response.data));
   }
 
+  getUserChofer(): Observable<any> {
+    return this.httpService.get(`${this.appConfig.config.url.getUserChofer}`)
+      .pipe(map(response => response.data));
+  }
+
 }

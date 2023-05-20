@@ -61,6 +61,9 @@ export class MainComponent implements OnInit {
       case 7: 
         this.router.navigate([`/rate-management`]);
         break;
+      case 8: 
+      this.router.navigate([`/driver-management`]);
+      break;
     }
     
   }
