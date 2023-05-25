@@ -41,6 +41,7 @@
                                             [maxFractionDigits]="2"
                                             [disabled]="sizeValid"
                                             [maxlength]="8"
+                                            [min]="1"
                                             placeholder="0"
                                             [ngClass]="{'ng-dirty ng-invalid': (quotesForm.controls['weight'].touched && quotesForm.controls['weight'].errors?.required) 
                                                             || (quotesForm.controls['weight'].value <= 0 && quotesForm.controls['weight'].value != null)}">
@@ -58,6 +59,7 @@
                                             [minFractionDigits]="1" 
                                             [maxFractionDigits]="2"
                                             [maxlength]="8"
+                                            [min]="1"
                                             [disabled]="sizeValid"
                                             placeholder="0"
                                             [ngClass]="{'ng-dirty ng-invalid': (quotesForm.controls['high'].touched && quotesForm.controls['high'].errors?.required) 
@@ -76,6 +78,7 @@
                                             [minFractionDigits]="1" 
                                             [maxFractionDigits]="2"
                                             [maxlength]="8"
+                                            [min]="1"
                                             [disabled]="sizeValid"
                                             placeholder="0"
                                             [ngClass]="{'ng-dirty ng-invalid': (quotesForm.controls['width'].touched && quotesForm.controls['width'].errors?.required) 
@@ -94,6 +97,7 @@
                                             [minFractionDigits]="1" 
                                             [maxFractionDigits]="2"
                                             [maxlength]="8"
+                                            [min]="1"
                                             [disabled]="sizeValid"
                                             placeholder="0"
                                             [ngClass]="{'ng-dirty ng-invalid': (quotesForm.controls['long'].touched && quotesForm.controls['long'].errors?.required) 
