@@ -22,6 +22,7 @@ export class ReportPaymentComponent implements OnInit {
   reportBody: reportPayment
   description: string
   finalDate: any
+  since: any
   
 
   constructor(private formBuilder: FormBuilder,
@@ -31,6 +32,7 @@ export class ReportPaymentComponent implements OnInit {
     public datepipe: DatePipe) { 
     this.resetForm()
     this.resetInvoiceForm()
+    this.limitDate()
   }
 
   ngOnInit(): void {
@@ -52,10 +54,10 @@ export class ReportPaymentComponent implements OnInit {
   }
 
   limitDate(){
-    let since = new Date();
-    since.setMonth(since.getMonth() - 2);
-    return since
+    this.since = new Date();
+    this.since.setMonth(this.since.getMonth() - 2);
   }
+
   resetInvoiceForm(){
     this.formInvoice = this.formBuilder.group({
       invoice: ["", [Validators.required,Validators.pattern(/^[A-Za-z0-9-]*$/)]]

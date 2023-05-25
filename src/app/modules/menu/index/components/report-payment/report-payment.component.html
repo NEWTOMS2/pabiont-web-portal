@@ -134,7 +134,7 @@
                                 appendTo="body"
                                 class="w-100"
                                 [maxDate]="today"
-                                [minDate]="limitDate()"
+                                [minDate]="since"
                                 placeholder="fecha"
                                 [ngClass]="{'ng-dirty ng-invalid': formGroup.controls['date'].touched && formGroup.controls['date'].errors?.required}">
                     </p-calendar>
