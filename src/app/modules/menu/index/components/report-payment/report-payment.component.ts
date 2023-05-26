@@ -86,7 +86,9 @@ export class ReportPaymentComponent implements OnInit {
       }
       else if (response == 'Código de cliente No Existe') {
         this.messageService.add({key: 'tc', severity:'error', summary: 'Cliente No Existe', detail: 'Favor verificar el código del cliente ingresado'});
-      
+      }
+      else if (response == 'Factura Anulada') {
+        this.messageService.add({key: 'tc', severity:'error', summary: 'Factura Anulada', detail: 'La factura ya fue anulada, comuníquese directamente al correo o al número celular en caso de ser un error'});
       }
       else {
         this.messageService.add({key: 'tc', severity:'success', summary: 'Reporte creado', detail: 'Pago de la factura registrado correctamente'});
