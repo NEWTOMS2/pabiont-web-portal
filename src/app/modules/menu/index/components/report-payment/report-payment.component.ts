@@ -105,7 +105,10 @@ export class ReportPaymentComponent implements OnInit {
   search(){
     this.resetForm()
     this.indexService.getSingleInvoice(this.formInvoice.controls['invoice'].value).subscribe(response=>{
-      if (response[0].payment_type == 'Cash' || response[0].payment_date != null) {
+      if (response[0].status == 'Anulada') {
+        this.messageService.add({key: 'tc', severity:'error', summary: 'Factura Anulada', detail: 'La factura ya fue anulada, comuníquese directamente al correo electronico'});
+      }
+      else if (response[0].payment_type == 'Cash' || response[0].payment_date != null ) {
         this.messageService.add({key: 'tc', severity:'error', summary: 'Factura Pagada', detail: 'Esta factura ya tiene un pago registrado'});
       }
       else{
