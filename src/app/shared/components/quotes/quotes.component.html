@@ -40,7 +40,7 @@
                                             [minFractionDigits]="1" 
                                             [maxFractionDigits]="2"
                                             [disabled]="sizeValid"
-                                            [maxlength]="8"
+                                            [maxlength]="6"
                                             [min]="1"
                                             placeholder="0"
                                             [ngClass]="{'ng-dirty ng-invalid': (quotesForm.controls['weight'].touched && quotesForm.controls['weight'].errors?.required) 
@@ -58,7 +58,7 @@
                                             formControlName="high" 
                                             [minFractionDigits]="1" 
                                             [maxFractionDigits]="2"
-                                            [maxlength]="8"
+                                            [maxlength]="6"
                                             [min]="1"
                                             [disabled]="sizeValid"
                                             placeholder="0"
@@ -77,7 +77,7 @@
                                             formControlName="width"  
                                             [minFractionDigits]="1" 
                                             [maxFractionDigits]="2"
-                                            [maxlength]="8"
+                                            [maxlength]="6"
                                             [min]="1"
                                             [disabled]="sizeValid"
                                             placeholder="0"
@@ -96,7 +96,7 @@
                                             formControlName="long" 
                                             [minFractionDigits]="1" 
                                             [maxFractionDigits]="2"
-                                            [maxlength]="8"
+                                            [maxlength]="6"
                                             [min]="1"
                                             [disabled]="sizeValid"
                                             placeholder="0"
@@ -129,14 +129,14 @@
         <div class="row p-0 m-0 mt-4 rowBack" *ngIf="isSelectable && isTouched && isShowedA" [ngClass]="{'isValid': !isValid}">
             <div class="col-12 backgroundQuote pointer text-center" (click)="setPackage('Marítimo')"> 
                 <p class="titleQuote">Marítimo</p>
-                <span class="number" [innerHTML]="calculateRateMaritime().toFixed(2)"></span>
+                <span class="number" [innerHTML]="calculateRateMaritime()"></span>
                 <span class="number"> USD</span>
             </div>
         </div>
         <div class="row p-0 m-0 mt-4 rowBack" *ngIf="!isSelectable">
             <div class="col-12 backgroundQuote text-center" > 
                 <p class="titleQuote">Marítimo</p>
-                <span class="number" [innerHTML]="calculateRateMaritime().toFixed(2)"></span>
+                <span class="number" [innerHTML]="calculateRateMaritime()"></span>
                 <span class="number"> USD</span>
             </div>
         </div>
@@ -145,14 +145,14 @@
         <div class="row p-0 m-0 mt-4 rowBack" *ngIf="isSelectable && isTouched && isShowedM" [ngClass]="{'isValid': !isValid}">
             <div class="col-12 backgroundQuote pointer" (click)="setPackage('Aéreo')">
                 <p class="titleQuote">Aéreo</p>
-                <span class="number" [innerHTML]="calculateRateAerial().toFixed(2)"></span>
+                <span class="number" [innerHTML]="calculateRateAerial()"></span>
                 <span class="number"> USD</span>
             </div>
         </div>
         <div class="row p-0 m-0 mt-4 rowBack" *ngIf="!isSelectable">
             <div class="col-12 backgroundQuote">
                 <p class="titleQuote">Aéreo</p>
-                <span class="number" [innerHTML]="calculateRateAerial().toFixed(2)"></span>
+                <span class="number" [innerHTML]="calculateRateAerial()"></span>
                 <span class="number"> USD</span>
             </div>
         </div>

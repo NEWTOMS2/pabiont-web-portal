@@ -109,7 +109,7 @@
                                                     formControlName="weight"
                                                     [minFractionDigits]="1" 
                                                     [maxFractionDigits]="2"
-                                                    [maxlength]="8"
+                                                    [maxlength]="6"
                                                     [min]="1"
                                                     placeholder="0"
                                                     [ngClass]="{'ng-dirty ng-invalid': (quotesForm.controls['weight'].touched && quotesForm.controls['weight'].errors?.required) 
@@ -127,7 +127,7 @@
                                                     formControlName="high" 
                                                     [minFractionDigits]="1" 
                                                     [maxFractionDigits]="2"
-                                                    [maxlength]="8"
+                                                    [maxlength]="6"
                                                     [min]="1"
                                                     placeholder="0"
                                                     [ngClass]="{'ng-dirty ng-invalid': (quotesForm.controls['high'].touched && quotesForm.controls['high'].errors?.required) 
@@ -145,7 +145,7 @@
                                                     formControlName="width"  
                                                     [minFractionDigits]="1" 
                                                     [maxFractionDigits]="2"
-                                                    [maxlength]="8"
+                                                    [maxlength]="6"
                                                     [min]="1"
                                                     placeholder="0"
                                                     [ngClass]="{'ng-dirty ng-invalid': (quotesForm.controls['width'].touched && quotesForm.controls['width'].errors?.required) 
@@ -163,7 +163,7 @@
                                                     formControlName="long" 
                                                     [minFractionDigits]="1" 
                                                     [maxFractionDigits]="2"
-                                                    [maxlength]="8"
+                                                    [maxlength]="6"
                                                     [min]="1"
                                                     placeholder="0"
                                                     [ngClass]="{'ng-dirty ng-invalid': (quotesForm.controls['long'].touched && quotesForm.controls['long'].errors?.required) 
@@ -183,14 +183,14 @@
                             <div class="col-12 backgroundQuote">
                                 <div class="pabiont-card">
                                 <p class="titleQuote">Marítimo</p>
-                                <span class="number" [innerHTML]="calculateRateMaritime().toFixed(2)"></span>
+                                <span class="number" [innerHTML]="calculateRateMaritime()"></span>
                                 <span class="number"> USD</span>
                                 </div>
                             </div>
                             <div class="col-12 backgroundQuote">
                                 <div class="pabiont-card">
                                 <p class="titleQuote">Aéreo</p>
-                                <span class="number" [innerHTML]="calculateRateAerial().toFixed(2)"></span>
+                                <span class="number" [innerHTML]="calculateRateAerial()"></span>
                                 <span class="number"> USD</span>
                                 </div>
                             </div>

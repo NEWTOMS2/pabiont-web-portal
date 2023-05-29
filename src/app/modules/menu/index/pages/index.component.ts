@@ -6,6 +6,7 @@ import { Observable, Observer } from 'rxjs';
 import { TrackingResponse } from 'src/app/shared/models/response/tracking-response';
 import { AppConfigService } from 'src/app/core/services/app-config/app-config.service';
 import { IndexService } from 'src/app/core/services/menu/index.service';
+import { toInteger } from '@ng-bootstrap/ng-bootstrap/util/util';
 
 @Component({
   selector: 'app-index',
@@ -20,7 +21,7 @@ export class IndexComponent implements OnInit {
   rates: any = [];
   tracking: any = null;
   emailPattern: any = /^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
-  calculateMaritime: number;
+  calculateMaritime: Number;
   calculateAerial: Number;
   page: any;
   //table Data
@@ -86,20 +87,28 @@ export class IndexComponent implements OnInit {
 
 
   calculateRateMaritime(){
-    return this.calculateMaritime = (( (this.quotesForm.controls['high'].value * 
+    this.calculateMaritime = (( (this.quotesForm.controls['high'].value * 
     this.quotesForm.controls['width'].value * 
     this.quotesForm.controls['long'].value)/1728) * this.rates.maritime)
+    this.calculateMaritime.toFixed(2)
+    return this.calculateMaritime.toLocaleString('en-US')
   }
 
   calculateRateAerial(){
     if (( (this.quotesForm.controls['high'].value * 
     this.quotesForm.controls['width'].value * 
-    this.quotesForm.controls['long'].value)/166) > this.quotesForm.controls['weight'].value )
-    return this.calculateAerial = (( (this.quotesForm.controls['high'].value * 
-    this.quotesForm.controls['width'].value * 
-    this.quotesForm.controls['long'].value)/166) * this.rates.aerial)
-  else
-    return this.calculateAerial = (this.quotesForm.controls['weight'].value * this.rates.aerial)
+    this.quotesForm.controls['long'].value)/166) > this.quotesForm.controls['weight'].value ){
+      this.calculateAerial = (( (this.quotesForm.controls['high'].value * 
+      this.quotesForm.controls['width'].value * 
+      this.quotesForm.controls['long'].value)/166) * this.rates.aerial)
+    }
+    else{
+      this.calculateAerial = (this.quotesForm.controls['weight'].value * this.rates.aerial)
+    }
+
+    this.calculateAerial.toFixed(2)
+  return this.calculateAerial.toLocaleString('en-US')
+
   }
 
   async searchPackage(text: string, vawer: any){

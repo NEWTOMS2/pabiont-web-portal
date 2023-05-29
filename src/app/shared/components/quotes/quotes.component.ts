@@ -42,20 +42,26 @@ export class QuotesComponent implements OnInit {
   }
 
   calculateRateMaritime(){
-    return this.calculateMaritime = (( (this.quotesForm.controls['high'].value * 
+    this.calculateMaritime = (( (this.quotesForm.controls['high'].value * 
     this.quotesForm.controls['width'].value * 
-    this.quotesForm.controls['long'].value)/1728) * this.rates.maritime) 
+    this.quotesForm.controls['long'].value)/1728) * this.rates.maritime)
+    this.calculateMaritime.toFixed(2)
+    return this.calculateMaritime.toLocaleString('en-US')
    }
 
   calculateRateAerial(){
     if (( (this.quotesForm.controls['high'].value * 
     this.quotesForm.controls['width'].value * 
-    this.quotesForm.controls['long'].value)/166) > this.quotesForm.controls['weight'].value )
-    return this.calculateAerial = (( (this.quotesForm.controls['high'].value * 
+    this.quotesForm.controls['long'].value)/166) > this.quotesForm.controls['weight'].value ){
+    this.calculateAerial = (( (this.quotesForm.controls['high'].value * 
     this.quotesForm.controls['width'].value * 
     this.quotesForm.controls['long'].value)/166) * this.rates.aerial)
-  else
-    return this.calculateAerial = (this.quotesForm.controls['weight'].value * this.rates.aerial)
+    }
+    else{
+      this.calculateAerial = (this.quotesForm.controls['weight'].value * this.rates.aerial)
+    }
+    this.calculateAerial.toFixed(2)
+    return this.calculateAerial.toLocaleString('en-US')
   }
 
   resetForm() {
