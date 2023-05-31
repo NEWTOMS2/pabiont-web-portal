@@ -67,9 +67,7 @@ export class CreateFormComponent implements OnInit {
         this.formGroup.controls['phone'].value,
         1,
         "",
-        this.code,
-        null,
-        null
+        this.code
         ) 
     }else{
       this.userRow = new UserInformation(
