@@ -4,3 +4,13 @@
 <!--<div class="col-2" style="color: rgb(253,253,253);box-shadow: 0px 0px 12px 0px rgb(204,197,197);height: 655.6px;">-->
     <router-outlet (activate)="onActivate()"></router-outlet>
 </div>
+<div *ngIf="isLogged" id="Contactanos" style="margin-top: 70px;">
+    <div class="row subfooter m-0 p-0">
+        <div class="col-12 p-0 mt-2" style="text-align: center;">
+            <img src="assets/img/logo.png" class="footerlogo">
+        </div>
+        <div class="col-12 footerC">
+            <span>© Copyright NEWTOMS LLC 2023. All Rights Reserved.</span>
+        </div>
+    </div>
+  </div>

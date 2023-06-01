@@ -29,3 +29,19 @@
         }
       }
 }
+
+.subfooter{
+  height: 100px;
+  background-color: #1E486D;
+  .footerlogo{
+      width: 100px;
+      height: 40px;
+      margin-top: 5px;
+      text-align: center;
+  }
+  .footerC{
+    text-align: center;
+    color: white;
+  }
+
+}
