@@ -25,7 +25,11 @@
         "getLastInvoice": "invoice/last_invoice",
         "getPrefixCompany": "company?code=1",
         "reportPayment": "report-payment",
-        "getLocationByCode": "location?code="
+        "getLocationByCode": "location?code=",
+        "getAllVehicule": "vehicule?code=0",
+        "getAllVehiculeModel": "vehicule?code=",
+        "getAllDrivers": "vehicule/assignment_driver",
+        "postDriver": "vehicule/assignment_driver"
     }
 
 }

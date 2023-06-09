@@ -104,6 +104,9 @@ export class CreateFormComponent implements OnInit {
         if((err.error).some(e => e.error_description === 'User already exist')){
           this.messageService.add({severity: 'error', summary: 'el Chofer ya existe, intente un correo diferente.', detail: ''})
         }
+        else if((err.error).some(e => e.error_description === 'Driver license already exist')){
+          this.messageService.add({severity: 'error', summary: 'La licencia ya esta registrada, intente una diferente.', detail: ''}) 
+        }
         else
         this.messageService.add({severity: 'error', summary: 'Ha ocurrido un error al crear o modificar el Usuario.', detail: ''})
       }

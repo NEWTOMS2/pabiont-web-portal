@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import sizeof from 'object-sizeof';
 import { AppConfigService } from 'src/app/core/services/app-config/app-config.service';
 import { TableManagmentService } from 'src/app/core/services/consult/table-managment.service';
@@ -11,6 +12,7 @@ import { packages } from 'src/app/shared/models/request/package-request';
 })
 export class QuotePackageComponent implements OnInit {
 
+  formGroup: FormGroup;
   page: any;
   id: number = 0;
   packageRequest: packages; 
@@ -23,20 +25,30 @@ export class QuotePackageComponent implements OnInit {
   isShowedM: boolean = true;
   @Output() FinalizeStep = new EventEmitter();
 
-  constructor(
+  constructor(private formBuilder: FormBuilder,
     private appConfig: AppConfigService,
     private tableManagmentService: TableManagmentService) {   
     this.page = this.appConfig.invoiceCreation;
     this.page = this.page.default;
+    this.resetForm();
      }
 
   ngOnInit(): void {
   }
-
+  resetForm(){
+    this.formGroup = this.formBuilder.group({
+      description: ["", [Validators.required,Validators.pattern(/.*\S+.*/)]],
+    });
+    
+    this.formGroup.statusChanges.subscribe(status => {
+      this.modalIsValid = status == "VALID" ? true : false;
+    });
+  }
   addToList(){
     //crear el modelo de datos y su constructor del json
     //crear la descripcion del paquete
-    this.id++
+    this.modalIsValid = false;
+    this.id++;
     this.packageRequest = new packages(this.packageInformation.weight, this.packageInformation.high,this.packageInformation.width,this.packageInformation.long, this.description,0,1,this.packageInformation.type);    
     let volumeCalculation = Number(this.packageInformation.high * this.packageInformation.width * this.packageInformation.long).toFixed(0);
     this.packageList.push({

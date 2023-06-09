@@ -1,0 +1,132 @@
+<form [formGroup]="formGroup" >
+    <div class="row p-formgrid p-grid mt-3">
+        <div class="p-field col-12 info">
+            <span class="title">Información del chofer</span>
+        </div>
+        <div class="p-field col-6">
+            <label >Chofer</label>
+            <p-dropdown [options]="driverList" 
+                        [(ngModel)]="selectedDriver"
+                        optionLabel="first_name" 
+                        [filter]="true" 
+                        filterBy="first_name,last_name,code" 
+                        [showClear]="true" 
+                        stleClass="w-100"
+                        (onChange)="setLincense()"
+                        appendTo="body"
+                        formControlName="driver"
+                        placeholder="Chofer">
+                <ng-template pTemplate="selectedItem">
+                    <div *ngIf="selectedDriver">
+                        <div>
+                            {{selectedDriver.first_name}} {{selectedDriver.last_name}}
+                        </div>
+                    </div>
+                </ng-template>
+                <ng-template let-driver pTemplate="item">
+                    <div>
+                        <div>
+                            {{driver.first_name}} {{driver.last_name}}
+                        </div>
+                        <div class="filterSubtitle">
+                            {{driver.code}}
+                        </div>
+                    </div>
+                </ng-template>
+            </p-dropdown>  
+        </div>
+        <div class="p-field col-6">
+            <label for="License">Licencia</label>
+            <input  type="text" 
+                    id="License" 
+                    [ngClass]="{'ng-dirty ng-invalid': formGroup.controls['license'].touched && formGroup.controls['license'].errors?.required}"
+                    pInputText
+                    class="uppercase"
+                    [disabled]="true"
+                    formControlName="license" 
+                    required autofocus />
+            <small class="p-error" *ngIf="formGroup.controls['license'].touched && formGroup.controls['license'].errors?.required">La licencia es obligatoria.</small>
+        </div>
+        <div class="p-field col-12 info mt-4">
+            <span class="title m-0">Información del vehículo </span>
+        </div>
+        <div class="p-field col-6">
+            <label for="Brand">Marca</label>
+            <p-dropdown [options]="brandList" 
+                        [(ngModel)]="selectedBrand"
+                        optionLabel="name" 
+                        [filter]="true" 
+                        filterBy="name,code"
+                        [showClear]="true"
+                        appendTo="body"
+                        (onChange)="getVehiculeModelList()" 
+                        styleClass="w-100"
+                        formControlName="brand"
+                        placeholder="Marca">
+                <ng-template pTemplate="selectedItem">
+                    <div *ngIf="selectedBrand">
+                        <div>
+                            {{selectedBrand.name}}
+                        </div>
+                    </div>
+                </ng-template>
+                <ng-template let-brand pTemplate="item">
+                    <div>
+                        <div>
+                            {{brand.name}}
+                        </div>
+                        <div class="filterSubtitle">
+                            {{brand.code}}
+                        </div>
+                    </div>
+                </ng-template>
+            </p-dropdown>
+            <small class="p-error" *ngIf="formGroup.controls['brand'].touched && formGroup.controls['brand'].errors?.required">La Marca es obligatoria.</small>
+        </div>
+        <div class="p-field col-6">
+            <label for="Model">Modelo</label>
+            <p-dropdown [options]="modelList" 
+                        [(ngModel)]="selectedModel"
+                        optionLabel="name" 
+                        [filter]="true" 
+                        filterBy="name,code"
+                        [disabled]="validShow"
+                        [showClear]="true"
+                        appendTo="body" 
+                        styleClass="w-100"
+                        formControlName="model"
+                        placeholder="Modelo">
+                <ng-template pTemplate="selectedItem">
+                    <div *ngIf="selectedModel">
+                        <div>
+                            {{selectedModel.name}}
+                        </div>
+                    </div>
+                </ng-template>
+                <ng-template let-model pTemplate="item">
+                    <div>
+                        <div>
+                            {{model.name}}
+                        </div>
+                        <div class="filterSubtitle">
+                            {{model.code}}
+                        </div>
+                    </div>
+                </ng-template>
+            </p-dropdown>
+            <small class="p-error" *ngIf="formGroup.controls['model'].touched && formGroup.controls['model'].errors?.required">El Modelo es obligatorio.</small>
+        </div>
+        <div class="p-field col-6 mt-3">
+            <label for="License_Plate">Placa</label>
+            <input  type="text" 
+                    id="License_Plate" 
+                    [ngClass]="{'ng-dirty ng-invalid': formGroup.controls['license_plate'].touched && formGroup.controls['license_plate'].errors?.required}"
+                    pInputText 
+                    [maxlength]="11"
+                    class="uppercase"
+                    formControlName="license_plate" 
+                    required autofocus />
+            <small class="p-error" *ngIf="formGroup.controls['license_plate'].touched && formGroup.controls['license_plate'].errors?.required">La Placa es obligatorio.</small>
+        </div>
+    </div>
+</form>

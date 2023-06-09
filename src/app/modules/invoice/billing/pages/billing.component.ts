@@ -6,6 +6,7 @@ import { billing } from 'src/app/shared/models/request/billing-request';
 import { BillingInformationComponent } from '../components/billing-information/billing-information.component';
 import { PaymentConfirmationComponent } from '../components/payment-confirmation/payment-confirmation.component';
 import { QuotePackageComponent } from '../components/quote-package/quote-package.component';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 
 @Component({
@@ -15,6 +16,8 @@ import { QuotePackageComponent } from '../components/quote-package/quote-package
 })
 export class BillingComponent implements OnInit {
 
+  
+  formGroup: FormGroup;
   currentStep: number = 1;
   packageList: any;
   packageRequest: any;
@@ -24,24 +27,40 @@ export class BillingComponent implements OnInit {
   displayDescription: boolean = false;
   description: string="";
   isValid: boolean = true;
+  modalIsValid2: boolean = false;
   modalIsValid: boolean = false;
     //ViewChild Data
   @ViewChild(BillingInformationComponent) billingInformationComponent:BillingInformationComponent;
   @ViewChild(QuotePackageComponent) child: QuotePackageComponent;
   @ViewChild(PaymentConfirmationComponent) childq: PaymentConfirmationComponent;
 
-  constructor(
+  constructor(private formBuilder: FormBuilder,
     private tableManagmentService: TableManagmentService,
     private confirmationService: ConfirmationService,
     private router: Router) {
+      this.resetForm();
       this.tableManagmentService.buttonEvent.subscribe(data => {
         this.selectedButton(data);
       });
+      
       }
 
   ngOnInit(): void {
   }
 
+  resetForm(){
+    this.modalIsValid2 = false;
+    this.formGroup = this.formBuilder.group({
+      description: ["", [Validators.required,Validators.pattern(/.*\S+.*/)]],
+    });
+    this.formGroup.statusChanges.subscribe(status => {
+      this.modalIsValid2 = status == "VALID" ? true : false;
+    });
+    
+  }
+validModal(){
+return !this.modalIsValid2
+}
  async nextStep(lastStep: boolean = false){
     if(!lastStep){
       switch(this.currentStep){

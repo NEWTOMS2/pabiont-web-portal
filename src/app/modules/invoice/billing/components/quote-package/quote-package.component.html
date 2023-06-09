@@ -19,7 +19,18 @@
 
 <p-dialog header="Descripción del paquete" [(visible)]="displayDescription" [style]="{width: '50vw'}">
     <div class="row justify-content-center">
-        <textarea rows="5" cols="30" minlength="4" maxlength="200" pInputTextarea [(ngModel)]="description" (ngModelChange)="modalIsValid = false" ></textarea>
+        <form [formGroup]="formGroup">
+            <textarea rows="5" 
+                      cols="30"
+                      class="col-12" 
+                      formControlName="description" 
+                      minlength="4" 
+                      maxlength="200" 
+                      pInputTextarea 
+                      [(ngModel)]="description" 
+                      (ngModelChange)="modalIsValid" >
+            </textarea>
+        </form>
     </div>
     <ng-template pTemplate="footer">
         <button pButton pRipple label="Cancelar" icon="pi pi-times" class="p-button-text p-button-danger" (click)="displayDescription=false"></button>
@@ -28,7 +39,7 @@
                     addToList(); 
                     child.clearPackageInformation()" 
                     label="Aceptar" 
-                    [disabled]="modalIsValid"
+                    [disabled]="!modalIsValid"
                     styleClass="p-button-text"></p-button>
     </ng-template>
 </p-dialog>
