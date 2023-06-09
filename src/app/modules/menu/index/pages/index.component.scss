@@ -138,7 +138,7 @@
 }
 
 .footerSection{
-    background-color: #13538A;
+    background-color: #1E486D;
     width: 100%;
     align-items: center;
     padding: 48px 0px;
@@ -164,13 +164,17 @@
     }
 }
 .subfooter{
-    height: 50px;
-    background-color: #3CCBFF;
+    height: 100px;
+    background-color: #1E486D;
     .footerlogo{
         width: 100px;
         height: 40px;
         margin-top: 5px;
         text-align: center;
+    }
+    .footerC{
+      text-align: center;
+      color: white;
     }
 
 }
