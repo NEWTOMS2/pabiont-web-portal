@@ -65,7 +65,7 @@ export class CreateFormComponent implements OnInit {
     this.formGroup = this.formBuilder.group({
       code: ["", [Validators.required, Validators.maxLength(3),Validators.pattern('[a-zA-Z ]*')]],
       type: ["", Validators.required],
-      description: ["", Validators.required],
+      description: ["", [Validators.required,Validators.pattern(/.*\S+.*/)]],
       country: ["", Validators.required],
       state: ["", Validators.required],
       latitude: ["", [Validators.required, Validators.pattern(/^(\+|-)?(?:90(?:(?:\.0{1,6})?)|(?:[0-9]|[1-8][0-9])(?:(?:\.[0-9]{1,6})?))$/) ]],

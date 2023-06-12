@@ -9,7 +9,8 @@
                 <th>Tipo de Envío</th>
                 <th>Estatus</th>
                 <th>Ubicación</th>
-                <th style="width:8rem"></th>
+                <th *ngIf="!canEdit">Editar</th>
+                <th *ngIf="canEdit">Aceptar/Rechazar</th>
             </tr>
         </ng-template>
         <ng-template pTemplate="body" let-package let-editing="editing" let-ri="rowIndex">
