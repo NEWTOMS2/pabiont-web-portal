@@ -124,9 +124,10 @@
                     pInputText 
                     [maxlength]="11"
                     class="uppercase"
+                    placeholder="XXX-XX-0000"
                     formControlName="license_plate" 
                     required autofocus />
-            <small class="p-error" *ngIf="formGroup.controls['license_plate'].touched && formGroup.controls['license_plate'].errors?.required">La Placa es obligatorio.</small>
+            <small class="p-error" *ngIf="formGroup.controls['license_plate'].touched && formGroup.controls['license_plate'].invalid">La placa no cumple el formato XXX-XX-0000</small>
         </div>
     </div>
 </form>

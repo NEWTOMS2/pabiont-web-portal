@@ -14,7 +14,7 @@
         ],
         "customButtons": [
         ],
-        "searchField": ["code", "first_name", "last_name", "email","rol","phone", "date_exp_license", "license","license_plate"]
+        "searchField": ["first_name", "last_name","phone", "license_exp_date", "license","license_plate", "brand/model"]
     },
     "exampleData": []
 }

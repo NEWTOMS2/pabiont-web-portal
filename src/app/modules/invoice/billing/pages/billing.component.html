@@ -24,14 +24,14 @@
 
     <!--STEPPER BUTTONS-->
     <div class="row m-0 justify-content-between">
-        <div class="col d-flex justify-content-start px-5 mb-3" *ngIf="currentStep === 1">
+        <div class="col-6 d-flex justify-content-start px-2 px-sm-5 mb-3" *ngIf="currentStep === 1">
             <button pButton pRipple  
                     class="p-button-outlined"
                     label="Volver"
                     (click)="redirect()">
             </button>
         </div>
-        <div class="col d-flex justify-content-end px-5 mb-3" *ngIf="currentStep != 3" >
+        <div class="col-6 d-flex justify-content-end px-2 px-sm-5 mb-3" *ngIf="currentStep != 3" >
             <button pButton pRipple  
                     class="p-button-outlined"
                     label="Confirmar"

@@ -9,7 +9,7 @@
                     class="uppercase"
                     formControlName="code" 
                     required autofocus />
-            <small class="p-error" *ngIf="formGroup.controls['code'].touched && formGroup.controls['code'].errors?.required">El código es obligatorio.</small>
+            <small class="p-error" *ngIf="formGroup.controls['code'].touched && formGroup.controls['code'].invalid">El código no puede ser numérico.</small>
             <small class="p-error" *ngIf="this.formGroup.controls['code'].errors?.maxlength">El código no puede ser mayor a 3 caracteres.</small>
         </div>
         <div class="p-field col-6">
@@ -79,7 +79,7 @@
                     class="uppercase"
                     formControlName="latitude" 
                     required autofocus />
-            <small class="p-error" *ngIf="formGroup.controls['latitude'].touched && formGroup.controls['latitude'].errors?.required">La latitud es obligatorio.</small>
+            <small class="p-error" *ngIf="formGroup.controls['latitude'].touched && formGroup.controls['latitude'].invalid">el latitud no cumple el formato 00.000000 o -00.000000</small>
         </div>
         <div class="p-field col-6 mt-3">
             <label for="Longitude">Longitud</label>
@@ -91,7 +91,7 @@
                     class="uppercase"
                     formControlName="longitude" 
                     required autofocus />
-            <small class="p-error" *ngIf="formGroup.controls['longitude'].touched && formGroup.controls['longitude'].errors?.required">El longitud es obligatorio.</small>
+            <small class="p-error" *ngIf="formGroup.controls['longitude'].touched && formGroup.controls['longitude'].invalid">la longitud no cumple el formato 00.000000 o -00.000000</small>
         </div>
     </div>
     <div class="p-field mt-3">
@@ -102,8 +102,10 @@
                     pInputText 
                     formControlName="description"
                     [maxlength]="150"
+                    [minlength]="10"
                     placeholder="Coloque la Ciudad y el Estado"
                     required />
-        <small class="p-error" *ngIf="formGroup.controls['description'].touched && formGroup.controls['description'].errors?.required">La descripción es Obligatoria.</small>
+            <small class="p-error" *ngIf="formGroup.controls['description'].errors?.minlength">la descripción debe tener al menos 10 caracteres</small>
+            <small class="p-error" *ngIf="formGroup.controls['description'].touched && formGroup.controls['description'].errors?.required">La descripción es Obligatoria.</small>
     </div>  
 </form>

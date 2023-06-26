@@ -11,6 +11,7 @@
                     formControlName="first_name" 
                     required autofocus />
             <small class="p-error" *ngIf="formGroup.controls['first_name'].touched && formGroup.controls['first_name'].errors?.required">El nombre es obligatorio.</small>
+            <small class="p-error" *ngIf="formGroup.controls['first_name'].errors?.minlength">el nombre debe tener al menos 2 caracteres</small>
         </div>
         <div class="p-field col-6">
             <label for="Last_name">Apellido</label>
@@ -23,6 +24,7 @@
                     formControlName="last_name" 
                     required autofocus />
             <small class="p-error" *ngIf="formGroup.controls['last_name'].touched && formGroup.controls['last_name'].errors?.required">El apellido es obligatorio.</small>
+            <small class="p-error" *ngIf="formGroup.controls['last_name'].errors?.minlength">el apellido debe tener al menos 2 caracteres</small>
         </div>
     </div>
     <div class="row p-formgrid p-grid mt-3">    
@@ -57,7 +59,7 @@
                 pInputText 
                 formControlName="email" 
                 required autofocus />
-        <small class="p-error" *ngIf="formGroup.controls['email'].touched && formGroup.controls['email'].errors?.required">El email es obligatorio.</small>
+                <small class="p-error" *ngIf="formGroup.controls['email'].touched && formGroup.controls['email'].invalid">el email no cumple el formato xxxxx@xxxx.xxx</small>
     </div>
     
 </form>

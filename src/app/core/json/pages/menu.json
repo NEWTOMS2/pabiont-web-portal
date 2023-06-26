@@ -10,7 +10,7 @@
         },
         {
             "title": "Cotizaciones",
-            "subtitle": "Cotizaciones",
+            "subtitle": "",
             "description": "Gestiona y edita la información personal de la cuenta.",
             "icon": "fas fa-user me-2",
             "urlID": 3,
@@ -18,7 +18,7 @@
         },
         {
             "title": "Gestión de Facturas y Paquetes",
-            "subtitle": "Gestión de facturas y paquetes",
+            "subtitle": "",
             "description": "Contiene la lista de las órdenes por despachar con información que describe su estatus actual y fecha.",
             "icon": "fas fa-newspaper me-2",
             "urlID": 4,
@@ -26,7 +26,7 @@
         },
         {
             "title": "Gestión de Clientes",
-            "subtitle": "Gestión de clientes",
+            "subtitle": "",
             "description": "Gestiona y edita la información personal de la cuenta.",
             "icon": "fas fa-user me-2",
             "urlID": 1,
@@ -44,7 +44,7 @@
         
         {
             "title": "Gestión de Choferes",
-            "subtitle": "Gestión de Choferes",
+            "subtitle": "",
             "description": "Gestiona y edita la información personal de la cuenta.",
             "icon": "fa-solid fa-people-arrows me-2",
             "urlID": 8,
@@ -53,7 +53,7 @@
         
         {
             "title": "Gestión de Choferes asignados",
-            "subtitle": "Gestión de Choferes asignados",
+            "subtitle": "",
             "description": "Gestiona y edita la información personal de la cuenta.",
             "icon": "fa-solid fa-people-arrows me-2",
             "urlID": 9,
@@ -61,7 +61,7 @@
         },
         {
             "title": "Almacenes y Localidades",
-            "subtitle": "Ver Almacenes y Localidades",
+            "subtitle": "",
             "description": "Contiene la lista de las órdenes por despachar con información que describe su estatus actual y fecha.",
             "icon": "fas fa-newspaper me-2",
             "urlID": 2,
@@ -69,7 +69,7 @@
         },
         {
             "title": "Gestión de Tarifas",
-            "subtitle": "Ver tarifas",
+            "subtitle": "",
             "description": "Gestiona y edita la información de tarifas de la empresa.",
             "icon": "fas fa-user me-2",
             "urlID": 7,
@@ -77,7 +77,7 @@
         },
         {
             "title": "Reportes",
-            "subtitle": "Ver Reportes",
+            "subtitle": "",
             "description": "Gestiona y edita la información personal de la cuenta.",
             "icon": "fas fa-user me-2",
             "urlID": 5,
@@ -89,7 +89,7 @@
         
         {
             "title": "Facturación de Envíos",
-            "subtitle": "Creación de Facturas para Envíos ",
+            "subtitle": "",
             "description": "Contiene la lista de las órdenes por despachar con información que describe su estatus actual y fecha.",
             "icon": "fas fa-newspaper me-2",
             "urlID": 0,
@@ -97,7 +97,7 @@
         },
         {
             "title": "Cotizaciones",
-            "subtitle": "Cotizaciones",
+            "subtitle": "",
             "description": "Gestiona y edita la información personal de la cuenta.",
             "icon": "fas fa-user me-2",
             "urlID": 3,
@@ -105,7 +105,7 @@
         },
         {
             "title": "Gestión de Facturas y Paquetes",
-            "subtitle": "Gestión de facturas y paquetes",
+            "subtitle": "",
             "description": "Contiene la lista de las órdenes por despachar con información que describe su estatus actual y fecha.",
             "icon": "fas fa-newspaper me-2",
             "urlID": 4,
@@ -113,7 +113,7 @@
         },
         {
             "title": "Gestión de Clientes",
-            "subtitle": "Gestión de clientes",
+            "subtitle": "",
             "description": "Gestiona y edita la información personal de la cuenta.",
             "icon": "fas fa-user me-2",
             "urlID": 1,

@@ -10,7 +10,7 @@
     </div>
 </div>
 
-<p-dialog [(visible)]="visibleDialog" (onHide)="child.resetForm()" [style]="{width: '450px'}" header="Agregar Almacenes y localidades" [modal]="true" styleClass="p-fluid" >
+<p-dialog [(visible)]="visibleDialog" (onHide)="child.resetForm()" [style]="{width: '450px'}" header="Modificar tarifas" [modal]="true" styleClass="p-fluid" >
     
     <app-create-form    (buttonEnabled)="buttonEnabled($event)"
                         (updateList)="getRateList()"

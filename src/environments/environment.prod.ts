@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  dashboardId: 'bca87f82-c69e-4907-b0b4-b2d04c1c8720'
+  dashboardId: 'ca6f212d-a11a-40af-b798-4c86adeb49ff'
 };
